@@ -579,123 +579,96 @@ input:checked+.slider:before {
     background-size: 50px 50px;
 }
 
+/* Inline SVG Anatomy */
 .anatomy-container {
     position: relative;
     width: 300px;
-    /* SVG width */
     height: 600px;
     margin: 0 auto;
+    /* Optional: Tech grid background */
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
     border: 2px solid rgba(0, 230, 118, 0.2);
     border-radius: 20px;
     background: radial-gradient(circle, rgba(0, 230, 118, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
 }
 
-.anatomy-img {
+.anatomy-svg {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    filter: drop-shadow(0 0 10px var(--accent-color));
-    transition: filter 0.3s;
+    filter: drop-shadow(0 0 5px var(--accent-color));
 }
 
-body.beast-mode .anatomy-img,
-body.beast-mode .anatomy-container {
-    filter: sepia(100%) saturate(500%) hue-rotate(-50deg);
-    /* Shift to Red */
-    border-color: rgba(255, 46, 46, 0.3);
-}
-
-/* Hotspots */
-.hotspot {
-    position: absolute;
-    background-color: rgba(0, 230, 118, 0.3);
-    border: 1px solid var(--accent-color);
-    border-radius: 50%;
-    cursor: pointer;
+.muscle-group {
+    fill: transparent;
+    stroke: var(--accent-color);
+    stroke-width: 2px;
     transition: all 0.3s ease;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-size: 0.8rem;
-    opacity: 0.6;
+    cursor: pointer;
+    animation: muscle-pulse 3s infinite ease-in-out;
 }
 
-.hotspot:hover {
-    background-color: var(--accent-color);
-    color: #000;
-    transform: scale(1.2);
-    box-shadow: 0 0 15px var(--accent-color);
-    opacity: 1;
+.muscle-base {
+    stroke-width: 1px;
+    stroke: rgba(255, 255, 255, 0.2);
+    pointer-events: none;
+    /* Base outline not interactive */
+    animation: none;
 }
 
-/* Hotspot Positions (Adjust based on SVG layout) */
-.hotspot-chest {
-    top: 22%;
-    left: 43%;
+/* Hover Effects */
+.muscle-group:hover {
+    fill: rgba(255, 46, 46, 0.3);
+    stroke: #fff;
+    stroke-width: 3px;
+    filter: url(#neon-glow);
+    /* Uses the SVG filter */
+    transform: scale(1.02);
+    /* Subtle pop */
+    transform-origin: center;
+    z-index: 10;
 }
 
-/* Chest */
-.hotspot-shoulders {
-    top: 18%;
-    left: 20%;
+/* Specific Muscle Animations/Offsets if needed */
+@keyframes muscle-pulse {
+
+    0%,
+    100% {
+        stroke-opacity: 0.6;
+        fill-opacity: 0;
+    }
+
+    50% {
+        stroke-opacity: 1;
+        fill-opacity: 0.1;
+    }
 }
 
-/* Shoulder L */
-.hotspot-shoulders-r {
-    top: 18%;
-    left: 66%;
-}
-
-/* Shoulder R */
-.hotspot-arms {
-    top: 35%;
-    left: 10%;
-}
-
-/* Arm L */
-.hotspot-arms-r {
-    top: 35%;
-    left: 76%;
-}
-
-/* Arm R */
-.hotspot-legs {
-    top: 60%;
-    left: 43%;
-}
-
-/* Legs */
-.hotspot-back {
-    top: 25%;
-    left: 43%;
-    display: none;
-}
-
-/* Back (Hidden on front view) */
-
-/* Tooltip/Label */
-.hotspot::after {
-    content: attr(data-label);
+/* Anatomy Overlay Text */
+.anatomy-overlay {
     position: absolute;
-    top: -30px;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    background: var(--bg-secondary);
-    padding: 5px 10px;
-    border-radius: 4px;
+    color: var(--text-secondary);
     font-size: 0.8rem;
-    white-space: nowrap;
-    opacity: 0;
     pointer-events: none;
-    transition: 0.3s;
-    border: 1px solid var(--accent-color);
-    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.hotspot:hover::after {
-    opacity: 1;
-    top: -40px;
+/* Beast Mode Adjustments */
+body.beast-mode .anatomy-container {
+    border-color: rgba(255, 46, 46, 0.3);
+    background: radial-gradient(circle, rgba(255, 46, 46, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
+}
+
+body.beast-mode .muscle-group {
+    stroke: var(--accent-color);
+}
+
+body.beast-mode .muscle-base {
+    stroke: rgba(0, 0, 0, 0.2);
 }
