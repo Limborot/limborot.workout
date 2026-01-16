@@ -130,36 +130,136 @@
             </div>
         </section>
 
-        <!-- Visual Log / Gallery -->
-        <section id="gallery">
+        <!-- Program Finder Section -->
+        <section id="program-finder">
             <div class="container fade-in">
                 <div class="section-title">
-                    <h2>Visual <span class="highlight">Log</span></h2>
+                    <h2>Program <span class="highlight">Finder</span></h2>
+                    <p style="color: var(--text-secondary); margin-top: 10px;">ค้นหาตารางฝึกที่ใช่สำหรับคุณ</p>
                 </div>
+                <div class="tool-content">
+                    <div class="finder-controls">
+                        <select id="finder-part" class="minimal-select">
+                            <option value="all">ทุกส่วน (All Parts)</option>
+                            <option value="chest">หน้าอก (Chest)</option>
+                            <option value="back">หลัง (Back)</option>
+                            <option value="legs">ขา (Legs)</option>
+                            <option value="shoulders">ไหล่ (Shoulders)</option>
+                            <option value="arms">แขน (Arms)</option>
+                        </select>
+                        <select id="finder-level" class="minimal-select">
+                            <option value="all">ทุกระดับ (All Levels)</option>
+                            <option value="beginner">มือใหม่ (Beginner)</option>
+                            <option value="intermediate">ปานกลาง (Intermediate)</option>
+                            <option value="advanced">ขั้นสูง (Advanced)</option>
+                        </select>
+                    </div>
+                    <div id="finder-results" class="finder-results-grid">
+                        <!-- Results will be injected here via JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                <div class="gallery-main" style="text-align: center; margin-bottom: 30px;">
-                    <div
-                        style="position: relative; display: inline-block; border-radius: 10px; overflow: hidden; border: 2px solid var(--accent-color); box-shadow: 0 0 20px rgba(0, 230, 118, 0.2);">
-                        <img src="images/ronnie_main.png" alt="Ronnie Coleman Main Motivation"
-                            style="max-width: 100%; height: auto; display: block;">
-                        <div
-                            style="position: absolute; bottom: 0; left: 0; width: 100%; padding: 20px; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);">
-                            <h3 style="color: var(--accent-color); text-transform: uppercase; margin: 0;">Yeah Buddy!
-                            </h3>
-                            <p style="color: #fff; font-size: 0.9rem; margin: 0;">Light Weight Baby</p>
+        <!-- Minimal BMR/Macro Calculator -->
+        <section id="calculators">
+            <div class="container fade-in">
+                <div class="section-title">
+                    <h2>Daily <span class="highlight">Fuel</span></h2>
+                    <p style="color: var(--text-secondary); margin-top: 10px;">คำนวณแคลอรี่ที่ร่างกายต้องการ (BMR &
+                        TDEE)</p>
+                </div>
+                <div class="calculator-minimal">
+                    <div class="calc-form">
+                        <div class="input-row">
+                            <div class="input-group-min">
+                                <label>Gender</label>
+                                <div class="gender-toggle">
+                                    <input type="radio" name="gender" id="male" value="male" checked>
+                                    <label for="male">Male</label>
+                                    <input type="radio" name="gender" id="female" value="female">
+                                    <label for="female">Female</label>
+                                </div>
+                            </div>
+                            <div class="input-group-min">
+                                <label>Age (yrs)</label>
+                                <input type="number" id="bmr-age" placeholder="25">
+                            </div>
+                        </div>
+                        <div class="input-row">
+                            <div class="input-group-min">
+                                <label>Height (cm)</label>
+                                <input type="number" id="bmr-height" placeholder="175">
+                            </div>
+                            <div class="input-group-min">
+                                <label>Weight (kg)</label>
+                                <input type="number" id="bmr-weight" placeholder="70">
+                            </div>
+                        </div>
+                        <div class="input-group-min">
+                            <label>Activity Level</label>
+                            <select id="bmr-activity" class="minimal-select full">
+                                <option value="1.2">Sedentary (ไม่ออกกำลังกาย)</option>
+                                <option value="1.375">Lightly Active (1-3 วัน/สัปดาห์)</option>
+                                <option value="1.55">Moderately Active (3-5 วัน/สัปดาห์)</option>
+                                <option value="1.725">Very Active (6-7 วัน/สัปดาห์)</option>
+                                <option value="1.9">Super Active (นักกีฬาอาชีพ)</option>
+                            </select>
+                        </div>
+                        <button id="btn-calculate" class="btn primary full-width-btn">Calculate</button>
+                    </div>
+
+                    <div id="bmr-result" class="calc-output hidden">
+                        <div class="output-item">
+                            <span>Maintenance</span>
+                            <strong id="res-maintenance">2500</strong>
+                            <small>kcal/day</small>
+                        </div>
+                        <div class="output-details">
+                            <div class="detail-box cut">
+                                <span>Cut (-500)</span>
+                                <strong id="res-cut">2000</strong>
+                            </div>
+                            <div class="detail-box bulk">
+                                <span>Bulk (+300)</span>
+                                <strong id="res-bulk">2800</strong>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="gallery-grid">
-                    <div class="gallery-item"></div>
-                    <div class="gallery-item"></div>
-                    <div class="gallery-item"></div>
-                </div>
-                <p style="text-align: center; margin-top: 1rem; color: var(--text-secondary);">*Snapshots from the
-                    journey*</p>
             </div>
-        </section>
+
+            <!-- Visual Log / Gallery -->
+            <section id="gallery">
+                <div class="container fade-in">
+                    <div class="section-title">
+                        <h2>Visual <span class="highlight">Log</span></h2>
+                    </div>
+
+                    <div class="gallery-main" style="text-align: center; margin-bottom: 30px;">
+                        <div
+                            style="position: relative; display: inline-block; border-radius: 10px; overflow: hidden; border: 2px solid var(--accent-color); box-shadow: 0 0 20px rgba(0, 230, 118, 0.2);">
+                            <img src="images/ronnie_main.png" alt="Ronnie Coleman Main Motivation"
+                                style="max-width: 100%; height: auto; display: block;">
+                            <div
+                                style="position: absolute; bottom: 0; left: 0; width: 100%; padding: 20px; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);">
+                                <h3 style="color: var(--accent-color); text-transform: uppercase; margin: 0;">Yeah
+                                    Buddy!
+                                </h3>
+                                <p style="color: #fff; font-size: 0.9rem; margin: 0;">Light Weight Baby</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-grid">
+                        <div class="gallery-item"></div>
+                        <div class="gallery-item"></div>
+                        <div class="gallery-item"></div>
+                    </div>
+                    <p style="text-align: center; margin-top: 1rem; color: var(--text-secondary);">*Snapshots from the
+                        journey*</p>
+                </div>
+            </section>
 
     </main>
 
@@ -180,6 +280,26 @@
             </div>
         </div>
     </footer>
+
+    <!-- Workout Timer Widget -->
+    <div id="workout-timer-widget" class="timer-widget">
+        <div class="timer-display">
+            <span id="timer-minutes">00</span>:<span id="timer-seconds">00</span>
+        </div>
+        <div class="timer-controls">
+            <button id="timer-start"><i class="ph ph-play"></i></button>
+            <button id="timer-pause"><i class="ph ph-pause"></i></button>
+            <button id="timer-reset"><i class="ph ph-arrow-counter-clockwise"></i></button>
+        </div>
+        <div class="timer-presets">
+            <button onclick="setTimer(30)">30s</button>
+            <button onclick="setTimer(60)">60s</button>
+            <button onclick="setTimer(90)">90s</button>
+        </div>
+        <div class="timer-toggle-btn">
+            <i class="ph ph-timer"></i>
+        </div>
+    </div>
 
     <!-- Beast Mode Toggle -->
     <div class="beast-toggle-container">
