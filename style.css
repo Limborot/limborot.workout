@@ -831,6 +831,44 @@ body.beast-mode .minimal-select option {
     color: #fff;
 }
 
+/* Beast Mode Overrides for Calculator */
+body.beast-mode .calculator-minimal {
+    background: #fff;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+body.beast-mode .input-group-min input,
+body.beast-mode .input-group-min select {
+    background: #f3f4f6;
+    color: #000;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.beast-mode .input-group-min label {
+    color: #444;
+}
+
+body.beast-mode .gender-toggle {
+    background: #f3f4f6;
+}
+
+body.beast-mode .gender-toggle label {
+    color: #666;
+}
+
+body.beast-mode .gender-toggle input:checked+label {
+    color: #fff;
+}
+
+body.beast-mode .detail-box {
+    background: #f3f4f6;
+}
+
+body.beast-mode .detail-box strong {
+    color: #000;
+}
+
 /* Modal */
 .modal {
     display: none;
