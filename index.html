@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limbort.workout - Iron & Discipline</title>
+    <meta name="description"
+        content="Personal fitness journey, weight training logs, and workout inspiration by Limbort.">
+
+    <!-- Google Fonts: Prompt -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Icons (using Phosphor Icons for a clean, modern look, loaded via CDN) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+
+<body>
+
+    <header id="header">
+        <div class="container">
+            <div class="logo">
+                <a href="#">Limbort<span class="highlight">.workout</span></a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#workouts">Workouts</a></li>
+                    <li><a href="steroid.html">Steroid Info</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="ph ph-list"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="mobile-menu">
+        <i class="ph ph-x close-menu"></i>
+        <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#anatomy">Anatomy</a></li>
+            <li><a href="#workouts">Workouts</a></li>
+            <li><a href="steroid.html">Steroid Info</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero">
+            <div class="hero-content fade-in">
+                <h1>BUILD YOUR <span class="highlight">LEGACY</span></h1>
+                <p>Weight Training | Fitness | Discipline</p>
+                <div class="cta-buttons">
+                    <a href="#workouts" class="btn primary">View Workouts</a>
+                    <a href="#about" class="btn secondary">About Me</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Anatomy / Interactive Muscle Map (New Phase 4) -->
+        <section id="anatomy">
+            <div class="container fade-in">
+                <div class="section-title">
+                    <h2>Select <span class="highlight">Target</span></h2>
+                    <p style="color: var(--text-secondary); margin-top: 10px;">เลือกส่วนที่ต้องการฝึก (Interactive)</p>
+                </div>
+
+                <div class="anatomy-container">
+                    <!-- SVG Overlay -->
+                    <img src="images/body_outline.svg" alt="Muscle Map" class="anatomy-img">
+
+                    <!-- Hotspots -->
+                    <!-- Chest: Scrolls to Chest Card or Page -->
+                    <div class="hotspot hotspot-chest" data-label="Chest (หน้าอก)" onclick="location.href='chest.html'">
+                    </div>
+
+                    <!-- Shoulders (Using generic alerts/scrolls for now as placeholders for specific pages) -->
+                    <div class="hotspot hotspot-shoulders" data-label="Shoulder (ไหล่)"
+                        onclick="document.querySelector('#workouts').scrollIntoView({behavior: 'smooth'})"></div>
+                    <div class="hotspot hotspot-shoulders-r" data-label="Shoulder (ไหล่)"
+                        onclick="document.querySelector('#workouts').scrollIntoView({behavior: 'smooth'})"></div>
+
+                    <!-- Arms -->
+                    <div class="hotspot hotspot-arms" data-label="Arm (แขน)"
+                        onclick="document.querySelector('#workouts').scrollIntoView({behavior: 'smooth'})"></div>
+                    <div class="hotspot hotspot-arms-r" data-label="Arm (แขน)"
+                        onclick="document.querySelector('#workouts').scrollIntoView({behavior: 'smooth'})"></div>
+
+                    <!-- Legs -->
+                    <div class="hotspot hotspot-legs" data-label="Legs (ขา)"
+                        onclick="document.querySelector('#workouts').scrollIntoView({behavior: 'smooth'})"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <div class="container fade-in">
+                <div class="section-title">
+                    <h2>เกี่ยวกับ <span class="highlight">เรา</span></h2>
+                </div>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p><strong>Limbort.workout</strong> คือพื้นที่รวบรวมข้อมูลสำหรับผู้ที่หลงใหลในเหล็กและวินัย.</p>
+                        <p>เว็บไซต์ที่เกี่ยวกับการออกกำลังกาย และ ตารางออกกำลังกายของ Limbort และ ข้อมูลเกี่ยวกับยา
+                            Steroid เพื่อให้คุณเข้าใจหลักการที่ถูกต้องและปลอดภัย.</p>
+                        <div style="margin-top: 30px;">
+                            <a href="steroid.html" class="btn primary">ศึกษาข้อมูล Steroid (เชิงลึก)</a>
+                        </div>
+                        <ul class="stats">
+                            <li>
+                                <span class="stat-number">5+</span>
+                                <span class="stat-label">Years Training</span>
+                            </li>
+                            <li>
+                                <span class="stat-number">100%</span>
+                                <span class="stat-label">Dedication</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Workouts/Hobbies Section -->
+        <section id="workouts">
+            <div class="container fade-in">
+                <div class="section-title">
+                    <h2>ตารางฝึก <span class="highlight">ของฉัน</span></h2>
+                </div>
+                <div class="workout-grid">
+                    <div class="card" onclick="location.href='chest.html'" style="cursor: pointer;">
+                        <img src="images/workout_chest.png" alt="Chest Workout" class="card-image">
+                        <h3>หน้าอก (Chest)</h3>
+                        <p>Bench Press, Incline Dumbbell Press, Cable Fly</p>
+                    </div>
+                    <div class="card">
+                        <img src="images/workout_back.png" alt="Back Workout" class="card-image">
+                        <h3>หลัง (Back)</h3>
+                        <p>Pull-ups, Barbell Row, Lat Pulldown</p>
+                    </div>
+                    <div class="card">
+                        <img src="images/workout_legs.png" alt="Legs Workout" class="card-image">
+                        <h3>ขา (Legs)</h3>
+                        <p>Squat, Leg Press, Romanian Deadlift</p>
+                    </div>
+                    <div class="card">
+                        <img src="images/workout_shoulders.png" alt="Shoulders Workout" class="card-image">
+                        <h3>ไหล่ (Shoulders)</h3>
+                        <p>Overhead Press, Lateral Raise, Face Pull</p>
+                    </div>
+                    <div class="card">
+                        <img src="images/workout_arms.png" alt="Arms Workout" class="card-image">
+                        <h3>แขน (Arms)</h3>
+                        <p>Bicep Curl, Tricep Pushdown, Hammer Curl</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Visual Log / Gallery -->
+        <section id="gallery">
+            <div class="container fade-in">
+                <div class="section-title">
+                    <h2>Visual <span class="highlight">Log</span></h2>
+                </div>
+
+                <div class="gallery-main" style="text-align: center; margin-bottom: 30px;">
+                    <div
+                        style="position: relative; display: inline-block; border-radius: 10px; overflow: hidden; border: 2px solid var(--accent-color); box-shadow: 0 0 20px rgba(0, 230, 118, 0.2);">
+                        <img src="images/ronnie_main.png" alt="Ronnie Coleman Main Motivation"
+                            style="max-width: 100%; height: auto; display: block;">
+                        <div
+                            style="position: absolute; bottom: 0; left: 0; width: 100%; padding: 20px; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);">
+                            <h3 style="color: var(--accent-color); text-transform: uppercase; margin: 0;">Yeah Buddy!
+                            </h3>
+                            <p style="color: #fff; font-size: 0.9rem; margin: 0;">Light Weight Baby</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-grid">
+                    <div class="gallery-item"></div>
+                    <div class="gallery-item"></div>
+                    <div class="gallery-item"></div>
+                </div>
+                <p style="text-align: center; margin-top: 1rem; color: var(--text-secondary);">*Snapshots from the
+                    journey*</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Limbort<span class="highlight">.workout</span></div>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/karanac4.workout/"><i class="ph ph-instagram-logo"></i></a>
+                    <a href="https://www.facebook.com/KaranAC4"><i class="ph ph-facebook-logo"></i></a>
+                    <a href="#"><i class="ph ph-youtube-logo"></i></a>
+                </div>
+                <p style="margin-bottom: 5px;">ติดต่อเรา: <a href="mailto:gm@limborot.com"
+                        style="color: var(--accent-color); text-decoration: none;">gm@limborot.com</a></p>
+                <p>&copy; 2026 Limbort. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Beast Mode Toggle -->
+    <div class="beast-toggle-container">
+        <span class="beast-label">Beast Mode</span>
+        <label class="beast-switch">
+            <input type="checkbox" id="beastModeToggle">
+            <span class="slider"></span>
+        </label>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

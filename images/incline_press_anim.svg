@@ -1,0 +1,26 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="200" height="200" fill="#1e1e1e" />
+  
+  <!-- Incline Bench (Angled) -->
+  <line x1="60" y1="150" x2="120" y2="90" stroke="#444" stroke-width="8" stroke-linecap="round" />
+  <line x1="70" y1="150" x2="70" y2="170" stroke="#444" stroke-width="6" />
+  
+  <!-- Body -->
+  <line x1="70" y1="140" x2="120" y2="90" stroke="#fff" stroke-width="4" stroke-linecap="round" />
+  <circle cx="125" cy="85" r="8" fill="#fff" />
+  
+  <!-- Dumbbells Group -->
+  <g>
+    <!-- Animation: Push up along the angle -->
+    <animateTransform attributeName="transform" type="translate" values="0,0; 20,-30; 0,0" dur="2s" repeatCount="indefinite" />
+    
+    <!-- Dumbbell L -->
+    <rect x="100" y="80" width="15" height="8" fill="#ff2e2e" />
+    <line x1="107" y1="88" x2="107" y2="95" stroke="#aaa" stroke-width="3" />
+    <rect x="100" y="95" width="15" height="8" fill="#ff2e2e" />
+    
+    <!-- Arm L -->
+    <line x1="107" y1="95" x2="100" y2="110" stroke="#fff" stroke-width="2" stroke-dasharray="3" opacity="0.5" />
+  </g>
+</svg>

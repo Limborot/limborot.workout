@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chest Workout - Limbort.workout</title>
+
+    <!-- Google Fonts: Prompt -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        .exercise-card {
+            background-color: var(--bg-secondary);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .exercise-visual {
+            width: 100%;
+            height: 300px;
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .exercise-visual img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .exercise-content {
+            padding: 30px;
+        }
+
+        .exercise-content h2 {
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .step-list {
+            list-style: none;
+            counter-reset: step-counter;
+        }
+
+        .step-list li {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        .step-list li::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 25px;
+            height: 25px;
+            background-color: var(--accent-color);
+            color: #000;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .tips-box {
+            background-color: rgba(0, 230, 118, 0.1);
+            border-left: 4px solid var(--accent-color);
+            padding: 15px;
+            margin-top: 20px;
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header id="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Limbort<span class="highlight">.workout</span></a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#workouts">Workouts</a></li>
+                    <li><a href="steroid.html">Steroid Info</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main style="padding-top: 100px;">
+        <div class="container fade-in">
+            <div class="section-title">
+                <h2>ตารางฝึก <span class="highlight">หน้าอก (Chest)</span></h2>
+                <p style="color: var(--text-secondary); margin-top: 10px;">เน้นความหนาและความกว้างของกล้ามเนื้ออก</p>
+            </div>
+
+            <!-- Exercise 1 -->
+            <div class="exercise-card">
+                <div class="exercise-visual">
+                    <!-- Animated SVG -->
+                    <img src="images/bench_press_anim.svg" alt="Barbell Bench Press Animation"
+                        style="width: 100%; height: 100%;">
+                </div>
+                <div class="exercise-content">
+                    <h2>1. Barbell Bench Press</h2>
+                    <p style="margin-bottom: 20px;">ท่าหลัก (Compound Movement) สำหรับสร้างมวลกล้ามเนื้ออกโดยรวม</p>
+
+                    <h3>วิธิฝึก (Instructions):</h3>
+                    <ul class="step-list">
+                        <li>นอนหงายบนม้านั่ง เท้าวางราบกับพื้นให้มั่นคง</li>
+                        <li>จับบาร์เบลให้กว้างกว่าหัวไหล่เล็กน้อย (Grip Width)</li>
+                        <li>ยกบาร์ออกจากแร็ค หายใจเข้าลึกๆ แล้วลดบาร์ลงมาช้าๆ จนแตะยอดอก</li>
+                        <li>ออกแรงดันบาร์ขึ้นพร้อมหายใจออก บีบอก (Squeeze) ที่จุดสูงสุด</li>
+                    </ul>
+
+                    <div class="tips-box">
+                        <strong>Tips:</strong> อย่ากางศอกออกกว้างเกินไป ให้เก็บศอกทำมุมประมาณ 45
+                        องศากับลำตัวเพื่อลดภาระหัวไหล่
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exercise 2 -->
+            <div class="exercise-card">
+                <div class="exercise-visual">
+                    <img src="images/incline_press_anim.svg" alt="Incline Dumbbell Press Animation"
+                        style="width: 100%; height: 100%;">
+                </div>
+                <div class="exercise-content">
+                    <h2>2. Incline Dumbbell Press</h2>
+                    <p style="margin-bottom: 20px;">เน้นกล้ามเนื้ออกส่วนบน (Upper Chest) ให้เต็มและสวยงาม</p>
+
+                    <h3>วิธิฝึก (Instructions):</h3>
+                    <ul class="step-list">
+                        <li>ปรับม้านั่งเอียงขึ้นประมาณ 30-45 องศา</li>
+                        <li>ถือดัมเบลล์ในมือทั้งสองข้าง นอนลงบนเบาะ</li>
+                        <li>ดันดัมเบลล์ขึ้นตรงๆ เหนืออก หายใจออก</li>
+                        <li>ค่อยๆ ลดดัมเบลล์ลงมาด้านข้างลำตัวจนรู้สึกตึงที่อก หายใจเข้า</li>
+                    </ul>
+
+                    <div class="tips-box">
+                        <strong>Tips:</strong> โฟกัสที่การยืดอก (Stretch) ตอนลง และบีบ (Squeeze) ตอนขึ้น
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exercise 3 -->
+            <div class="exercise-card">
+                <div class="exercise-visual">
+                    <img src="images/cable_fly_anim.svg" alt="Cable Fly Animation" style="width: 100%; height: 100%;">
+                </div>
+                <div class="exercise-content">
+                    <h2>3. Cable Fly</h2>
+                    <p style="margin-bottom: 20px;">ท่าแต่ง (Isolation) เพื่อสร้างร่องอกและความชัดเจน</p>
+
+                    <h3>วิธิฝึก (Instructions):</h3>
+                    <ul class="step-list">
+                        <li>ตั้งรอก (Pulleys) ให้อยู่ระดับสูง จับด้ามจับก้าวเท้ามาข้างหน้าเล็กน้อย</li>
+                        <li>กางแขนออกเล็กน้อย ล็อคข้อศอกให้อยู่ในมุมเดิมตลอดการเคลื่อนไหว</li>
+                        <li>วาดแขนมาประกบกันด้านหน้าเหมือนโอบต้นไม้ใหญ่ พร้อมบีบหน้าอกให้แน่นที่สุด</li>
+                        <li>ค่อยๆ ผ่อนแรงกลับไปท่าเริ่มต้น ช้าๆ เพื่อต้านแรงดึง</li>
+                    </ul>
+
+                    <div class="tips-box">
+                        <strong>Tips:</strong> จินตนาการว่ากำลังเอาข้อศอกมาชิดกัน ไม่ใช่แค่มือ
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+                <a href="index.html#workouts" class="btn secondary">กลับสู่ตารางฝึกรวม</a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p style="margin-bottom: 5px;">ติดต่อเรา: <a href="mailto:gm@limborot.com"
+                        style="color: var(--accent-color); text-decoration: none;">gm@limborot.com</a></p>
+                <p>&copy; 2026 Limbort. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

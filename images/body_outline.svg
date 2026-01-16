@@ -1,0 +1,19 @@
+<svg viewBox="0 0 200 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Head -->
+  <circle cx="100" cy="40" r="25" fill="none" stroke="#ff2e2e" stroke-width="2" opacity="0.8" />
+  <!-- Neck -->
+  <line x1="100" y1="65" x2="100" y2="80" stroke="#ff2e2e" stroke-width="2" opacity="0.8" />
+  <!-- Shoulders -->
+  <line x1="60" y1="80" x2="140" y2="80" stroke="#ff2e2e" stroke-width="2" opacity="0.8" />
+  <!-- Arms -->
+  <line x1="60" y1="80" x2="40" y2="180" stroke="#ff2e2e" stroke-width="2" opacity="0.8" />
+  <line x1="140" y1="80" x2="160" y2="180" stroke="#ff2e2e" stroke-width="2" opacity="0.8" />
+  <!-- Torso (Chest/Abs) -->
+  <rect x="70" y="80" width="60" height="120" rx="10" fill="none" stroke="#ff2e2e" stroke-width="2" opacity="0.8" />
+  <!-- Legs -->
+  <line x1="85" y1="200" x2="80" y2="350" stroke="#ff2e2e" stroke-width="2" opacity="0.8" />
+  <line x1="115" y1="200" x2="120" y2="350" stroke="#ff2e2e" stroke-width="2" opacity="0.8" />
+  
+  <!-- Grid/Tech effect background -->
+  <path d="M0 0 H200 V400 H0 Z" fill="none" />
+</svg>
