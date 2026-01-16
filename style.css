@@ -166,7 +166,7 @@ header .container {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: radial-gradient(circle at center, rgba(0, 230, 118, 0.1) 0%, rgba(18, 18, 18, 1) 70%);
+    background: radial-gradient(circle at center, rgba(30, 30, 30, 1) 0%, rgba(18, 18, 18, 1) 70%);
     padding-top: 80px;
 }
 
@@ -309,7 +309,7 @@ section {
     height: 80px;
     margin-bottom: 20px;
     object-fit: contain;
-    filter: drop-shadow(0 0 5px rgba(0, 230, 118, 0.3));
+    filter: drop-shadow(0 0 5px rgba(255, 46, 46, 0.3));
 }
 
 .card h3 {
