@@ -41,28 +41,38 @@ fadeElements.forEach(el => {
 const beastModeToggle = document.getElementById('beastModeToggle');
 const body = document.body;
 
-beastModeToggle.addEventListener('change', () => {
-    if (beastModeToggle.checked) {
-        body.classList.add('beast-mode');
-        // Optional: Trigger a vibration if supported (for mobile)
-        if (navigator.vibrate) {
-            navigator.vibrate(200);
+// Check LocalStorage on Load
+if (localStorage.getItem('beastMode') === 'enabled') {
+    body.classList.add('beast-mode');
+    if (beastModeToggle) beastModeToggle.checked = true;
+}
+
+if (beastModeToggle) {
+    beastModeToggle.addEventListener('change', () => {
+        if (beastModeToggle.checked) {
+            body.classList.add('beast-mode');
+            localStorage.setItem('beastMode', 'enabled');
+            // Optional: Trigger a vibration if supported (for mobile)
+            if (navigator.vibrate) {
+                navigator.vibrate(200);
+            }
+        } else {
+            body.classList.remove('beast-mode');
+            localStorage.setItem('beastMode', 'disabled');
         }
-    } else {
-        body.classList.remove('beast-mode');
-    }
-});
+    });
+}
 
 // ----------------------------------------------------
 // 1. Program Finder Logic
 // ----------------------------------------------------
 const programs = [
     { title: "Chest Explosion", part: "chest", level: "intermediate", link: "chest.html", desc: "Intense chest workout for mass." },
-    { title: "Beginner Full Body", part: "all", level: "beginner", link: "#workouts", desc: "Start your journey here." },
-    { title: "Back Width & Thickness", part: "back", level: "advanced", link: "#", desc: "Build a cobra back." },
-    { title: "Leg Day Destruction", part: "legs", level: "advanced", link: "#", desc: "Can you walk after this?" },
-    { title: "Arm Blaster", part: "arms", level: "intermediate", link: "#", desc: "Biceps & Tricpes supersets." },
-    { title: "Shoulder Boulder", part: "shoulders", level: "intermediate", link: "#", desc: "3D Delts routine." }
+    { title: "Beginner Full Body", part: "all", level: "beginner", link: "index.html#workouts", desc: "Start your journey here." },
+    { title: "Back Width & Thickness", part: "back", level: "advanced", link: "back.html", desc: "Build a cobra back." },
+    { title: "Leg Day Destruction", part: "legs", level: "advanced", link: "legs.html", desc: "Can you walk after this?" },
+    { title: "Arm Blaster", part: "arms", level: "intermediate", link: "arms.html", desc: "Biceps & Tricpes supersets." },
+    { title: "Shoulder Boulder", part: "shoulders", level: "intermediate", link: "shoulders.html", desc: "3D Delts routine." }
 ];
 
 const finderPart = document.getElementById('finder-part');
