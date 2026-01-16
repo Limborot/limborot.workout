@@ -434,7 +434,7 @@ body.beast-mode {
     --text-secondary: #424242;
     --accent-color: #ff2e2e;
     --accent-hover: #d32f2f;
-    animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
+    /* Removed shake animation to fix position:fixed context issue */
 }
 
 body.beast-mode #hero {
