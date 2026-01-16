@@ -52,3 +52,5 @@ beastModeToggle.addEventListener('change', () => {
         body.classList.remove('beast-mode');
     }
 });
+
+

@@ -659,6 +659,178 @@ input:checked+.slider:before {
     letter-spacing: 1px;
 }
 
+
+
+/* Specific Muscle Animations/Offsets if needed */
+@keyframes muscle-pulse {
+
+    0%,
+    100% {
+        stroke-opacity: 0.6;
+        fill-opacity: 0;
+    }
+
+    50% {
+        stroke-opacity: 1;
+        fill-opacity: 0.1;
+    }
+}
+
+/* 3. 1RM Calculator */
+#tools {
+    background-color: var(--bg-primary);
+    /* Dark */
+}
+
+.calculator-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.calculator-card {
+    background-color: var(--bg-secondary);
+    border: 1px solid rgba(255, 46, 46, 0.2);
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.calculator-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--accent-color);
+    box-shadow: 0 0 15px var(--accent-color);
+}
+
+.calculator-card h3 {
+    text-align: center;
+    color: var(--text-primary);
+    margin-bottom: 30px;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.calc-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.input-group label {
+    display: block;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.input-group input {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    padding: 15px;
+    color: #fff;
+    font-size: 1.2rem;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    /* Digital look */
+    transition: all 0.3s;
+}
+
+.input-group input:focus {
+    border-color: var(--accent-color);
+    outline: none;
+    box-shadow: 0 0 10px rgba(255, 46, 46, 0.2);
+}
+
+.full-width {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.calc-result {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    animation: fadeIn 0.5s ease-out;
+}
+
+.calc-result.hidden {
+    display: none;
+}
+
+.main-result {
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.main-result span {
+    display: block;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.main-result strong {
+    font-size: 4rem;
+    color: var(--accent-color);
+    text-shadow: 0 0 20px rgba(255, 46, 46, 0.4);
+    font-family: 'Courier New', Courier, monospace;
+    display: block;
+    line-height: 1;
+    margin: 10px 0;
+}
+
+.percentages-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.p-item {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.p-item span:first-child {
+    display: block;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+}
+
+.p-item span:last-child {
+    font-weight: bold;
+    color: var(--text-primary);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
 /* Beast Mode Adjustments */
 body.beast-mode .anatomy-container {
     border-color: rgba(255, 46, 46, 0.3);
@@ -671,4 +843,59 @@ body.beast-mode .muscle-group {
 
 body.beast-mode .muscle-base {
     stroke: rgba(0, 0, 0, 0.2);
+}
+
+/* 6. Supplements Stack */
+.supplements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.supplement-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.supplement-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-color);
+    transform: translateY(-5px);
+}
+
+.supp-icon {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+}
+
+.supplement-card h3 {
+    margin-bottom: 5px;
+    color: var(--text-primary);
+}
+
+.supplement-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
 }
