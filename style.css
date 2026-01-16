@@ -628,9 +628,29 @@ input:checked+.slider:before {
     background-size: 1em;
 }
 
+.minimal-select option {
+    background-color: #121212;
+    /* Dark background for options */
+    color: #fff;
+    /* White text */
+}
+
 .minimal-select:focus {
     border-color: var(--accent-color);
     outline: none;
+}
+
+/* Beast Mode Overrides for Select */
+body.beast-mode .minimal-select {
+    border-color: rgba(0, 0, 0, 0.2);
+    color: #000;
+    /* Change SVG arrow to black for Beast Mode */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+}
+
+body.beast-mode .minimal-select option {
+    background-color: #fff;
+    color: #000;
 }
 
 .finder-results-grid {
