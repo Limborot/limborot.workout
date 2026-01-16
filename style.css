@@ -437,6 +437,10 @@ body.beast-mode {
     animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
 }
 
+body.beast-mode #hero {
+    background: radial-gradient(circle at center, rgba(200, 200, 200, 0.2) 0%, rgba(244, 244, 244, 1) 70%);
+}
+
 body.beast-mode header {
     background: rgba(255, 255, 255, 0.95);
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
