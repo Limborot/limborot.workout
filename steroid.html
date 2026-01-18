@@ -128,7 +128,7 @@
         /* Compound Grid */
         .compound-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
             margin-top: 30px;
         }
@@ -154,6 +154,40 @@
         @media (max-width: 768px) {
             .compound-card.featured {
                 grid-column: span 1;
+            }
+
+            .compound-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .mechanism-box {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .dosage-row {
+                flex-direction: column;
+                gap: 5px;
+                text-align: center;
+            }
+
+            .compound-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .compound-header h3 {
+                text-align: center;
+            }
+
+            .process-step {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .step-number {
+                margin: 0 auto 15px;
             }
         }
 
