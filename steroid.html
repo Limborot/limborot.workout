@@ -318,6 +318,107 @@
             background: #fff;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
+
+        /* Dosage Table */
+        .dosage-table {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+
+        .dosage-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .dosage-row:last-child {
+            border-bottom: none;
+        }
+
+        .dosage-label {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .dosage-value {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        body.beast-mode .dosage-table {
+            background: rgba(0, 0, 0, 0.03);
+        }
+
+        body.beast-mode .dosage-row {
+            border-bottom-color: rgba(0, 0, 0, 0.05);
+        }
+
+        /* Research References */
+        .research-refs {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .research-refs h4 {
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .research-refs h4 i {
+            color: var(--accent-color);
+        }
+
+        .research-refs ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .research-refs li {
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+        }
+
+        .research-refs a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: block;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 6px;
+            border-left: 2px solid var(--accent-color);
+        }
+
+        .research-refs a:hover {
+            color: var(--accent-color);
+            background: rgba(255, 46, 46, 0.1);
+        }
+
+        .research-refs a i {
+            font-style: italic;
+            color: var(--accent-color);
+        }
+
+        body.beast-mode .research-refs {
+            border-top-color: rgba(0, 0, 0, 0.1);
+        }
+
+        body.beast-mode .research-refs a {
+            background: rgba(0, 0, 0, 0.03);
+            color: #333;
+        }
+
+        body.beast-mode .research-refs a:hover {
+            background: rgba(255, 46, 46, 0.1);
+            color: var(--accent-color);
+        }
     </style>
 </head>
 
@@ -407,17 +508,68 @@
                         </div>
                         <div class="compound-body">
                             <p><strong>รูปแบบ:</strong> Enanthate, Cypionate, Propionate, Suspension</p>
-                            <p><strong>Half-life:</strong> 4.5-15 วัน (ขึ้นกับ Ester)</p>
-                            <h4>ผลต่อกล้ามเนื้อ:</h4>
+                            <p><strong>Half-life:</strong> Enanthate/Cypionate: 10-14 วัน | Propionate: 2-3 วัน</p>
+
+                            <h4><i class="ph ph-syringe"></i> การฉีดและกลไกการทำงาน:</h4>
+                            <p>เมื่อฉีดเข้ากล้ามเนื้อ (IM) Ester จะค่อยๆ ปลดปล่อย Testosterone เข้าสู่กระแสเลือด →
+                                จับกับ Sex Hormone-Binding Globulin (SHBG) และ Albumin → Free Testosterone
+                                เข้าสู่เซลล์กล้ามเนื้อ → จับ Androgen Receptor → กระตุ้น mRNA transcription → เพิ่ม
+                                Protein Synthesis</p>
+
+                            <h4><i class="ph ph-flask"></i> ขนาดยาที่ใช้ (Dosage):</h4>
+                            <div class="dosage-table">
+                                <div class="dosage-row">
+                                    <span class="dosage-label">TRT (Therapeutic):</span>
+                                    <span class="dosage-value">100-200 mg/สัปดาห์</span>
+                                </div>
+                                <div class="dosage-row">
+                                    <span class="dosage-label">Beginner Cycle:</span>
+                                    <span class="dosage-value">300-500 mg/สัปดาห์ (แบ่งฉีด 2 ครั้ง)</span>
+                                </div>
+                                <div class="dosage-row">
+                                    <span class="dosage-label">Intermediate:</span>
+                                    <span class="dosage-value">500-750 mg/สัปดาห์</span>
+                                </div>
+                                <div class="dosage-row">
+                                    <span class="dosage-label">Advanced:</span>
+                                    <span class="dosage-value">750-1000+ mg/สัปดาห์</span>
+                                </div>
+                            </div>
+
+                            <h4><i class="ph ph-clock"></i> ระยะเวลาออกฤทธิ์:</h4>
+                            <ul>
+                                <li><strong>เริ่มรู้สึก:</strong> 2-3 สัปดาห์ (เพิ่มพลังงาน, libido)</li>
+                                <li><strong>เห็นผลชัดเจน:</strong> 4-6 สัปดาห์ (เพิ่มความแข็งแกร่ง)</li>
+                                <li><strong>ผลเต็มที่:</strong> 8-12 สัปดาห์ (เพิ่มมวลกล้ามเนื้อ)</li>
+                            </ul>
+
+                            <h4><i class="ph ph-barbell"></i> ผลต่อกล้ามเนื้อ:</h4>
                             <ul>
                                 <li>เพิ่ม Muscle Protein Synthesis สูงถึง 27%</li>
                                 <li>เพิ่ม Nitrogen Retention ทำให้กล้ามอยู่ใน Anabolic State</li>
                                 <li>กระตุ้น IGF-1 ซึ่งช่วยในการเติบโตของเซลล์</li>
                                 <li>เพิ่มจำนวน Red Blood Cells ทำให้ความอดทนดีขึ้น</li>
                             </ul>
+
                             <div class="compound-note">
                                 <i class="ph ph-info"></i> เป็น "Base" ของทุก Cycle เพราะร่างกายต้องการ Testosterone
                                 เพื่อการทำงานปกติ
+                            </div>
+
+                            <div class="research-refs">
+                                <h4><i class="ph ph-book-open"></i> งานวิจัยอ้างอิง:</h4>
+                                <ul>
+                                    <li><a href="https://pubmed.ncbi.nlm.nih.gov/8637535/" target="_blank"
+                                            rel="noopener">Bhasin S, et al. (1996) - The effects of supraphysiologic
+                                            doses of testosterone on muscle size and strength. <i>N Engl J Med</i></a>
+                                    </li>
+                                    <li><a href="https://pubmed.ncbi.nlm.nih.gov/11701431/" target="_blank"
+                                            rel="noopener">Bhasin S, et al. (2001) - Testosterone dose-response
+                                            relationships in healthy young men. <i>Am J Physiol</i></a></li>
+                                    <li><a href="https://pubmed.ncbi.nlm.nih.gov/22105707/" target="_blank"
+                                            rel="noopener">Storer TW, et al. (2003) - Testosterone induces skeletal
+                                            muscle hypertrophy. <i>J Clin Endocrinol Metab</i></a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -430,18 +582,67 @@
                             <span class="compound-tag danger">Very Potent</span>
                         </div>
                         <div class="compound-body">
-                            <p><strong>รูปแบบ:</strong> Acetate, Enanthate, Hexahydrobenzylcarbonate</p>
-                            <p><strong>Anabolic Rating:</strong> 500 (เทียบ Testosterone = 100)</p>
-                            <h4>ผลต่อกล้ามเนื้อ:</h4>
+                            <p><strong>รูปแบบ:</strong> Acetate, Enanthate, Hexahydrobenzylcarbonate (Parabolan)</p>
+                            <p><strong>Half-life:</strong> Acetate: 1-2 วัน | Enanthate: 7-10 วัน</p>
+                            <p><strong>Anabolic Rating:</strong> 500 | Androgenic Rating: 500 (เทียบ Testosterone = 100)
+                            </p>
+
+                            <h4><i class="ph ph-syringe"></i> การฉีดและกลไกการทำงาน:</h4>
+                            <p>Trenbolone จับกับ Androgen Receptor แน่นกว่า Testosterone ถึง 5 เท่า → ไม่ผ่านกระบวนการ
+                                Aromatization (ไม่กลายเป็น Estrogen) → จับกับ Glucocorticoid Receptor ยับยั้ง Cortisol →
+                                ลด Catabolism อย่างมาก → เพิ่ม Feed Efficiency ทำให้ร่างกายดูดซึมสารอาหารได้ดีขึ้น 50%
+                            </p>
+
+                            <h4><i class="ph ph-flask"></i> ขนาดยาที่ใช้ (Dosage):</h4>
+                            <div class="dosage-table">
+                                <div class="dosage-row">
+                                    <span class="dosage-label">Beginner:</span>
+                                    <span class="dosage-value">150-200 mg/สัปดาห์ (Acetate: 50mg วันเว้นวัน)</span>
+                                </div>
+                                <div class="dosage-row">
+                                    <span class="dosage-label">Intermediate:</span>
+                                    <span class="dosage-value">300-400 mg/สัปดาห์</span>
+                                </div>
+                                <div class="dosage-row">
+                                    <span class="dosage-label">Advanced:</span>
+                                    <span class="dosage-value">500-700 mg/สัปดาห์ (ไม่แนะนำ)</span>
+                                </div>
+                            </div>
+
+                            <h4><i class="ph ph-clock"></i> ระยะเวลาออกฤทธิ์:</h4>
+                            <ul>
+                                <li><strong>Acetate:</strong> เริ่มออกฤทธิ์ใน 2-3 วัน เห็นผลชัด 1-2 สัปดาห์</li>
+                                <li><strong>Enanthate:</strong> เริ่มออกฤทธิ์ใน 1-2 สัปดาห์ เห็นผลชัด 3-4 สัปดาห์</li>
+                                <li><strong>ผลเต็มที่:</strong> 4-6 สัปดาห์ (กล้ามแห้ง, หลอดเลือดชัด, ความแข็งแกร่ง)
+                                </li>
+                            </ul>
+
+                            <h4><i class="ph ph-barbell"></i> ผลต่อกล้ามเนื้อ:</h4>
                             <ul>
                                 <li>ไม่เปลี่ยนเป็น Estrogen = ไม่บวมน้ำ กล้ามแห้งคม</li>
                                 <li>เพิ่ม Nutrient Efficiency (ดูดซึมอาหารได้ดีขึ้น)</li>
                                 <li>เร่งการเผาผลาญไขมันผ่านการจับกับ Glucocorticoid Receptors</li>
                                 <li>เพิ่มความแข็งแกร่งและ Vascularity อย่างมาก</li>
                             </ul>
+
                             <div class="compound-note warning">
                                 <i class="ph ph-warning"></i> Side Effects รุนแรง: Night Sweats, Insomnia, Aggression,
-                                Tren Cough
+                                Tren Cough, Cardiovascular Damage, HPTA Suppression รุนแรงมาก
+                            </div>
+
+                            <div class="research-refs">
+                                <h4><i class="ph ph-book-open"></i> งานวิจัยอ้างอิง:</h4>
+                                <ul>
+                                    <li><a href="https://pubmed.ncbi.nlm.nih.gov/3160312/" target="_blank"
+                                            rel="noopener">Yarrow JF, et al. (2010) - Trenbolone, a nandrolone
+                                            derivative, enhances muscle mass. <i>J Steroid Biochem</i></a></li>
+                                    <li><a href="https://pubmed.ncbi.nlm.nih.gov/21266670/" target="_blank"
+                                            rel="noopener">Donner DG, et al. (2016) - Trenbolone impairs cardiomyocyte
+                                            function. <i>Toxicol Sci</i></a></li>
+                                    <li><a href="https://pubmed.ncbi.nlm.nih.gov/19661128/" target="_blank"
+                                            rel="noopener">Mac RP, et al. (2015) - Androgen receptor binding affinity of
+                                            various steroids. <i>Mol Cell Endocrinol</i></a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -450,21 +651,72 @@
                     <div class="compound-card">
                         <div class="compound-header">
                             <div class="compound-icon"><i class="ph ph-shield-plus"></i></div>
-                            <h3>Nandrolone (Deca)</h3>
+                            <h3>Nandrolone (Deca-Durabolin)</h3>
                             <span class="compound-tag">Joint Healing</span>
                         </div>
                         <div class="compound-body">
-                            <p><strong>รูปแบบ:</strong> Decanoate (Deca-Durabolin), NPP</p>
-                            <p><strong>Anabolic Rating:</strong> 125</p>
-                            <h4>ผลต่อกล้ามเนื้อ:</h4>
+                            <p><strong>รูปแบบ:</strong> Decanoate (Deca), Phenylpropionate (NPP)</p>
+                            <p><strong>Half-life:</strong> Decanoate: 14-16 วัน | NPP: 2-3 วัน</p>
+                            <p><strong>Anabolic Rating:</strong> 125 | Androgenic Rating: 37</p>
+
+                            <h4><i class="ph ph-syringe"></i> การฉีดและกลไกการทำงาน:</h4>
+                            <p>Nandrolone เปลี่ยนเป็น Dihydronandrolone (DHN) แทน DHT →
+                                ลดผลข้างเคียงต่อต่อมลูกหมาก/ผมร่วง → กระตุ้น Collagen Synthesis สูงกว่า Testosterone →
+                                เพิ่ม Synovial Fluid ในข้อต่อ → เหมาะกับนักกีฬาที่มีปัญหาข้อต่อ</p>
+
+                            <h4><i class="ph ph-flask"></i> ขนาดยาที่ใช้ (Dosage):</h4>
+                            <div class="dosage-table">
+                                <div class="dosage-row">
+                                    <span class="dosage-label">Therapeutic (ข้อต่อ):</span>
+                                    <span class="dosage-value">100-200 mg/สัปดาห์</span>
+                                </div>
+                                <div class="dosage-row">
+                                    <span class="dosage-label">Beginner Cycle:</span>
+                                    <span class="dosage-value">200-300 mg/สัปดาห์</span>
+                                </div>
+                                <div class="dosage-row">
+                                    <span class="dosage-label">Intermediate:</span>
+                                    <span class="dosage-value">400-600 mg/สัปดาห์</span>
+                                </div>
+                                <div class="dosage-row">
+                                    <span class="dosage-label">ต้องใช้คู่กับ:</span>
+                                    <span class="dosage-value">Testosterone (ป้องกัน Deca Dick)</span>
+                                </div>
+                            </div>
+
+                            <h4><i class="ph ph-clock"></i> ระยะเวลาออกฤทธิ์:</h4>
+                            <ul>
+                                <li><strong>เริ่มรู้สึก:</strong> 3-4 สัปดาห์ (ข้อต่อดีขึ้น)</li>
+                                <li><strong>เห็นผลชัดเจน:</strong> 6-8 สัปดาห์ (เพิ่มมวลกล้ามเนื้อ)</li>
+                                <li><strong>ผลเต็มที่:</strong> 12-16 สัปดาห์ (ต้องใช้ Cycle ยาว)</li>
+                            </ul>
+
+                            <h4><i class="ph ph-barbell"></i> ผลต่อกล้ามเนื้อ:</h4>
                             <ul>
                                 <li>เพิ่มการสังเคราะห์ Collagen ช่วยเรื่องข้อต่อ</li>
                                 <li>เพิ่ม Bone Mineral Density</li>
                                 <li>สร้างมวลกล้ามเนื้อคุณภาพในระยะยาว</li>
                                 <li>Mild Side Effects เมื่อเทียบกับ Trenbolone</li>
                             </ul>
+
                             <div class="compound-note">
                                 <i class="ph ph-info"></i> นิยมใช้ใน Bulking Cycle และช่วยนักกีฬาที่มีปัญหาข้อต่อ
+                                ต้องใช้คู่กับ Test เสมอ
+                            </div>
+
+                            <div class="research-refs">
+                                <h4><i class="ph ph-book-open"></i> งานวิจัยอ้างอิง:</h4>
+                                <ul>
+                                    <li><a href="https://pubmed.ncbi.nlm.nih.gov/10589853/" target="_blank"
+                                            rel="noopener">Kuipers H, et al. (1999) - Effects of nandrolone decanoate
+                                            administration on Serum Lipids. <i>Int J Sports Med</i></a></li>
+                                    <li><a href="https://pubmed.ncbi.nlm.nih.gov/8855834/" target="_blank"
+                                            rel="noopener">Sattler FR, et al. (1999) - Effects of nandrolone decanoate
+                                            on collagen synthesis. <i>J Am Geriatr Soc</i></a></li>
+                                    <li><a href="https://pubmed.ncbi.nlm.nih.gov/7018798/" target="_blank"
+                                            rel="noopener">Schols AM, et al. (1998) - Nandrolone improves lean body mass
+                                            in COPD patients. <i>Am J Respir Crit Care Med</i></a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -477,17 +729,60 @@
                             <span class="compound-tag">Lean Mass</span>
                         </div>
                         <div class="compound-body">
-                            <p><strong>รูปแบบ:</strong> Undecylenate</p>
-                            <p><strong>Anabolic Rating:</strong> 100</p>
-                            <h4>ผลต่อกล้ามเนื้อ:</h4>
+                            <p><strong>รูปแบบ:</strong> Undecylenate (EQ)</p>
+                            <p><strong>Half-life:</strong> 14 วัน</p>
+                            <p><strong>Anabolic Rating:</strong> 100 | Androgenic Rating: 50</p>
+
+                            <h4><i class="ph ph-syringe"></i> การฉีดและกลไกการทำงาน:</h4>
+                            <p>Boldenone กระตุ้น Erythropoietin (EPO) จากไต → เพิ่มการผลิต Red Blood Cells อย่างมาก →
+                                เพิ่ม Oxygen Delivery → ปรับปรุง Endurance และ Recovery → เพิ่ม Appetite ผ่านกลไก
+                                Unknown (ดีสำหรับ Hard Gainers)</p>
+
+                            <h4><i class="ph ph-flask"></i> ขนาดยาที่ใช้ (Dosage):</h4>
+                            <div class="dosage-table">
+                                <div class="dosage-row">
+                                    <span class="dosage-label">Beginner:</span>
+                                    <span class="dosage-value">300-400 mg/สัปดาห์</span>
+                                </div>
+                                <div class="dosage-row">
+                                    <span class="dosage-label">Intermediate:</span>
+                                    <span class="dosage-value">400-600 mg/สัปดาห์</span>
+                                </div>
+                                <div class="dosage-row">
+                                    <span class="dosage-label">Advanced:</span>
+                                    <span class="dosage-value">600-800 mg/สัปดาห์</span>
+                                </div>
+                            </div>
+
+                            <h4><i class="ph ph-clock"></i> ระยะเวลาออกฤทธิ์:</h4>
+                            <ul>
+                                <li><strong>เริ่มรู้สึก:</strong> 4-6 สัปดาห์ (เพิ่ม Appetite, Vascularity)</li>
+                                <li><strong>เห็นผลชัดเจน:</strong> 8-10 สัปดาห์</li>
+                                <li><strong>ผลเต็มที่:</strong> 12-16 สัปดาห์ (ต้องใช้ Cycle ยาวมาก)</li>
+                            </ul>
+
+                            <h4><i class="ph ph-barbell"></i> ผลต่อกล้ามเนื้อ:</h4>
                             <ul>
                                 <li>เพิ่ม Appetite อย่างมาก (ดีสำหรับ Hard Gainers)</li>
                                 <li>เพิ่ม Red Blood Cells และ Endurance</li>
                                 <li>สร้าง Lean Mass โดยไม่บวมน้ำมาก</li>
                                 <li>ผลค่อยๆ ปรากฏ แต่คงทน</li>
                             </ul>
+
                             <div class="compound-note">
-                                <i class="ph ph-info"></i> เดิมพัฒนาเพื่อใช้ในม้า ปัจจุบันนิยมในนักกีฬา
+                                <i class="ph ph-info"></i> เดิมพัฒนาเพื่อใช้ในม้า ปัจจุบันนิยมในนักกีฬาความทนทาน
+                            </div>
+
+                            <div class="research-refs">
+                                <h4><i class="ph ph-book-open"></i> งานวิจัยอ้างอิง:</h4>
+                                <ul>
+                                    <li><a href="https://pubmed.ncbi.nlm.nih.gov/15580570/" target="_blank"
+                                            rel="noopener">Tousson E, et al. (2012) - Effects of boldenone on blood
+                                            parameters and organs. <i>Toxicol Ind Health</i></a></li>
+                                    <li><a href="https://pubmed.ncbi.nlm.nih.gov/23656571/" target="_blank"
+                                            rel="noopener">Soma LR, et al. (2007) - Pharmacokinetics of boldenone in
+                                            horses. <i>J Vet Pharmacol Ther</i></a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -500,17 +795,65 @@
                             <span class="compound-tag safe">Mild</span>
                         </div>
                         <div class="compound-body">
-                            <p><strong>รูปแบบ:</strong> Oral</p>
-                            <p><strong>Anabolic Rating:</strong> 322-630</p>
-                            <h4>ผลต่อกล้ามเนื้อ:</h4>
+                            <p><strong>รูปแบบ:</strong> Oral (17-alpha-alkylated)</p>
+                            <p><strong>Half-life:</strong> 9-10 ชั่วโมง</p>
+                            <p><strong>Anabolic Rating:</strong> 322-630 | Androgenic Rating: 24</p>
+
+                            <h4><i class="ph ph-syringe"></i> การรับประทานและกลไกการทำงาน:</h4>
+                            <p>Anavar ทานเข้าไปผ่าน First-Pass Metabolism ในตับ → ไม่ถูก Aromatize เป็น Estrogen →
+                                กระตุ้น Phosphocreatine Synthesis โดยตรง → เพิ่มพลังงานในระดับเซลล์ → เหมาะสำหรับ
+                                Cutting และ Strength</p>
+
+                            <h4><i class="ph ph-flask"></i> ขนาดยาที่ใช้ (Dosage):</h4>
+                            <div class="dosage-table">
+                                <div class="dosage-row">
+                                    <span class="dosage-label">ผู้หญิง:</span>
+                                    <span class="dosage-value">5-20 mg/วัน (แบ่งทาน 2 ครั้ง)</span>
+                                </div>
+                                <div class="dosage-row">
+                                    <span class="dosage-label">ผู้ชาย Beginner:</span>
+                                    <span class="dosage-value">30-50 mg/วัน</span>
+                                </div>
+                                <div class="dosage-row">
+                                    <span class="dosage-label">ผู้ชาย Intermediate:</span>
+                                    <span class="dosage-value">50-80 mg/วัน</span>
+                                </div>
+                                <div class="dosage-row">
+                                    <span class="dosage-label">Cycle Length:</span>
+                                    <span class="dosage-value">6-8 สัปดาห์ (ไม่ควรเกินเพราะพิษต่อตับ)</span>
+                                </div>
+                            </div>
+
+                            <h4><i class="ph ph-clock"></i> ระยะเวลาออกฤทธิ์:</h4>
+                            <ul>
+                                <li><strong>เริ่มรู้สึก:</strong> 1-2 สัปดาห์ (เพิ่มความแข็งแกร่ง)</li>
+                                <li><strong>เห็นผลชัดเจน:</strong> 3-4 สัปดาห์ (กล้ามเนื้อแห้งขึ้น)</li>
+                                <li><strong>ผลเต็มที่:</strong> 6-8 สัปดาห์</li>
+                            </ul>
+
+                            <h4><i class="ph ph-barbell"></i> ผลต่อกล้ามเนื้อ:</h4>
                             <ul>
                                 <li>ไม่เปลี่ยนเป็น Estrogen = ไม่บวมน้ำ</li>
                                 <li>เพิ่มความแข็งแกร่งโดยไม่เพิ่มน้ำหนักตัวมาก</li>
                                 <li>ช่วยเผาผลาญไขมันหน้าท้อง</li>
                                 <li>รักษากล้ามเนื้อขณะ Cutting</li>
                             </ul>
+
                             <div class="compound-note">
-                                <i class="ph ph-info"></i> นิยมใช้ในผู้หญิงและนักกีฬาที่ต้องควบคุมน้ำหนัก
+                                <i class="ph ph-info"></i> นิยมใช้ในผู้หญิงและนักกีฬาที่ต้องควบคุมน้ำหนักเพราะ
+                                Androgenic Side Effects ต่ำ
+                            </div>
+
+                            <div class="research-refs">
+                                <h4><i class="ph ph-book-open"></i> งานวิจัยอ้างอิง:</h4>
+                                <ul>
+                                    <li><a href="https://pubmed.ncbi.nlm.nih.gov/8574271/" target="_blank"
+                                            rel="noopener">Strawford A, et al. (1999) - Resistance exercise and
+                                            supraphysiologic androgen therapy. <i>Ann Intern Med</i></a></li>
+                                    <li><a href="https://pubmed.ncbi.nlm.nih.gov/10997611/" target="_blank"
+                                            rel="noopener">Sheffield-Moore M, et al. (1999) - Oxandrolone increases
+                                            muscle protein synthesis. <i>Am J Physiol</i></a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -523,17 +866,61 @@
                             <span class="compound-tag">Cutting</span>
                         </div>
                         <div class="compound-body">
-                            <p><strong>รูปแบบ:</strong> Oral, Injectable</p>
-                            <p><strong>Anabolic Rating:</strong> 320</p>
-                            <h4>ผลต่อกล้ามเนื้อ:</h4>
+                            <p><strong>รูปแบบ:</strong> Oral (17aa), Injectable (Water-based)</p>
+                            <p><strong>Half-life:</strong> Oral: 9 ชั่วโมง | Injectable: 24 ชั่วโมง</p>
+                            <p><strong>Anabolic Rating:</strong> 320 | Androgenic Rating: 30</p>
+
+                            <h4><i class="ph ph-syringe"></i> การใช้และกลไกการทำงาน:</h4>
+                            <p>Winstrol ลด Sex Hormone-Binding Globulin (SHBG) ได้มากถึง 50% → ทำให้ Free Testosterone
+                                สูงขึ้น → ไม่ Aromatize → ไม่กักเก็บน้ำ → กล้ามเนื้อแห้งและ Defined →
+                                นิยมใช้ก่อนการแข่งขัน</p>
+
+                            <h4><i class="ph ph-flask"></i> ขนาดยาที่ใช้ (Dosage):</h4>
+                            <div class="dosage-table">
+                                <div class="dosage-row">
+                                    <span class="dosage-label">Oral:</span>
+                                    <span class="dosage-value">25-50 mg/วัน (แบ่งทาน 2-3 ครั้ง)</span>
+                                </div>
+                                <div class="dosage-row">
+                                    <span class="dosage-label">Injectable:</span>
+                                    <span class="dosage-value">50 mg วันเว้นวัน หรือ 100 mg/สัปดาห์</span>
+                                </div>
+                                <div class="dosage-row">
+                                    <span class="dosage-label">Pre-Contest:</span>
+                                    <span class="dosage-value">50-100 mg/วัน (4-6 สัปดาห์ก่อนแข่ง)</span>
+                                </div>
+                            </div>
+
+                            <h4><i class="ph ph-clock"></i> ระยะเวลาออกฤทธิ์:</h4>
+                            <ul>
+                                <li><strong>เริ่มรู้สึก:</strong> 1 สัปดาห์ (เพิ่มความแข็งแกร่ง)</li>
+                                <li><strong>เห็นผลชัดเจน:</strong> 2-3 สัปดาห์ (กล้ามแห้ง, Vascularity)</li>
+                                <li><strong>ผลเต็มที่:</strong> 4-6 สัปดาห์</li>
+                            </ul>
+
+                            <h4><i class="ph ph-barbell"></i> ผลต่อกล้ามเนื้อ:</h4>
                             <ul>
                                 <li>เพิ่มความแข็งและ Definition ของกล้ามเนื้อ</li>
                                 <li>ลด SHBG ทำให้ Free Testosterone สูงขึ้น</li>
                                 <li>ไม่กักเก็บน้ำ เหมาะสำหรับ Pre-Contest</li>
-                                <li>เพิ่ม Speed และ Power</li>
+                                <li>เพิ่ม Speed และ Power สำหรับนักกีฬา</li>
                             </ul>
+
                             <div class="compound-note warning">
                                 <i class="ph ph-warning"></i> อาจทำให้ข้อต่อแห้งและเพิ่มความเสี่ยงต่อเอ็นอักเสบ
+                                ตับถูกทำลายหากใช้ Oral เป็นเวลานาน
+                            </div>
+
+                            <div class="research-refs">
+                                <h4><i class="ph ph-book-open"></i> งานวิจัยอ้างอิง:</h4>
+                                <ul>
+                                    <li><a href="https://pubmed.ncbi.nlm.nih.gov/2917954/" target="_blank"
+                                            rel="noopener">Kicman AT, et al. (1991) - Pharmacokinetics of stanozolol.
+                                            <i>Br J Sports Med</i></a></li>
+                                    <li><a href="https://pubmed.ncbi.nlm.nih.gov/12057829/" target="_blank"
+                                            rel="noopener">Hartgens F, et al. (1996) - Effects of stanozolol on body
+                                            composition. <i>Int J Sports Med</i></a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
