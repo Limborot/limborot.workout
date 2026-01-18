@@ -98,6 +98,95 @@
             color: var(--accent-color);
         }
 
+        /* Table of Contents */
+        .toc-nav {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .toc-nav h3 {
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+        }
+
+        .toc-nav h3 i {
+            color: var(--accent-color);
+        }
+
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+        }
+
+        .toc-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .toc-item:hover {
+            background: rgba(255, 46, 46, 0.1);
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .toc-item i {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+        }
+
+        /* Section Subtitle */
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Beast Mode TOC */
+        body.beast-mode .toc-nav {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        body.beast-mode .toc-item {
+            background: rgba(0, 0, 0, 0.02);
+        }
+
+        body.beast-mode .toc-item:hover {
+            background: rgba(255, 46, 46, 0.1);
+        }
+
+        body.beast-mode .section-subtitle {
+            border-bottom-color: rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .toc-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .toc-item {
+                justify-content: center;
+            }
+        }
+
         /* Mechanism Box */
         .mechanism-box {
             display: flex;
@@ -540,8 +629,41 @@
             </div>
         </div>
 
+        <!-- Table of Contents -->
+        <div class="container fade-in">
+            <nav class="toc-nav">
+                <h3><i class="ph ph-list-bullets"></i> สารบัญเนื้อหา</h3>
+                <div class="toc-grid">
+                    <a href="#what-is" class="toc-item">
+                        <i class="ph ph-flask"></i>
+                        <span>Steroids คืออะไร?</span>
+                    </a>
+                    <a href="#injectable" class="toc-item">
+                        <i class="ph ph-syringe"></i>
+                        <span>ยาฉีด (Injectable)</span>
+                    </a>
+                    <a href="#oral" class="toc-item">
+                        <i class="ph ph-pill"></i>
+                        <span>ยาเม็ด (Oral)</span>
+                    </a>
+                    <a href="#growth-hormone" class="toc-item">
+                        <i class="ph ph-arrow-fat-lines-up"></i>
+                        <span>Growth Hormone</span>
+                    </a>
+                    <a href="#mechanism" class="toc-item">
+                        <i class="ph ph-dna"></i>
+                        <span>กลไกสร้างกล้าม</span>
+                    </a>
+                    <a href="#side-effects" class="toc-item">
+                        <i class="ph ph-warning-octagon"></i>
+                        <span>ผลข้างเคียง</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+
         <!-- Section: What are Steroids? -->
-        <section class="steroid-section">
+        <section id="what-is" class="steroid-section">
             <div class="container fade-in">
                 <h2><i class="ph ph-flask"></i> Anabolic Steroids คืออะไร?</h2>
                 <p>
@@ -565,10 +687,11 @@
             </div>
         </section>
 
-        <!-- Section: Common Steroids -->
-        <section class="steroid-section">
+        <!-- Section: Injectable Steroids -->
+        <section id="injectable" class="steroid-section">
             <div class="container fade-in">
-                <h2><i class="ph ph-pill"></i> สเตียรอยด์ที่นิยมในวงการเพาะกาย</h2>
+                <h2><i class="ph ph-syringe"></i> ยาฉีด (Injectable Steroids)</h2>
+                <p class="section-subtitle">สเตียรอยด์แบบฉีดเข้ากล้ามเนื้อ ออกฤทธิ์ยาวนานกว่ายาเม็ด ไม่ผ่านตับ</p>
 
                 <div class="compound-grid">
                     <!-- Testosterone -->
@@ -858,7 +981,17 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
 
+        <!-- Section: Oral Steroids -->
+        <section id="oral" class="steroid-section">
+            <div class="container fade-in">
+                <h2><i class="ph ph-pill"></i> ยาเม็ด (Oral Steroids)</h2>
+                <p class="section-subtitle">สเตียรอยด์แบบทาน สะดวกแต่อาจมีพิษต่อตับ ควรใช้ระยะสั้น</p>
+
+                <div class="compound-grid">
                     <!-- Oxandrolone -->
                     <div class="compound-card">
                         <div class="compound-header">
@@ -1001,7 +1134,7 @@
         </section>
 
         <!-- Section: Growth Hormone -->
-        <section class="steroid-section">
+        <section id="growth-hormone" class="steroid-section">
             <div class="container fade-in">
                 <h2><i class="ph ph-arrow-fat-lines-up"></i> Growth Hormone (GH) และ Peptides</h2>
 
@@ -1079,7 +1212,7 @@
         </section>
 
         <!-- Section: How Steroids Build Muscle -->
-        <section class="steroid-section">
+        <section id="mechanism" class="steroid-section">
             <div class="container fade-in">
                 <h2><i class="ph ph-barbell"></i> กลไกการสร้างกล้ามเนื้อจาก Steroids</h2>
 
@@ -1124,7 +1257,7 @@
         </section>
 
         <!-- Section: Side Effects -->
-        <section class="steroid-section">
+        <section id="side-effects" class="steroid-section">
             <div class="container fade-in">
                 <h2><i class="ph ph-warning-octagon"></i> ผลข้างเคียงและความเสี่ยง</h2>
                 <p>การใช้ Steroids โดยไม่มีการควบคุมจากแพทย์อาจก่อให้เกิดผลข้างเคียงร้ายแรงดังนี้:</p>
