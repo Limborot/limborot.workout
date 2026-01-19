@@ -214,11 +214,11 @@
             margin-bottom: 0;
         }
 
-        /* Compound Grid */
+        /* Compound Grid - Single Column for readability */
         .compound-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
             margin-top: 30px;
         }
 
@@ -228,16 +228,17 @@
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.05);
             transition: transform 0.3s, box-shadow 0.3s;
+            width: 100%;
         }
 
         .compound-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         .compound-card.featured {
-            border: 1px solid var(--accent-color);
-            grid-column: span 2;
+            border: 2px solid var(--accent-color);
+            box-shadow: 0 0 20px rgba(255, 46, 46, 0.15);
         }
 
         @media (max-width: 768px) {
@@ -580,6 +581,172 @@
             background: rgba(255, 46, 46, 0.1);
             color: var(--accent-color);
         }
+
+        /* Origin Box */
+        .origin-box {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.08), rgba(255, 140, 0, 0.05));
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 10px;
+            padding: 18px;
+            margin: 15px 0;
+        }
+
+        .origin-box h5 {
+            color: #ffd700;
+            margin: 0 0 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+        }
+
+        .origin-box p {
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Chemical Structure */
+        .chemical-box {
+            background: rgba(100, 180, 255, 0.08);
+            border: 1px solid rgba(100, 180, 255, 0.2);
+            border-radius: 10px;
+            padding: 18px;
+            margin: 15px 0;
+        }
+
+        .chemical-box h5 {
+            color: #64b4ff;
+            margin: 0 0 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+        }
+
+        .chemical-box .formula {
+            font-family: monospace;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 8px 14px;
+            border-radius: 6px;
+            display: inline-block;
+            margin: 8px 0;
+            color: #64b4ff;
+            font-size: 1rem;
+        }
+
+        /* Ester Comparison */
+        .ester-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 0.85rem;
+        }
+
+        .ester-table th,
+        .ester-table td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .ester-table th {
+            background: rgba(255, 46, 46, 0.1);
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .ester-table tr:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .speed-fast {
+            color: #ff6b6b;
+            font-weight: 600;
+        }
+
+        .speed-medium {
+            color: #ffd43b;
+            font-weight: 600;
+        }
+
+        .speed-slow {
+            color: #51cf66;
+            font-weight: 600;
+        }
+
+        /* Glossary Box */
+        .glossary-box {
+            background: linear-gradient(135deg, rgba(156, 39, 176, 0.08), rgba(103, 58, 183, 0.05));
+            border: 1px solid rgba(156, 39, 176, 0.2);
+            border-radius: 10px;
+            padding: 18px;
+            margin: 20px 0 10px 0;
+        }
+
+        .glossary-box h5 {
+            color: #ce93d8;
+            margin: 0 0 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+        }
+
+        .glossary-item {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        .glossary-term {
+            color: #ce93d8;
+            font-weight: 600;
+            min-width: 140px;
+            flex-shrink: 0;
+        }
+
+        .glossary-def {
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .ester-table {
+                font-size: 0.75rem;
+            }
+
+            .ester-table th,
+            .ester-table td {
+                padding: 8px 6px;
+            }
+
+            .glossary-item {
+                flex-direction: column;
+                gap: 2px;
+            }
+
+            .glossary-term {
+                min-width: auto;
+            }
+        }
+
+        body.beast-mode .origin-box {
+            background: rgba(255, 215, 0, 0.08);
+        }
+
+        body.beast-mode .chemical-box {
+            background: rgba(100, 180, 255, 0.08);
+        }
+
+        body.beast-mode .glossary-box {
+            background: rgba(156, 39, 176, 0.08);
+        }
+
+        body.beast-mode .ester-table th {
+            background: rgba(255, 46, 46, 0.08);
+        }
     </style>
 </head>
 
@@ -695,22 +862,94 @@
 
                 <div class="compound-grid">
                     <!-- Testosterone -->
-                    <div class="compound-card">
+                    <div class="compound-card featured">
                         <div class="compound-header">
                             <div class="compound-icon"><i class="ph ph-gender-male"></i></div>
                             <h3>Testosterone</h3>
                             <span class="compound-tag">Base Compound</span>
                         </div>
                         <div class="compound-body">
-                            <p><strong>รูปแบบ:</strong> Enanthate, Cypionate, Propionate, Suspension</p>
-                            <p><strong>Half-life:</strong> Enanthate/Cypionate: 10-14 วัน | Propionate: 2-3 วัน</p>
+                            <!-- Origin -->
+                            <div class="origin-box">
+                                <h5><i class="ph ph-clock-clockwise"></i> ประวัติและที่มา</h5>
+                                <p><strong>ค้นพบ: ปี 1935</strong> โดย Ernst Laqueur นักวิทยาศาสตร์ชาวเนเธอร์แลนด์
+                                    สกัดได้จากอัณฑะวัว
+                                    ชื่อ "Testosterone" มาจากคำว่า <em>testis</em> (อัณฑะ) + <em>sterone</em>
+                                    (สเตียรอยด์)
+                                    ได้รับรางวัลโนเบลสาขาเคมีในปี 1939 ให้แก่ Adolf Butenandt และ Leopold Ružička
+                                    สำหรับการสังเคราะห์</p>
+                            </div>
 
-                            <h4><i class="ph ph-syringe"></i> การฉีดและกลไกการทำงาน:</h4>
-                            <p>เมื่อฉีดเข้ากล้ามเนื้อ (IM) Ester จะค่อยๆ ปลดปล่อย Testosterone เข้าสู่กระแสเลือด →
-                                จับกับ Sex Hormone-Binding Globulin (SHBG) และ Albumin → Free Testosterone
-                                เข้าสู่เซลล์กล้ามเนื้อ → จับ Androgen Receptor → กระตุ้น mRNA transcription → เพิ่ม
-                                Protein Synthesis</p>
+                            <!-- Chemical Structure -->
+                            <div class="chemical-box">
+                                <h5><i class="ph ph-atom"></i> โครงสร้างทางเคมี</h5>
+                                <p><strong>ชื่อ IUPAC:</strong> 17β-Hydroxyandrost-4-en-3-one</p>
+                                <div class="formula">C₁₉H₂₈O₂</div>
+                                <p><strong>น้ำหนักโมเลกุล:</strong> 288.42 g/mol | <strong>โครงสร้าง:</strong> Steroid
+                                    4-ring (3 hexane + 1 pentane)
+                                    พร้อม Ketone group ที่ตำแหน่ง C3 และ Hydroxyl group ที่ C17</p>
+                            </div>
 
+                            <!-- Ester Types -->
+                            <h4><i class="ph ph-list-bullets"></i> ประเภท Ester (ออกฤทธิ์ช้า/เร็ว):</h4>
+                            <table class="ester-table">
+                                <tr>
+                                    <th>ชื่อ Ester</th>
+                                    <th>Half-life</th>
+                                    <th>ความถี่ฉีด</th>
+                                    <th>ความเร็ว</th>
+                                </tr>
+                                <tr>
+                                    <td>Suspension (No Ester)</td>
+                                    <td>1-2 ชั่วโมง</td>
+                                    <td>ทุกวัน / วันละ 2 ครั้ง</td>
+                                    <td class="speed-fast">⚡ เร็วมาก</td>
+                                </tr>
+                                <tr>
+                                    <td>Propionate</td>
+                                    <td>2-3 วัน</td>
+                                    <td>วันเว้นวัน</td>
+                                    <td class="speed-fast">⚡ เร็ว</td>
+                                </tr>
+                                <tr>
+                                    <td>Phenylpropionate</td>
+                                    <td>4-5 วัน</td>
+                                    <td>2-3 ครั้ง/สัปดาห์</td>
+                                    <td class="speed-medium">⏱️ ปานกลาง</td>
+                                </tr>
+                                <tr>
+                                    <td>Enanthate</td>
+                                    <td>7-10 วัน</td>
+                                    <td>1-2 ครั้ง/สัปดาห์</td>
+                                    <td class="speed-slow">🐢 ช้า</td>
+                                </tr>
+                                <tr>
+                                    <td>Cypionate</td>
+                                    <td>10-14 วัน</td>
+                                    <td>1 ครั้ง/สัปดาห์</td>
+                                    <td class="speed-slow">🐢 ช้า</td>
+                                </tr>
+                                <tr>
+                                    <td>Undecanoate</td>
+                                    <td>16-21 วัน</td>
+                                    <td>ทุก 2-4 สัปดาห์</td>
+                                    <td class="speed-slow">🐢 ช้ามาก</td>
+                                </tr>
+                            </table>
+
+                            <!-- Mechanism -->
+                            <h4><i class="ph ph-syringe"></i> กลไกการทำงานเชิงลึก:</h4>
+                            <p><strong>1. การดูดซึม:</strong> เมื่อฉีดเข้ากล้ามเนื้อ (Intramuscular) Ester-chain
+                                จะถูกตัดออกโดย Esterase enzymes → ปลดปล่อย Free Testosterone เข้าสู่กระแสเลือด</p>
+                            <p><strong>2. การขนส่ง:</strong> ในเลือด Testosterone จับกับ SHBG (60%), Albumin (38%),
+                                และเป็น Free Testosterone (2%) ที่ออกฤทธิ์ได้</p>
+                            <p><strong>3. การออกฤทธิ์:</strong> Free Testosterone เข้าสู่เซลล์ผ่าน Cell membrane →
+                                จับกับ Androgen Receptor (AR) ใน Cytoplasm → AR-Testosterone complex เข้าสู่ Nucleus →
+                                จับกับ Androgen Response Elements (ARE) บน DNA → กระตุ้น Gene Transcription</p>
+                            <p><strong>4. ผลลัพธ์:</strong> เพิ่มการสร้าง mRNA → เพิ่ม Ribosomal Protein Synthesis →
+                                สร้างโปรตีนใหม่ในกล้ามเนื้อ (Actin & Myosin)</p>
+
+                            <!-- Dosage -->
                             <h4><i class="ph ph-flask"></i> ขนาดยาที่ใช้ (Dosage):</h4>
                             <div class="dosage-table">
                                 <div class="dosage-row">
@@ -731,6 +970,7 @@
                                 </div>
                             </div>
 
+                            <!-- Onset -->
                             <h4><i class="ph ph-clock"></i> ระยะเวลาออกฤทธิ์:</h4>
                             <ul>
                                 <li><strong>เริ่มรู้สึก:</strong> 2-3 สัปดาห์ (เพิ่มพลังงาน, libido)</li>
@@ -738,6 +978,7 @@
                                 <li><strong>ผลเต็มที่:</strong> 8-12 สัปดาห์ (เพิ่มมวลกล้ามเนื้อ)</li>
                             </ul>
 
+                            <!-- Effects -->
                             <h4><i class="ph ph-barbell"></i> ผลต่อกล้ามเนื้อ:</h4>
                             <ul>
                                 <li>เพิ่ม Muscle Protein Synthesis สูงถึง 27%</li>
@@ -751,6 +992,45 @@
                                 เพื่อการทำงานปกติ
                             </div>
 
+                            <!-- Glossary -->
+                            <div class="glossary-box">
+                                <h5><i class="ph ph-translate"></i> คำศัพท์เทคนิค (Glossary)</h5>
+                                <div class="glossary-item">
+                                    <span class="glossary-term">Ester</span>
+                                    <span class="glossary-def">สารเคมีที่ติดกับ Testosterone เพื่อควบคุมการปลดปล่อย
+                                        (ยิ่งยาว ยิ่งปลดปล่อยช้า)</span>
+                                </div>
+                                <div class="glossary-item">
+                                    <span class="glossary-term">Half-life</span>
+                                    <span class="glossary-def">ครึ่งชีวิต = เวลาที่ระดับยาในเลือดลดลงครึ่งหนึ่ง</span>
+                                </div>
+                                <div class="glossary-item">
+                                    <span class="glossary-term">SHBG</span>
+                                    <span class="glossary-def">Sex Hormone-Binding Globulin =
+                                        โปรตีนที่จับฮอร์โมนเพศเพื่อขนส่งในเลือด</span>
+                                </div>
+                                <div class="glossary-item">
+                                    <span class="glossary-term">Androgen Receptor (AR)</span>
+                                    <span class="glossary-def">ตัวรับฮอร์โมนเพศชายในเซลล์ ที่ทำให้เกิดผล Anabolic</span>
+                                </div>
+                                <div class="glossary-item">
+                                    <span class="glossary-term">Protein Synthesis</span>
+                                    <span class="glossary-def">กระบวนการสร้างโปรตีนใหม่ =
+                                        พื้นฐานของการสร้างกล้ามเนื้อ</span>
+                                </div>
+                                <div class="glossary-item">
+                                    <span class="glossary-term">Nitrogen Retention</span>
+                                    <span class="glossary-def">การเก็บรักษาไนโตรเจนในกล้าม =
+                                        สัญญาณว่าร่างกายกำลังสร้างกล้าม</span>
+                                </div>
+                                <div class="glossary-item">
+                                    <span class="glossary-term">Aromatization</span>
+                                    <span class="glossary-def">การเปลี่ยน Testosterone → Estrogen โดย Aromatase
+                                        enzyme</span>
+                                </div>
+                            </div>
+
+                            <!-- Research -->
                             <div class="research-refs">
                                 <h4><i class="ph ph-book-open"></i> งานวิจัยอ้างอิง:</h4>
                                 <ul>
@@ -764,6 +1044,9 @@
                                     <li><a href="https://pubmed.ncbi.nlm.nih.gov/22105707/" target="_blank"
                                             rel="noopener">Storer TW, et al. (2003) - Testosterone induces skeletal
                                             muscle hypertrophy. <i>J Clin Endocrinol Metab</i></a></li>
+                                    <li><a href="https://pubmed.ncbi.nlm.nih.gov/34687600/" target="_blank"
+                                            rel="noopener">Snyder PJ, et al. (2024) - Testosterone treatment in older
+                                            men with mobility limitations. <i>JAMA Intern Med</i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -777,17 +1060,67 @@
                             <span class="compound-tag danger">Very Potent</span>
                         </div>
                         <div class="compound-body">
-                            <p><strong>รูปแบบ:</strong> Acetate, Enanthate, Hexahydrobenzylcarbonate (Parabolan)</p>
-                            <p><strong>Half-life:</strong> Acetate: 1-2 วัน | Enanthate: 7-10 วัน</p>
-                            <p><strong>Anabolic Rating:</strong> 500 | Androgenic Rating: 500 (เทียบ Testosterone = 100)
-                            </p>
+                            <!-- Origin -->
+                            <div class="origin-box">
+                                <h5><i class="ph ph-clock-clockwise"></i> ประวัติและที่มา</h5>
+                                <p><strong>พัฒนา: ทศวรรษ 1960</strong> โดย Hoechst-Roussel เป็นอนุพันธ์ของ Nandrolone
+                                    ใช้ในปศุสัตว์เพื่อเพิ่มมวลกล้ามเนื้อวัวก่อนนำเข้าโรงฆ่า (Finaplix-H)
+                                    ไม่เคยได้รับอนุมัติให้ใช้ในมนุษย์ ยกเว้น Parabolan ที่เคยวางขายในฝรั่งเศสช่วงสั้นๆ
+                                    (1980-1997)</p>
+                            </div>
 
-                            <h4><i class="ph ph-syringe"></i> การฉีดและกลไกการทำงาน:</h4>
-                            <p>Trenbolone จับกับ Androgen Receptor แน่นกว่า Testosterone ถึง 5 เท่า → ไม่ผ่านกระบวนการ
-                                Aromatization (ไม่กลายเป็น Estrogen) → จับกับ Glucocorticoid Receptor ยับยั้ง Cortisol →
-                                ลด Catabolism อย่างมาก → เพิ่ม Feed Efficiency ทำให้ร่างกายดูดซึมสารอาหารได้ดีขึ้น 50%
-                            </p>
+                            <!-- Chemical Structure -->
+                            <div class="chemical-box">
+                                <h5><i class="ph ph-atom"></i> โครงสร้างทางเคมี</h5>
+                                <p><strong>ชื่อ IUPAC:</strong> 17β-Hydroxyestra-4,9,11-trien-3-one</p>
+                                <div class="formula">C₁₈H₂₂O₂</div>
+                                <p><strong>น้ำหนักโมเลกุล:</strong> 270.37 g/mol | <strong>ความพิเศษ:</strong> มี Double
+                                    Bond 3 ตัว (positions 4, 9, 11)
+                                    ทำให้จับ AR แน่นมาก และไม่สามารถเปลี่ยนเป็น Estrogen ได้ (Aromatase ไม่ทำงาน)</p>
+                            </div>
 
+                            <!-- Ester Types -->
+                            <h4><i class="ph ph-list-bullets"></i> ประเภท Ester:</h4>
+                            <table class="ester-table">
+                                <tr>
+                                    <th>ชื่อ Ester</th>
+                                    <th>Half-life</th>
+                                    <th>ความถี่ฉีด</th>
+                                    <th>ความเร็ว</th>
+                                </tr>
+                                <tr>
+                                    <td>Acetate (Tren A)</td>
+                                    <td>1-2 วัน</td>
+                                    <td>ทุกวัน หรือ วันเว้นวัน</td>
+                                    <td class="speed-fast">⚡ เร็ว</td>
+                                </tr>
+                                <tr>
+                                    <td>Enanthate (Tren E)</td>
+                                    <td>7-10 วัน</td>
+                                    <td>1-2 ครั้ง/สัปดาห์</td>
+                                    <td class="speed-slow">🐢 ช้า</td>
+                                </tr>
+                                <tr>
+                                    <td>Hexahydrobenzylcarbonate (Parabolan)</td>
+                                    <td>14 วัน</td>
+                                    <td>1 ครั้ง/1-2 สัปดาห์</td>
+                                    <td class="speed-slow">🐢 ช้ามาก</td>
+                                </tr>
+                            </table>
+
+                            <!-- Mechanism -->
+                            <h4><i class="ph ph-syringe"></i> กลไกการทำงานเชิงลึก:</h4>
+                            <p><strong>Anabolic/Androgenic Rating:</strong> 500/500 (เทียบ Testosterone = 100/100)</p>
+                            <p><strong>1. AR Binding:</strong> จับกับ Androgen Receptor แน่นกว่า Testosterone 5 เท่า →
+                                กระตุ้น Gene Expression รุนแรง</p>
+                            <p><strong>2. ไม่ Aromatize:</strong> โครงสร้าง 3 Double Bond ทำให้ Aromatase enzyme
+                                ไม่สามารถเปลี่ยนเป็น Estrogen ได้ = ไม่บวมน้ำ</p>
+                            <p><strong>3. Anti-Catabolic:</strong> จับกับ Glucocorticoid Receptor → ยับยั้ง Cortisol →
+                                ลดการสลายกล้ามเนื้ออย่างมาก</p>
+                            <p><strong>4. Feed Efficiency:</strong> เพิ่มประสิทธิภาพการใช้สารอาหาร 50% →
+                                ร่างกายนำโปรตีนและแคลอรี่ไปสร้างกล้ามได้ดีขึ้น</p>
+
+                            <!-- Dosage -->
                             <h4><i class="ph ph-flask"></i> ขนาดยาที่ใช้ (Dosage):</h4>
                             <div class="dosage-table">
                                 <div class="dosage-row">
@@ -804,6 +1137,7 @@
                                 </div>
                             </div>
 
+                            <!-- Onset -->
                             <h4><i class="ph ph-clock"></i> ระยะเวลาออกฤทธิ์:</h4>
                             <ul>
                                 <li><strong>Acetate:</strong> เริ่มออกฤทธิ์ใน 2-3 วัน เห็นผลชัด 1-2 สัปดาห์</li>
@@ -812,19 +1146,46 @@
                                 </li>
                             </ul>
 
-                            <h4><i class="ph ph-barbell"></i> ผลต่อกล้ามเนื้อ:</h4>
-                            <ul>
-                                <li>ไม่เปลี่ยนเป็น Estrogen = ไม่บวมน้ำ กล้ามแห้งคม</li>
-                                <li>เพิ่ม Nutrient Efficiency (ดูดซึมอาหารได้ดีขึ้น)</li>
-                                <li>เร่งการเผาผลาญไขมันผ่านการจับกับ Glucocorticoid Receptors</li>
-                                <li>เพิ่มความแข็งแกร่งและ Vascularity อย่างมาก</li>
-                            </ul>
-
                             <div class="compound-note warning">
                                 <i class="ph ph-warning"></i> Side Effects รุนแรง: Night Sweats, Insomnia, Aggression,
-                                Tren Cough, Cardiovascular Damage, HPTA Suppression รุนแรงมาก
+                                Tren Cough, Cardiovascular Damage, HPTA Suppression รุนแรงมาก, เสี่ยงต่อ Cardiomyopathy
+                                9 เท่า (งานวิจัย 2023)
                             </div>
 
+                            <!-- Glossary -->
+                            <div class="glossary-box">
+                                <h5><i class="ph ph-translate"></i> คำศัพท์เทคนิค (Glossary)</h5>
+                                <div class="glossary-item">
+                                    <span class="glossary-term">Feed Efficiency</span>
+                                    <span class="glossary-def">ประสิทธิภาพการใช้อาหาร =
+                                        ร่างกายนำสารอาหารไปใช้ได้ดีขึ้นเท่าไหร่</span>
+                                </div>
+                                <div class="glossary-item">
+                                    <span class="glossary-term">Glucocorticoid Receptor</span>
+                                    <span class="glossary-def">ตัวรับฮอร์โมน Cortisol
+                                        (ฮอร์โมนความเครียดที่ทำลายกล้าม)</span>
+                                </div>
+                                <div class="glossary-item">
+                                    <span class="glossary-term">Catabolism</span>
+                                    <span class="glossary-def">กระบวนการสลายกล้ามเนื้อ (ตรงข้ามกับ Anabolism)</span>
+                                </div>
+                                <div class="glossary-item">
+                                    <span class="glossary-term">Tren Cough</span>
+                                    <span class="glossary-def">อาการไอหลังฉีด เกิดจากตัวยาเข้าหลอดเลือดและไปปอด</span>
+                                </div>
+                                <div class="glossary-item">
+                                    <span class="glossary-term">HPTA</span>
+                                    <span class="glossary-def">Hypothalamic-Pituitary-Testicular Axis =
+                                        ระบบควบคุมฮอร์โมนเพศชาย</span>
+                                </div>
+                                <div class="glossary-item">
+                                    <span class="glossary-term">Vascularity</span>
+                                    <span class="glossary-def">หลอดเลือดที่โผล่ชัดใต้ผิวหนัง (สัญลักษณ์ของ body fat
+                                        ต่ำ)</span>
+                                </div>
+                            </div>
+
+                            <!-- Research -->
                             <div class="research-refs">
                                 <h4><i class="ph ph-book-open"></i> งานวิจัยอ้างอิง:</h4>
                                 <ul>
@@ -834,9 +1195,9 @@
                                     <li><a href="https://pubmed.ncbi.nlm.nih.gov/21266670/" target="_blank"
                                             rel="noopener">Donner DG, et al. (2016) - Trenbolone impairs cardiomyocyte
                                             function. <i>Toxicol Sci</i></a></li>
-                                    <li><a href="https://pubmed.ncbi.nlm.nih.gov/19661128/" target="_blank"
-                                            rel="noopener">Mac RP, et al. (2015) - Androgen receptor binding affinity of
-                                            various steroids. <i>Mol Cell Endocrinol</i></a></li>
+                                    <li><a href="https://www.ahajournals.org/doi/10.1161/CIRCULATIONAHA.123.065484"
+                                            target="_blank" rel="noopener">AAS Users Cardiovascular Risk Study (2023) -
+                                            3x MI risk, 9x cardiomyopathy risk. <i>Circulation</i></a></li>
                                 </ul>
                             </div>
                         </div>
