@@ -570,21 +570,89 @@
         }
 
         @media (max-width: 768px) {
+
+            /* Fix mobile visibility */
+            .steroid-section,
+            .compound-grid,
+            .compound-card,
+            .compound-body,
+            .info-section,
+            .info-stats,
+            .dosage-grid,
+            .glossary-section,
+            .research-section,
+            .ester-table {
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                overflow: visible !important;
+                width: 100% !important;
+            }
+
+            .compound-card {
+                margin-bottom: 24px;
+            }
+
             .compound-header {
                 flex-direction: column;
                 text-align: center;
                 gap: 16px;
+                padding: 20px;
+            }
+
+            .compound-title {
+                text-align: center;
             }
 
             .info-stats {
+                display: grid !important;
                 grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .stat-item {
+                padding: 12px 8px;
             }
 
             .dosage-grid {
-                grid-template-columns: 1fr;
+                display: grid !important;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
             }
 
             .glossary-grid {
+                display: grid !important;
+                grid-template-columns: 1fr;
+            }
+
+            .ester-table {
+                font-size: 0.75rem;
+            }
+
+            .ester-table th,
+            .ester-table td {
+                padding: 8px 6px;
+            }
+
+            .compound-body {
+                padding: 20px;
+            }
+
+            .info-section p,
+            .info-section li {
+                font-size: 0.85rem;
+            }
+
+            .side-effect-grid,
+            .effect-card,
+            .process-step,
+            .mechanism-box {
+                display: block !important;
+                width: 100% !important;
+                margin-bottom: 16px;
+            }
+
+            .toc-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -1082,7 +1150,8 @@
                             <div class="info-section">
                                 <h4><i class="ph ph-clock-clockwise"></i> ที่มา</h4>
                                 <p>สกัดครั้งแรกจากอัณฑะวัวโดย Ernst Laqueur (เนเธอร์แลนด์) ชื่อมาจาก <em>testis</em> +
-                                    <em>sterone</em> รับรางวัลโนเบลเคมี 1939</p>
+                                    <em>sterone</em> รับรางวัลโนเบลเคมี 1939
+                                </p>
                             </div>
 
                             <!-- Esters -->
