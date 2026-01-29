@@ -214,201 +214,379 @@
             margin-bottom: 0;
         }
 
-        /* Compound Grid - Single Column for readability */
+        /* ========== NEW MINIMAL COMPOUND DESIGN ========== */
+
         .compound-grid {
             display: flex;
             flex-direction: column;
-            gap: 30px;
-            margin-top: 30px;
+            gap: 40px;
+            margin-top: 40px;
         }
 
         .compound-card {
             background: var(--bg-secondary);
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.3s ease;
         }
 
         .compound-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 46, 46, 0.3);
         }
 
-        .compound-card.featured {
-            border: 2px solid var(--accent-color);
-            box-shadow: 0 0 20px rgba(255, 46, 46, 0.15);
-        }
-
-        @media (max-width: 768px) {
-            .compound-card.featured {
-                grid-column: span 1;
-            }
-
-            .compound-grid {
-                display: block !important;
-            }
-
-            .compound-card {
-                display: block !important;
-                width: 100% !important;
-                margin-bottom: 20px;
-                overflow: visible !important;
-            }
-
-            .compound-body {
-                display: block !important;
-                overflow: visible !important;
-            }
-
-            .mechanism-box {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .dosage-row {
-                flex-direction: column;
-                gap: 5px;
-                text-align: center;
-            }
-
-            .dosage-table {
-                overflow: visible !important;
-            }
-
-            .compound-header {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .compound-header h3 {
-                text-align: center;
-                flex: none;
-            }
-
-            .process-step {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .step-number {
-                margin: 0 auto 15px;
-            }
-
-            .steroid-section {
-                overflow: visible !important;
-            }
-
-            .research-refs {
-                overflow: visible !important;
-            }
-
-            .research-refs a {
-                word-break: break-word;
-            }
-
-            .side-effect-grid {
-                display: block !important;
-            }
-
-            .effect-card {
-                display: block !important;
-                width: 100% !important;
-                margin-bottom: 20px;
-            }
-        }
-
+        /* Card Header - Clean Minimal */
         .compound-header {
-            background: linear-gradient(135deg, rgba(255, 46, 46, 0.1), transparent);
-            padding: 20px;
             display: flex;
             align-items: center;
-            gap: 15px;
-            flex-wrap: wrap;
+            gap: 20px;
+            padding: 24px 28px;
+            background: linear-gradient(135deg, rgba(255, 46, 46, 0.06), transparent);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
         }
 
         .compound-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--accent-color);
-            border-radius: 50%;
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--accent-color), #ff6b6b);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .compound-icon svg {
+            width: 32px;
+            height: 32px;
+            fill: #000;
+        }
+
+        .compound-icon i {
+            font-size: 1.6rem;
             color: #000;
         }
 
-        .compound-header h3 {
+        .compound-title {
             flex: 1;
+        }
+
+        .compound-title h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0 0 4px 0;
+            color: var(--text-primary);
+        }
+
+        .compound-title .subtitle {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
             margin: 0;
-            font-size: 1.3rem;
         }
 
         .compound-tag {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 5px 12px;
+            padding: 6px 14px;
             border-radius: 20px;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .compound-tag.danger {
+            background: rgba(255, 68, 68, 0.15);
+            color: #ff7b7b;
+        }
+
+        .compound-tag.safe {
+            background: rgba(76, 175, 80, 0.15);
+            color: #81c784;
+        }
+
+        .compound-tag.base {
+            background: rgba(255, 193, 7, 0.15);
+            color: #ffd54f;
+        }
+
+        /* Card Body */
+        .compound-body {
+            padding: 28px;
+        }
+
+        /* Info Stats Row */
+        .info-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 10px;
+        }
+
+        .stat-item .label {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .stat-item .value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+
+        /* Section Blocks */
+        .info-section {
+            margin-bottom: 24px;
+        }
+
+        .info-section h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 0 0 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-section h4 i {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+        }
+
+        .info-section p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin: 0 0 8px 0;
+        }
+
+        .info-section ul {
+            padding-left: 20px;
+            margin: 0;
+        }
+
+        .info-section li {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+            line-height: 1.6;
+        }
+
+        /* Ester Table - Minimal */
+        .ester-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            margin: 12px 0;
+        }
+
+        .ester-table th,
+        .ester-table td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .ester-table th {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .ester-table td {
+            color: var(--text-primary);
+        }
+
+        .speed-fast {
+            color: #ff6b6b;
+        }
+
+        .speed-medium {
+            color: #ffd43b;
+        }
+
+        .speed-slow {
+            color: #51cf66;
+        }
+
+        /* Dosage Grid */
+        .dosage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+        }
+
+        .dosage-item {
+            background: rgba(255, 46, 46, 0.04);
+            padding: 14px 16px;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent-color);
+        }
+
+        .dosage-item .level {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
-        .compound-tag.danger {
-            background: rgba(255, 68, 68, 0.2);
-            color: #ff6666;
-        }
-
-        .compound-tag.safe {
-            background: rgba(76, 175, 80, 0.2);
-            color: #81c784;
-        }
-
-        .compound-tag.premium {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 140, 0, 0.2));
-            color: #ffd700;
-        }
-
-        .compound-body {
-            padding: 20px;
-        }
-
-        .compound-body h4 {
+        .dosage-item .dose {
+            font-size: 0.95rem;
+            font-weight: 600;
             color: var(--text-primary);
-            margin-top: 15px;
-            margin-bottom: 10px;
-            font-size: 1rem;
+            margin-top: 4px;
         }
 
-        .compound-body ul {
-            padding-left: 20px;
-        }
-
-        .compound-note {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 12px 15px;
-            border-radius: 8px;
-            margin-top: 15px;
-            font-size: 0.9rem;
+        /* Warning Box */
+        .warning-box {
+            background: rgba(255, 68, 68, 0.08);
+            border: 1px solid rgba(255, 68, 68, 0.2);
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin: 20px 0;
             display: flex;
             align-items: flex-start;
-            gap: 10px;
+            gap: 12px;
         }
 
-        .compound-note i {
-            color: var(--accent-color);
+        .warning-box i {
+            color: #ff6b6b;
             font-size: 1.2rem;
             flex-shrink: 0;
+            margin-top: 2px;
         }
 
-        .compound-note.warning {
-            background: rgba(255, 68, 68, 0.1);
-            border: 1px solid rgba(255, 68, 68, 0.2);
+        .warning-box p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: #ff8a8a;
+            line-height: 1.6;
         }
 
-        .compound-note.warning i {
-            color: #ff6666;
+        /* Glossary - Minimal */
+        .glossary-section {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .glossary-section h5 {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 0 0 16px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .glossary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .glossary-item {
+            font-size: 0.8rem;
+        }
+
+        .glossary-item .term {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .glossary-item .def {
+            color: var(--text-secondary);
+            margin-left: 4px;
+        }
+
+        /* Research Links - Minimal */
+        .research-section {
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .research-section h5 {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin: 0 0 12px 0;
+        }
+
+        .research-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .research-links a {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            background: rgba(255, 255, 255, 0.04);
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .research-links a:hover {
+            background: rgba(255, 46, 46, 0.1);
+            color: var(--accent-color);
+        }
+
+        /* Beast Mode */
+        body.beast-mode .compound-card {
+            background: #fff;
+            border-color: rgba(0, 0, 0, 0.08);
+        }
+
+        body.beast-mode .compound-header {
+            background: linear-gradient(135deg, rgba(255, 46, 46, 0.06), rgba(255, 255, 255, 1));
+        }
+
+        body.beast-mode .stat-item,
+        body.beast-mode .glossary-section {
+            background: rgba(0, 0, 0, 0.02);
+        }
+
+        body.beast-mode .dosage-item {
+            background: rgba(255, 46, 46, 0.04);
+        }
+
+        @media (max-width: 768px) {
+            .compound-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 16px;
+            }
+
+            .info-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .dosage-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .glossary-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* Process Flow */
@@ -862,192 +1040,160 @@
 
                 <div class="compound-grid">
                     <!-- Testosterone -->
-                    <div class="compound-card featured">
+                    <div class="compound-card">
                         <div class="compound-header">
-                            <div class="compound-icon"><i class="ph ph-gender-male"></i></div>
-                            <h3>Testosterone</h3>
-                            <span class="compound-tag">Base Compound</span>
+                            <div class="compound-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2">
+                                    <circle cx="12" cy="8" r="4" />
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                                    <line x1="17" y1="3" x2="21" y2="7" />
+                                    <line x1="21" y1="3" x2="17" y2="7" />
+                                </svg>
+                            </div>
+                            <div class="compound-title">
+                                <h3>Testosterone</h3>
+                                <p class="subtitle">ฮอร์โมนเพศชาย • สเตียรอยด์พื้นฐาน</p>
+                            </div>
+                            <span class="compound-tag base">Base Compound</span>
                         </div>
+
                         <div class="compound-body">
+                            <!-- Quick Stats -->
+                            <div class="info-stats">
+                                <div class="stat-item">
+                                    <div class="label">ค้นพบ</div>
+                                    <div class="value">1935</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="label">สูตร</div>
+                                    <div class="value">C₁₉H₂₈O₂</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="label">Anabolic</div>
+                                    <div class="value">100</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="label">Androgenic</div>
+                                    <div class="value">100</div>
+                                </div>
+                            </div>
+
                             <!-- Origin -->
-                            <div class="origin-box">
-                                <h5><i class="ph ph-clock-clockwise"></i> ประวัติและที่มา</h5>
-                                <p><strong>ค้นพบ: ปี 1935</strong> โดย Ernst Laqueur นักวิทยาศาสตร์ชาวเนเธอร์แลนด์
-                                    สกัดได้จากอัณฑะวัว
-                                    ชื่อ "Testosterone" มาจากคำว่า <em>testis</em> (อัณฑะ) + <em>sterone</em>
-                                    (สเตียรอยด์)
-                                    ได้รับรางวัลโนเบลสาขาเคมีในปี 1939 ให้แก่ Adolf Butenandt และ Leopold Ružička
-                                    สำหรับการสังเคราะห์</p>
+                            <div class="info-section">
+                                <h4><i class="ph ph-clock-clockwise"></i> ที่มา</h4>
+                                <p>สกัดครั้งแรกจากอัณฑะวัวโดย Ernst Laqueur (เนเธอร์แลนด์) ชื่อมาจาก <em>testis</em> +
+                                    <em>sterone</em> รับรางวัลโนเบลเคมี 1939</p>
                             </div>
 
-                            <!-- Chemical Structure -->
-                            <div class="chemical-box">
-                                <h5><i class="ph ph-atom"></i> โครงสร้างทางเคมี</h5>
-                                <p><strong>ชื่อ IUPAC:</strong> 17β-Hydroxyandrost-4-en-3-one</p>
-                                <div class="formula">C₁₉H₂₈O₂</div>
-                                <p><strong>น้ำหนักโมเลกุล:</strong> 288.42 g/mol | <strong>โครงสร้าง:</strong> Steroid
-                                    4-ring (3 hexane + 1 pentane)
-                                    พร้อม Ketone group ที่ตำแหน่ง C3 และ Hydroxyl group ที่ C17</p>
+                            <!-- Esters -->
+                            <div class="info-section">
+                                <h4><i class="ph ph-list-bullets"></i> รูปแบบ Ester</h4>
+                                <table class="ester-table">
+                                    <tr>
+                                        <th>Ester</th>
+                                        <th>Half-life</th>
+                                        <th>ฉีด</th>
+                                        <th></th>
+                                    </tr>
+                                    <tr>
+                                        <td>Suspension</td>
+                                        <td>1-2 ชม.</td>
+                                        <td>ทุกวัน</td>
+                                        <td class="speed-fast">⚡</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Propionate</td>
+                                        <td>2-3 วัน</td>
+                                        <td>วันเว้นวัน</td>
+                                        <td class="speed-fast">⚡</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Enanthate</td>
+                                        <td>7-10 วัน</td>
+                                        <td>1-2x/สัปดาห์</td>
+                                        <td class="speed-slow">🐢</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cypionate</td>
+                                        <td>10-14 วัน</td>
+                                        <td>1x/สัปดาห์</td>
+                                        <td class="speed-slow">🐢</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Undecanoate</td>
+                                        <td>16-21 วัน</td>
+                                        <td>2-4 สัปดาห์</td>
+                                        <td class="speed-slow">🐢</td>
+                                    </tr>
+                                </table>
                             </div>
-
-                            <!-- Ester Types -->
-                            <h4><i class="ph ph-list-bullets"></i> ประเภท Ester (ออกฤทธิ์ช้า/เร็ว):</h4>
-                            <table class="ester-table">
-                                <tr>
-                                    <th>ชื่อ Ester</th>
-                                    <th>Half-life</th>
-                                    <th>ความถี่ฉีด</th>
-                                    <th>ความเร็ว</th>
-                                </tr>
-                                <tr>
-                                    <td>Suspension (No Ester)</td>
-                                    <td>1-2 ชั่วโมง</td>
-                                    <td>ทุกวัน / วันละ 2 ครั้ง</td>
-                                    <td class="speed-fast">⚡ เร็วมาก</td>
-                                </tr>
-                                <tr>
-                                    <td>Propionate</td>
-                                    <td>2-3 วัน</td>
-                                    <td>วันเว้นวัน</td>
-                                    <td class="speed-fast">⚡ เร็ว</td>
-                                </tr>
-                                <tr>
-                                    <td>Phenylpropionate</td>
-                                    <td>4-5 วัน</td>
-                                    <td>2-3 ครั้ง/สัปดาห์</td>
-                                    <td class="speed-medium">⏱️ ปานกลาง</td>
-                                </tr>
-                                <tr>
-                                    <td>Enanthate</td>
-                                    <td>7-10 วัน</td>
-                                    <td>1-2 ครั้ง/สัปดาห์</td>
-                                    <td class="speed-slow">🐢 ช้า</td>
-                                </tr>
-                                <tr>
-                                    <td>Cypionate</td>
-                                    <td>10-14 วัน</td>
-                                    <td>1 ครั้ง/สัปดาห์</td>
-                                    <td class="speed-slow">🐢 ช้า</td>
-                                </tr>
-                                <tr>
-                                    <td>Undecanoate</td>
-                                    <td>16-21 วัน</td>
-                                    <td>ทุก 2-4 สัปดาห์</td>
-                                    <td class="speed-slow">🐢 ช้ามาก</td>
-                                </tr>
-                            </table>
 
                             <!-- Mechanism -->
-                            <h4><i class="ph ph-syringe"></i> กลไกการทำงานเชิงลึก:</h4>
-                            <p><strong>1. การดูดซึม:</strong> เมื่อฉีดเข้ากล้ามเนื้อ (Intramuscular) Ester-chain
-                                จะถูกตัดออกโดย Esterase enzymes → ปลดปล่อย Free Testosterone เข้าสู่กระแสเลือด</p>
-                            <p><strong>2. การขนส่ง:</strong> ในเลือด Testosterone จับกับ SHBG (60%), Albumin (38%),
-                                และเป็น Free Testosterone (2%) ที่ออกฤทธิ์ได้</p>
-                            <p><strong>3. การออกฤทธิ์:</strong> Free Testosterone เข้าสู่เซลล์ผ่าน Cell membrane →
-                                จับกับ Androgen Receptor (AR) ใน Cytoplasm → AR-Testosterone complex เข้าสู่ Nucleus →
-                                จับกับ Androgen Response Elements (ARE) บน DNA → กระตุ้น Gene Transcription</p>
-                            <p><strong>4. ผลลัพธ์:</strong> เพิ่มการสร้าง mRNA → เพิ่ม Ribosomal Protein Synthesis →
-                                สร้างโปรตีนใหม่ในกล้ามเนื้อ (Actin & Myosin)</p>
+                            <div class="info-section">
+                                <h4><i class="ph ph-dna"></i> กลไกการทำงาน</h4>
+                                <p>ฉีด IM → Ester ถูกตัดโดย Esterase → Free Testosterone เข้าเลือด → จับ SHBG/Albumin →
+                                    Free T (2%) เข้าเซลล์ → จับ Androgen Receptor → เข้า Nucleus → กระตุ้น Gene
+                                    Transcription → เพิ่ม Protein Synthesis</p>
+                            </div>
 
                             <!-- Dosage -->
-                            <h4><i class="ph ph-flask"></i> ขนาดยาที่ใช้ (Dosage):</h4>
-                            <div class="dosage-table">
-                                <div class="dosage-row">
-                                    <span class="dosage-label">TRT (Therapeutic):</span>
-                                    <span class="dosage-value">100-200 mg/สัปดาห์</span>
-                                </div>
-                                <div class="dosage-row">
-                                    <span class="dosage-label">Beginner Cycle:</span>
-                                    <span class="dosage-value">300-500 mg/สัปดาห์ (แบ่งฉีด 2 ครั้ง)</span>
-                                </div>
-                                <div class="dosage-row">
-                                    <span class="dosage-label">Intermediate:</span>
-                                    <span class="dosage-value">500-750 mg/สัปดาห์</span>
-                                </div>
-                                <div class="dosage-row">
-                                    <span class="dosage-label">Advanced:</span>
-                                    <span class="dosage-value">750-1000+ mg/สัปดาห์</span>
+                            <div class="info-section">
+                                <h4><i class="ph ph-flask"></i> ขนาดยา</h4>
+                                <div class="dosage-grid">
+                                    <div class="dosage-item">
+                                        <div class="level">TRT</div>
+                                        <div class="dose">100-200 mg/wk</div>
+                                    </div>
+                                    <div class="dosage-item">
+                                        <div class="level">Beginner</div>
+                                        <div class="dose">300-500 mg/wk</div>
+                                    </div>
+                                    <div class="dosage-item">
+                                        <div class="level">Intermediate</div>
+                                        <div class="dose">500-750 mg/wk</div>
+                                    </div>
+                                    <div class="dosage-item">
+                                        <div class="level">Advanced</div>
+                                        <div class="dose">750-1000+ mg/wk</div>
+                                    </div>
                                 </div>
                             </div>
 
-                            <!-- Onset -->
-                            <h4><i class="ph ph-clock"></i> ระยะเวลาออกฤทธิ์:</h4>
-                            <ul>
-                                <li><strong>เริ่มรู้สึก:</strong> 2-3 สัปดาห์ (เพิ่มพลังงาน, libido)</li>
-                                <li><strong>เห็นผลชัดเจน:</strong> 4-6 สัปดาห์ (เพิ่มความแข็งแกร่ง)</li>
-                                <li><strong>ผลเต็มที่:</strong> 8-12 สัปดาห์ (เพิ่มมวลกล้ามเนื้อ)</li>
-                            </ul>
-
                             <!-- Effects -->
-                            <h4><i class="ph ph-barbell"></i> ผลต่อกล้ามเนื้อ:</h4>
-                            <ul>
-                                <li>เพิ่ม Muscle Protein Synthesis สูงถึง 27%</li>
-                                <li>เพิ่ม Nitrogen Retention ทำให้กล้ามอยู่ใน Anabolic State</li>
-                                <li>กระตุ้น IGF-1 ซึ่งช่วยในการเติบโตของเซลล์</li>
-                                <li>เพิ่มจำนวน Red Blood Cells ทำให้ความอดทนดีขึ้น</li>
-                            </ul>
-
-                            <div class="compound-note">
-                                <i class="ph ph-info"></i> เป็น "Base" ของทุก Cycle เพราะร่างกายต้องการ Testosterone
-                                เพื่อการทำงานปกติ
+                            <div class="info-section">
+                                <h4><i class="ph ph-trend-up"></i> ผลลัพธ์</h4>
+                                <ul>
+                                    <li>เพิ่ม Muscle Protein Synthesis 27%</li>
+                                    <li>เพิ่ม Nitrogen Retention → Anabolic State</li>
+                                    <li>กระตุ้น IGF-1 และ Red Blood Cells</li>
+                                    <li>เริ่มเห็นผล 4-6 สัปดาห์ / เต็มที่ 8-12 สัปดาห์</li>
+                                </ul>
                             </div>
 
                             <!-- Glossary -->
-                            <div class="glossary-box">
-                                <h5><i class="ph ph-translate"></i> คำศัพท์เทคนิค (Glossary)</h5>
-                                <div class="glossary-item">
-                                    <span class="glossary-term">Ester</span>
-                                    <span class="glossary-def">สารเคมีที่ติดกับ Testosterone เพื่อควบคุมการปลดปล่อย
-                                        (ยิ่งยาว ยิ่งปลดปล่อยช้า)</span>
-                                </div>
-                                <div class="glossary-item">
-                                    <span class="glossary-term">Half-life</span>
-                                    <span class="glossary-def">ครึ่งชีวิต = เวลาที่ระดับยาในเลือดลดลงครึ่งหนึ่ง</span>
-                                </div>
-                                <div class="glossary-item">
-                                    <span class="glossary-term">SHBG</span>
-                                    <span class="glossary-def">Sex Hormone-Binding Globulin =
-                                        โปรตีนที่จับฮอร์โมนเพศเพื่อขนส่งในเลือด</span>
-                                </div>
-                                <div class="glossary-item">
-                                    <span class="glossary-term">Androgen Receptor (AR)</span>
-                                    <span class="glossary-def">ตัวรับฮอร์โมนเพศชายในเซลล์ ที่ทำให้เกิดผล Anabolic</span>
-                                </div>
-                                <div class="glossary-item">
-                                    <span class="glossary-term">Protein Synthesis</span>
-                                    <span class="glossary-def">กระบวนการสร้างโปรตีนใหม่ =
-                                        พื้นฐานของการสร้างกล้ามเนื้อ</span>
-                                </div>
-                                <div class="glossary-item">
-                                    <span class="glossary-term">Nitrogen Retention</span>
-                                    <span class="glossary-def">การเก็บรักษาไนโตรเจนในกล้าม =
-                                        สัญญาณว่าร่างกายกำลังสร้างกล้าม</span>
-                                </div>
-                                <div class="glossary-item">
-                                    <span class="glossary-term">Aromatization</span>
-                                    <span class="glossary-def">การเปลี่ยน Testosterone → Estrogen โดย Aromatase
-                                        enzyme</span>
+                            <div class="glossary-section">
+                                <h5><i class="ph ph-translate"></i> ศัพท์เทคนิค</h5>
+                                <div class="glossary-grid">
+                                    <div class="glossary-item"><span class="term">Ester</span><span class="def">—
+                                            สารควบคุมการปล่อยยา</span></div>
+                                    <div class="glossary-item"><span class="term">Half-life</span><span class="def">—
+                                            เวลาที่ยาลดลงครึ่งหนึ่ง</span></div>
+                                    <div class="glossary-item"><span class="term">SHBG</span><span class="def">—
+                                            โปรตีนจับฮอร์โมนในเลือด</span></div>
+                                    <div class="glossary-item"><span class="term">Aromatization</span><span
+                                            class="def">— เปลี่ยน T → Estrogen</span></div>
                                 </div>
                             </div>
 
                             <!-- Research -->
-                            <div class="research-refs">
-                                <h4><i class="ph ph-book-open"></i> งานวิจัยอ้างอิง:</h4>
-                                <ul>
-                                    <li><a href="https://pubmed.ncbi.nlm.nih.gov/8637535/" target="_blank"
-                                            rel="noopener">Bhasin S, et al. (1996) - The effects of supraphysiologic
-                                            doses of testosterone on muscle size and strength. <i>N Engl J Med</i></a>
-                                    </li>
-                                    <li><a href="https://pubmed.ncbi.nlm.nih.gov/11701431/" target="_blank"
-                                            rel="noopener">Bhasin S, et al. (2001) - Testosterone dose-response
-                                            relationships in healthy young men. <i>Am J Physiol</i></a></li>
-                                    <li><a href="https://pubmed.ncbi.nlm.nih.gov/22105707/" target="_blank"
-                                            rel="noopener">Storer TW, et al. (2003) - Testosterone induces skeletal
-                                            muscle hypertrophy. <i>J Clin Endocrinol Metab</i></a></li>
-                                    <li><a href="https://pubmed.ncbi.nlm.nih.gov/34687600/" target="_blank"
-                                            rel="noopener">Snyder PJ, et al. (2024) - Testosterone treatment in older
-                                            men with mobility limitations. <i>JAMA Intern Med</i></a></li>
-                                </ul>
+                            <div class="research-section">
+                                <h5>งานวิจัยอ้างอิง</h5>
+                                <div class="research-links">
+                                    <a href="https://pubmed.ncbi.nlm.nih.gov/8637535/" target="_blank">Bhasin 1996</a>
+                                    <a href="https://pubmed.ncbi.nlm.nih.gov/11701431/" target="_blank">Bhasin 2001</a>
+                                    <a href="https://pubmed.ncbi.nlm.nih.gov/22105707/" target="_blank">Storer 2003</a>
+                                    <a href="https://pubmed.ncbi.nlm.nih.gov/34687600/" target="_blank">Snyder 2024</a>
+                                </div>
                             </div>
                         </div>
                     </div>
