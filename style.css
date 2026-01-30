@@ -514,17 +514,35 @@ body.beast-mode .btn.primary {
     display: flex;
     align-items: center;
     gap: 8px;
-    background: rgba(0, 0, 0, 0.6);
+    /* Default (OFF) - Subtle Dark to blend with header */
+    background: rgba(0, 0, 0, 0.2);
     padding: 6px 14px;
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     margin-left: 20px;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+/* Active (ON) - White Tone Glass */
+body.beast-mode .beast-toggle-container {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+.beast-toggle-container:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+body.beast-mode .beast-toggle-container:hover {
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .beast-toggle-container span {
     font-size: 0.75rem;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0.5px;
+    color: var(--text-primary);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .beast-switch {

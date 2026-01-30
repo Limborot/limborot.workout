@@ -50,7 +50,7 @@ const beastModeToggle = document.getElementById('beastModeToggle');
 const body = document.body;
 
 // Check LocalStorage on Load
-if (localStorage.getItem('beastMode') === 'enabled') {
+if (localStorage.getItem('beastMode_config') === 'enabled') {
     body.classList.add('beast-mode');
     if (beastModeToggle) beastModeToggle.checked = true;
 }
@@ -59,14 +59,14 @@ if (beastModeToggle) {
     beastModeToggle.addEventListener('change', () => {
         if (beastModeToggle.checked) {
             body.classList.add('beast-mode');
-            localStorage.setItem('beastMode', 'enabled');
+            localStorage.setItem('beastMode_config', 'enabled');
             // Optional: Trigger a vibration if supported (for mobile)
             if (navigator.vibrate) {
                 navigator.vibrate(200);
             }
         } else {
             body.classList.remove('beast-mode');
-            localStorage.setItem('beastMode', 'disabled');
+            localStorage.setItem('beastMode_config', 'disabled');
         }
     });
 }
