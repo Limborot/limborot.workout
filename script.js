@@ -46,28 +46,43 @@ if (fadeElements.length > 0) {
 }
 
 // Beast Mode Toggle
-const beastModeToggle = document.getElementById('beastModeToggle');
+// Beast Mode Toggle logic for multiple buttons (Desktop & Mobile)
+const beastModeToggles = document.querySelectorAll('.beast-toggle-input');
 const body = document.body;
+
+// Function to update all toggles
+function updateToggles(isChecked) {
+    if (beastModeToggles.length > 0) {
+        beastModeToggles.forEach(toggle => {
+            toggle.checked = isChecked;
+        });
+    }
+}
 
 // Check LocalStorage on Load
 if (localStorage.getItem('beastMode_config') === 'enabled') {
     body.classList.add('beast-mode');
-    if (beastModeToggle) beastModeToggle.checked = true;
+    updateToggles(true);
+} else {
+    updateToggles(false);
 }
 
-if (beastModeToggle) {
-    beastModeToggle.addEventListener('change', () => {
-        if (beastModeToggle.checked) {
-            body.classList.add('beast-mode');
-            localStorage.setItem('beastMode_config', 'enabled');
-            // Optional: Trigger a vibration if supported (for mobile)
-            if (navigator.vibrate) {
-                navigator.vibrate(200);
+if (beastModeToggles.length > 0) {
+    beastModeToggles.forEach(toggle => {
+        toggle.addEventListener('change', (e) => {
+            // Sync state
+            const isChecked = e.target.checked;
+            updateToggles(isChecked);
+
+            if (isChecked) {
+                body.classList.add('beast-mode');
+                localStorage.setItem('beastMode_config', 'enabled');
+                if (navigator.vibrate) navigator.vibrate(200);
+            } else {
+                body.classList.remove('beast-mode');
+                localStorage.setItem('beastMode_config', 'disabled');
             }
-        } else {
-            body.classList.remove('beast-mode');
-            localStorage.setItem('beastMode_config', 'disabled');
-        }
+        });
     });
 }
 

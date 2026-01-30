@@ -423,6 +423,36 @@ footer p {
     .gallery-grid {
         grid-template-columns: 1fr;
     }
+
+    /* Optimizing Header Layout for Mobile */
+    /* Hide nav toggle, show mobile menu toggle */
+    nav .beast-toggle-container {
+        display: none;
+    }
+
+    /* Ensure hamburger is top priority and visible */
+    .hamburger {
+        z-index: 1002;
+        margin-left: auto;
+        /* Push to right */
+    }
+
+    /* Mobile Menu Toggle Style */
+    .mobile-menu .beast-toggle-container {
+        display: flex;
+        /* Ensure it's visible in menu */
+        margin-top: 30px;
+        background: rgba(255, 255, 255, 0.08);
+        /* Minimal styling for menu */
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 8px 16px;
+    }
+
+    .mobile-menu .beast-label {
+        display: block;
+        /* Show text in menu */
+        margin-right: 15px;
+    }
 }
 
 /* ============================
