@@ -4,20 +4,26 @@ const mobileMenu = document.querySelector('.mobile-menu');
 const closeMenu = document.querySelector('.close-menu');
 const mobileLinks = document.querySelectorAll('.mobile-menu ul li a');
 
-hamburger.addEventListener('click', () => {
-    mobileMenu.classList.add('active');
-});
+if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', () => {
+        mobileMenu.classList.add('active');
+    });
+}
 
-closeMenu.addEventListener('click', () => {
-    mobileMenu.classList.remove('active');
-});
-
-// Close mobile menu when a link is clicked
-mobileLinks.forEach(link => {
-    link.addEventListener('click', () => {
+if (closeMenu && mobileMenu) {
+    closeMenu.addEventListener('click', () => {
         mobileMenu.classList.remove('active');
     });
-});
+}
+
+// Close mobile menu when a link is clicked
+if (mobileLinks.length > 0) {
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (mobileMenu) mobileMenu.classList.remove('active');
+        });
+    });
+}
 
 // Scroll Animations (Intersection Observer)
 const observerOptions = {
@@ -33,9 +39,11 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 const fadeElements = document.querySelectorAll('.fade-in');
-fadeElements.forEach(el => {
-    observer.observe(el);
-});
+if (fadeElements.length > 0) {
+    fadeElements.forEach(el => {
+        observer.observe(el);
+    });
+}
 
 // Beast Mode Toggle
 const beastModeToggle = document.getElementById('beastModeToggle');
@@ -59,6 +67,28 @@ if (beastModeToggle) {
         } else {
             body.classList.remove('beast-mode');
             localStorage.setItem('beastMode', 'disabled');
+        }
+    });
+}
+
+// AI Popup Logic
+const aiPopup = document.getElementById('aiPopupOverlay');
+const closeAiPopup = document.getElementById('closeAiPopup');
+
+if (aiPopup && closeAiPopup) {
+    // Show popup after a small delay
+    setTimeout(() => {
+        aiPopup.classList.add('show');
+    }, 500);
+
+    closeAiPopup.addEventListener('click', () => {
+        aiPopup.classList.remove('show');
+    });
+
+    // Also close if clicked outside
+    aiPopup.addEventListener('click', (e) => {
+        if (e.target === aiPopup) {
+            aiPopup.classList.remove('show');
         }
     });
 }
@@ -126,11 +156,19 @@ const btnCalc = document.getElementById('btn-calculate');
 
 if (btnCalc) {
     btnCalc.addEventListener('click', () => {
-        const gender = document.querySelector('input[name="gender"]:checked').value;
-        const age = parseFloat(document.getElementById('bmr-age').value);
-        const height = parseFloat(document.getElementById('bmr-height').value);
-        const weight = parseFloat(document.getElementById('bmr-weight').value);
-        const activity = parseFloat(document.getElementById('bmr-activity').value);
+        const genderInput = document.querySelector('input[name="gender"]:checked');
+        const ageInput = document.getElementById('bmr-age');
+        const heightInput = document.getElementById('bmr-height');
+        const weightInput = document.getElementById('bmr-weight');
+        const activityInput = document.getElementById('bmr-activity');
+
+        if (!genderInput || !ageInput || !heightInput || !weightInput || !activityInput) return;
+
+        const gender = genderInput.value;
+        const age = parseFloat(ageInput.value);
+        const height = parseFloat(heightInput.value);
+        const weight = parseFloat(weightInput.value);
+        const activity = parseFloat(activityInput.value);
 
         if (!age || !height || !weight) {
             alert("กรุณากรอกข้อมูลให้ครบถ้วน");
