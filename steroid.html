@@ -1016,6 +1016,77 @@
         body.beast-mode .ester-table th {
             background: rgba(255, 46, 46, 0.08);
         }
+
+        /* AI Disclaimer Popup - Minimal Design */
+        .ai-popup-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .ai-popup-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .ai-popup {
+            background: var(--bg-secondary);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 24px 28px;
+            max-width: 360px;
+            text-align: center;
+            transform: scale(0.95);
+            transition: transform 0.3s;
+        }
+
+        .ai-popup-overlay.show .ai-popup {
+            transform: scale(1);
+        }
+
+        .ai-popup-icon {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 12px;
+        }
+
+        .ai-popup h4 {
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .ai-popup p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+
+        .ai-popup-btn {
+            background: var(--accent-color);
+            color: #000;
+            border: none;
+            padding: 10px 28px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .ai-popup-btn:hover {
+            opacity: 0.9;
+        }
     </style>
 </head>
 
@@ -1032,6 +1103,14 @@
                     <li><a href="index.html#workouts">Workouts</a></li>
                     <li><a href="steroid.html" class="highlight">Steroid Info</a></li>
                 </ul>
+                <!-- Beast Mode Toggle -->
+                <div class="beast-toggle-container">
+                    <span class="beast-label">Beast Mode</span>
+                    <label class="beast-switch">
+                        <input type="checkbox" id="beastModeToggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
                 <div class="hamburger">
                     <i class="ph ph-list"></i>
                 </div>
@@ -1914,14 +1993,7 @@
         </div>
     </footer>
 
-    <!-- Beast Mode Toggle -->
-    <div class="beast-toggle-container">
-        <span class="beast-label">Beast Mode</span>
-        <label class="beast-switch">
-            <input type="checkbox" id="beastModeToggle">
-            <span class="slider"></span>
-        </label>
-    </div>
+
 
     <script src="script.js"></script>
 </body>
