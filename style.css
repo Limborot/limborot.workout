@@ -412,6 +412,20 @@ footer p {
         display: block;
     }
 
+    /* Force consistent header height/layout on mobile */
+    header {
+        height: 60px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    header .container {
+        flex-wrap: nowrap;
+        height: 100%;
+        width: 100%;
+    }
+
     .hero-content h1 {
         font-size: 2.5rem;
     }
@@ -452,6 +466,19 @@ footer p {
         display: block;
         /* Show text in menu */
         margin-right: 15px;
+    }
+
+    /* FIX: Align Steroid Page Content Start with Main Page */
+    .steroid-hero {
+        padding-top: 90px !important;
+        /* Overrides internal 150px */
+        padding-bottom: 40px !important;
+    }
+
+    .disclaimer-box {
+        text-align: left;
+        /* Ensure readability */
+        margin-top: 20px;
     }
 }
 
