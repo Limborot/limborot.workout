@@ -37,8 +37,9 @@
     </div>
 
     <!-- PAGE HERO (CSS bg เนื่องจากไม่มีรูป) -->
-    <div class="page-hero" style="background:linear-gradient(135deg,#1c0808 0%,#3d1010 50%,#1a0505 100%);">
-        <div class="page-hero-bg" style="opacity:0;"></div>
+    <div class="page-hero"
+        style="background-image:url('images/dtm.jpg'); background-size:cover; background-position:center;">
+        <div class="page-hero-overlay"></div>
         <div class="page-hero-overlay" style="background:linear-gradient(to top,#080808 0%,transparent 70%);"></div>
         <div class="page-hero-content">
             <a class="back-link" href="index.html">← กลับหน้าหลัก</a>
@@ -68,9 +69,7 @@
             <h2 class="section-title fade-in">Touring Car<em>คืออะไร?</em></h2>
             <div class="split fade-in">
                 <div class="split-img-wrap">
-                    <div class="split-img series-bg" style="background:linear-gradient(135deg,#100018,#280040);"
-                        data-abbr="TCR"><span class="series-stripe"></span><span class="series-stripe"></span><span
-                            class="series-stripe"></span></div>
+                    <img class="split-img" src="images/index_touring.jpg" alt="Touring Car Racing" />
                 </div>
                 <div class="split-text">
                     <p><strong style="color:#d4af37">Touring Car Racing</strong> ใช้รถยนต์ที่มีพื้นฐานจากรถ 4 ประตูหรือ
@@ -84,17 +83,12 @@
                 </div>
             </div>
             <div class="img-row fade-in">
-                <div class="series-bg" style="background:linear-gradient(135deg,#00061a,#003060);" data-abbr="WTCR">
-                    <span class="series-stripe"></span><span class="series-stripe"></span><span
-                        class="series-stripe"></span>
-                </div>
-                <div class="series-bg" style="background:linear-gradient(135deg,#06060f,#15152a);" data-abbr="DTM"><span
-                        class="series-stripe"></span><span class="series-stripe"></span><span
-                        class="series-stripe"></span></div>
-                <div class="series-bg" style="background:linear-gradient(135deg,#1f0005,#3d000a);" data-abbr="BTCC">
-                    <span class="series-stripe"></span><span class="series-stripe"></span><span
-                        class="series-stripe"></span>
-                </div>
+                <img src="images/touring.jpg" alt="WTCR Racing"
+                    style="width:100%; height:200px; object-fit:cover; border-radius:8px;" />
+                <img src="images/dtm.jpg" alt="DTM Racing"
+                    style="width:100%; height:200px; object-fit:cover; border-radius:8px;" />
+                <img src="images/index_touring.jpg" alt="BTCC Racing"
+                    style="width:100%; height:200px; object-fit:cover; border-radius:8px;" />
             </div>
         </div>
     </section>
@@ -107,8 +101,7 @@
             <div class="series-grid">
                 <div class="series-card fade-in">
                     <div class="series-bg" style="background:linear-gradient(135deg,#00061a,#001540);" data-abbr="WTCR">
-                        <span class="series-stripe"></span><span class="series-stripe"></span><span
-                            class="series-stripe"></span>
+                        <img class="series-card-img" src="images/touring.jpg" alt="WTCR" />
                     </div>
                     <div class="series-card-body">
                         <div class="series-card-name">FIA WTCR — World Touring Car Cup</div>
@@ -119,8 +112,7 @@
                 </div>
                 <div class="series-card fade-in">
                     <div class="series-bg" style="background:linear-gradient(135deg,#06060f,#101020);" data-abbr="DTM">
-                        <span class="series-stripe"></span><span class="series-stripe"></span><span
-                            class="series-stripe"></span>
+                        <img class="series-card-img" src="images/dtm.jpg" alt="DTM" />
                     </div>
                     <div class="series-card-body">
                         <div class="series-card-name">DTM — Deutsche Tourenwagen Masters</div>
@@ -131,8 +123,7 @@
                 </div>
                 <div class="series-card fade-in">
                     <div class="series-bg" style="background:linear-gradient(135deg,#1f0005,#400010);" data-abbr="BTCC">
-                        <span class="series-stripe"></span><span class="series-stripe"></span><span
-                            class="series-stripe"></span>
+                        <img class="series-card-img" src="images/index_touring.jpg" alt="BTCC" />
                     </div>
                     <div class="series-card-body">
                         <div class="series-card-name">BTCC — British Touring Car Championship</div>
@@ -143,8 +134,7 @@
                 </div>
                 <div class="series-card fade-in">
                     <div class="series-bg" style="background:linear-gradient(135deg,#1a0800,#3d1500);" data-abbr="TCR">
-                        <span class="series-stripe"></span><span class="series-stripe"></span><span
-                            class="series-stripe"></span>
+                        <img class="series-card-img" src="images/touring.jpg" alt="TCR" />
                     </div>
                     <div class="series-card-body">
                         <div class="series-card-name">TCR International / National Series</div>
@@ -155,28 +145,29 @@
                 </div>
                 <div class="series-card fade-in">
                     <div class="series-bg" style="background:linear-gradient(135deg,#0d0800,#251500);" data-abbr="STC">
-                        <span class="series-stripe"></span><span class="series-stripe"></span><span
-                            class="series-stripe"></span></div>
-                    <div class="series-card-body">
-                        <div class="series-card-name">Super Touring (ยุคทอง 1990s)</div>
-                        <span class="series-card-since">ค.ศ. 1993–2000</span>
-                        <p>ยุคทองของ BTCC ด้วย Renault Laguna, Honda Accord, Volvo S40, BMW 320i — สมัยที่ Touring Car
-                            ดังกว่า F1 ในอังกฤษ</p>
+                        <img class="series-card-img" src="images/index_touring.jpg" alt="STC" />
+                        <div class="series-card-body">
+                            <div class="series-card-name">Super Touring (ยุคทอง 1990s)</div>
+                            <span class="series-card-since">ค.ศ. 1993–2000</span>
+                            <p>ยุคทองของ BTCC ด้วย Renault Laguna, Honda Accord, Volvo S40, BMW 320i — สมัยที่ Touring
+                                Car
+                                ดังกว่า F1 ในอังกฤษ</p>
+                        </div>
+                    </div>
+                    <div class="series-card fade-in">
+                        <div class="series-bg" style="background:linear-gradient(135deg,#001500,#002d00);"
+                            data-abbr="SCA">
+                            <img class="series-card-img" src="images/american.jpg" alt="Supercars" />
+                            <div class="series-card-body">
+                                <div class="series-card-name">Supercars Championship (ออสเตรเลีย)</div>
+                                <span class="series-card-since">ก่อตั้ง ค.ศ. 1960</span>
+                                <p>Touring Car ชั้นนำออสเตรเลีย ด้วย Ford Mustang และ Chevrolet Camaro
+                                    ที่มีเสียงเครื่องยนต์ V8
+                                    อันโด่งดัง รวม Bathurst 1000 อันเลื่องชื่อ</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="series-card fade-in">
-                    <div class="series-bg" style="background:linear-gradient(135deg,#001500,#002d00);" data-abbr="SCA">
-                        <span class="series-stripe"></span><span class="series-stripe"></span><span
-                            class="series-stripe"></span></div>
-                    <div class="series-card-body">
-                        <div class="series-card-name">Supercars Championship (ออสเตรเลีย)</div>
-                        <span class="series-card-since">ก่อตั้ง ค.ศ. 1960</span>
-                        <p>Touring Car ชั้นนำออสเตรเลีย ด้วย Ford Mustang และ Chevrolet Camaro ที่มีเสียงเครื่องยนต์ V8
-                            อันโด่งดัง รวม Bathurst 1000 อันเลื่องชื่อ</p>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
 
     <!-- ③ HISTORY -->
@@ -195,9 +186,7 @@
                         ปฏิวัติวงการ ด้วยต้นทุนต่ำกว่า ทำให้ผู้ผลิตและทีมเอกชนสามารถเข้าร่วมได้มากขึ้นทั่วโลก</p>
                 </div>
                 <div class="split-img-wrap">
-                    <div class="split-img series-bg" style="background:linear-gradient(135deg,#06060e,#141425);"
-                        data-abbr="DTM"><span class="series-stripe"></span><span class="series-stripe"></span><span
-                            class="series-stripe"></span></div>
+                    <img class="split-img" src="images/dtm.jpg" alt="Touring Car History" />
                 </div>
             </div>
             <div class="timeline fade-in" style="margin-top:60px">
@@ -260,9 +249,7 @@
             <h2 class="section-title fade-in">จุดกำเนิด<em>DTM & WTCR</em></h2>
             <div class="split fade-in" style="margin-top:48px">
                 <div class="split-img-wrap">
-                    <div class="split-img series-bg" style="background:linear-gradient(135deg,#00051a,#001242);"
-                        data-abbr="DTM"><span class="series-stripe"></span><span class="series-stripe"></span><span
-                            class="series-stripe"></span></div>
+                    <img class="split-img" src="images/dtm.jpg" alt="DTM Origins" />
                 </div>
                 <div class="split-text">
                     <p>DTM เริ่มจากนักแข่งและทีมเอกชนในเยอรมันที่ต้องการแข่งขันรถ Touring ระดับสูง โดย <strong
