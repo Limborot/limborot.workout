@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>American Motorsport | Motorsport Limborot</title>
+    <meta name="description" content="American Motorsport — NASCAR IndyCar IMSA NHRA ประวัติ ทีม กฎ สเปครถ" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <nav class="navbar" id="navbar">
+        <a class="nav-logo" href="index.html">MOTOR<span>SPORT</span></a>
+        <ul class="nav-links">
+            <li><a href="formula.html">Formula</a></li>
+            <li><a href="gt-endurance.html">GT & Endurance</a></li>
+            <li><a href="rally.html">Rally</a></li>
+            <li><a href="touring.html">Touring Car</a></li>
+            <li><a href="american.html" class="active">American</a></li>
+        </ul>
+        <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileClose">✕</button>
+        <a href="formula.html">Formula</a>
+        <a href="gt-endurance.html">GT & Endurance</a>
+        <a href="rally.html">Rally</a>
+        <a href="touring.html">Touring Car</a>
+        <a href="american.html">American</a>
+    </div>
+
+    <!-- PAGE HERO (CSS bg) -->
+    <div class="page-hero" style="background:linear-gradient(135deg,#0a0a1c 0%,#10103d 50%,#05051a 100%);">
+        <div class="page-hero-overlay" style="background:linear-gradient(to top,#080808 0%,transparent 70%);"></div>
+        <div class="page-hero-content">
+            <a class="back-link" href="index.html">← กลับหน้าหลัก</a>
+            <div class="page-eyebrow">ประเภทที่ 05</div>
+            <h1>AMERICAN<em>MOTORSPORT</em></h1>
+            <p>Stars, Stripes &amp; Speed — จาก Oval สู่ Road Course เสียง V8 อันโด่งดัง ศึก NASCAR, IndyCar และ NHRA
+                ที่หล่อเลี้ยงวัฒนธรรมอเมริกันมาหลายรุ่น</p>
+        </div>
+    </div>
+
+    <!-- SECTION NAV -->
+    <div class="section-nav">
+        <div class="section-nav-inner">
+            <button class="snav-btn active" data-target="overview">ภาพรวม</button>
+            <button class="snav-btn" data-target="series">รายการแข่งขัน</button>
+            <button class="snav-btn" data-target="history">ประวัติประเภท</button>
+            <button class="snav-btn" data-target="origin">จุดกำเนิด</button>
+            <button class="snav-btn" data-target="teams">ทีม &amp; กฎ</button>
+            <button class="snav-btn" data-target="specs">สเปครถ</button>
+        </div>
+    </div>
+
+    <!-- ① OVERVIEW -->
+    <section class="content-section section" id="overview">
+        <div class="container">
+            <div class="section-label"><span>ภาพรวม</span></div>
+            <h2 class="section-title fade-in">American Motorsport<em>คืออะไร?</em></h2>
+            <div class="split fade-in">
+                <div class="split-img-wrap"><img class="split-img" src="images/hero.png" alt="American Motorsport" />
+                </div>
+                <div class="split-text">
+                    <p>American Motorsport มีเอกลักษณ์เฉพาะตัวที่แตกต่างจากยุโรปอย่างชัดเจน เริ่มจาก <strong
+                            style="color:#d4af37">Oval Racing</strong> ที่แข่งบนสนามรูปไข่แทนสนาม Circuit</p>
+                    <p><strong style="color:#d4af37">NASCAR</strong> คือ Bible ของมอเตอร์สปอร์ตอเมริกัน
+                        ใช้รถที่มีรูปทรงใกล้เคียงรถ Stock ในโชว์รูม เสียง V8 ดังสนั่น แฟนสรวลเสเฮฮา
+                        ดื่มเบียร์และเชียร์รถหมายเลขโปรด</p>
+                    <p><strong style="color:#d4af37">IndyCar</strong> คือ Open-Wheel Race สไตล์อเมริกัน แข่งทั้ง Oval
+                        และ Road Course รวม Indianapolis 500 ที่ยิ่งใหญ่ที่สุดในโลก — เรียกว่า "The Greatest Spectacle
+                        in Racing"</p>
+                </div>
+            </div>
+            <div class="img-row fade-in">
+                <img src="images/hero.png" alt="NASCAR Oval" />
+                <img src="images/formula.png" alt="IndyCar" />
+                <img src="images/gt.png" alt="IMSA" />
+            </div>
+        </div>
+    </section>
+
+    <!-- ② SERIES -->
+    <section class="content-section section-alt" id="series">
+        <div class="container">
+            <div class="section-label"><span>รายการแข่งขัน</span></div>
+            <h2 class="section-title fade-in">รายการ<em>หลัก</em></h2>
+            <div class="series-grid">
+                <div class="series-card fade-in">
+                    <img class="series-card-img" src="images/hero.png" alt="NASCAR Cup" />
+                    <div class="series-card-body">
+                        <div class="series-card-name">NASCAR Cup Series</div>
+                        <span class="series-card-since">ก่อตั้ง ค.ศ. 1949</span>
+                        <p>สูงสุดใน NASCAR 36 รายการต่อปี Daytona 500 เป็นรายการที่ใหญ่ที่สุด ทีม Hendrick, Penske, Joe
+                            Gibbs Racing ครองมา 3 ทศวรรษ</p>
+                    </div>
+                </div>
+                <div class="series-card fade-in">
+                    <img class="series-card-img" src="images/formula.png" alt="IndyCar" />
+                    <div class="series-card-body">
+                        <div class="series-card-name">IndyCar Series</div>
+                        <span class="series-card-since">ก่อตั้ง ค.ศ. 1996 (ยุคใหม่)</span>
+                        <p>Open-Wheel เร็วที่สุดในอเมริกา รวม Indianapolis 500 ที่มีประวัติยาวนานตั้งแต่ 1911 Dallara
+                            DW12/IR18 เป็นรถที่ใช้ Engine Honda หรือ Chevy</p>
+                    </div>
+                </div>
+                <div class="series-card fade-in">
+                    <img class="series-card-img" src="images/gt.png" alt="IMSA" />
+                    <div class="series-card-body">
+                        <div class="series-card-name">IMSA WeatherTech SportsCar Championship</div>
+                        <span class="series-card-since">ก่อตั้ง ค.ศ. 2014</span>
+                        <p>Endurance สไตล์อเมริกา ด้วย Daytona 24h และ Sebring 12h GTP, LMP2, GTD Pro, GTD — รถ GT3
+                            แข่งร่วมกับ Prototype หรูหรา</p>
+                    </div>
+                </div>
+                <div class="series-card fade-in">
+                    <img class="series-card-img" src="images/rally.png" alt="NHRA" />
+                    <div class="series-card-body">
+                        <div class="series-card-name">NHRA — National Hot Rod Association</div>
+                        <span class="series-card-since">ก่อตั้ง ค.ศ. 1951</span>
+                        <p>Drag Racing ระดับสูงสุด ด้วย Top Fuel Dragster ที่เร่งจาก 0–500 km/h ใน 3.7 วินาที บนระยะ 402
+                            เมตร เป็น Sport ที่เร่งเร็วที่สุดในโลก</p>
+                    </div>
+                </div>
+                <div class="series-card fade-in">
+                    <img class="series-card-img" src="images/hero.png" alt="Formula Drift" />
+                    <div class="series-card-body">
+                        <div class="series-card-name">Formula Drift Championship</div>
+                        <span class="series-card-since">ก่อตั้ง ค.ศ. 2004</span>
+                        <p>Drifting อย่างเป็นทางการระดับชิงแชมป์ รถ 700–1,000 แรงม้า แข่ง Tandem Drift (คู่)
+                            ตัดสินด้วยคะแนนรูปแบบ เป็น Motorsport ที่ดึงดูด Gen Z</p>
+                    </div>
+                </div>
+                <div class="series-card fade-in">
+                    <img class="series-card-img" src="images/gt.png" alt="NASCAR Xfinity" />
+                    <div class="series-card-body">
+                        <div class="series-card-name">NASCAR Xfinity Series</div>
+                        <span class="series-card-since">ก่อตั้ง ค.ศ. 1982</span>
+                        <p>ชั้นสองของ NASCAR เป็นบันไดสู่ Cup Series นักแข่ง Cup อาวุโสบางครั้งลงแข่งเพื่อชัยชนะ รอง
+                            NASCAR ที่ได้รับความนิยมสูงสุดในอเมริกา</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ③ HISTORY -->
+    <section class="content-section section" id="history">
+        <div class="container">
+            <div class="section-label"><span>ประวัติประเภทการแข่ง</span></div>
+            <h2 class="section-title fade-in">ประวัติ<em>American Motorsport</em></h2>
+            <div class="split rev fade-in" style="margin-top:48px">
+                <div class="split-text">
+                    <p>การแข่งรถในอเมริกาเริ่มต้นก่อน NASCAR จะเกิด เมื่อ <strong style="color:#d4af37">Indianapolis
+                            Motor Speedway</strong> เปิดในปี 1909 และ Indianapolis 500 ครั้งแรกจัดในปี 1911
+                        ดึงดูดฝูงชนถึง 80,000 คน</p>
+                    <p>NASCAR เกิดจาก <strong style="color:#d4af37">วัฒนธรรม Bootlegger</strong> ในยุค Prohibition
+                        (ห้ามสุรา) ทางใต้ของอเมริกา คนขับรถลักลอบส่งเหล้าต้องขับเร็วและหลบตำรวจ ทักษะนี้แปลมาสู่สนามแข่ง
+                    </p>
+                    <p>Jeff Gordon, Dale Earnhardt Sr. และ Richard Petty คือ Icons ที่ทำให้ NASCAR กลายเป็น Major Sport
+                        ระดับ NFL ในยุค 1990–2000s มีผู้ชมสด 75,000–250,000 คนต่อรายการ</p>
+                </div>
+                <div class="split-img-wrap"><img class="split-img" src="images/hero.png"
+                        alt="American Motorsport History" /></div>
+            </div>
+            <div class="timeline fade-in" style="margin-top:60px">
+                <div class="tl-item">
+                    <div class="tl-line">
+                        <div class="tl-dot"></div>
+                        <div class="tl-track"></div>
+                    </div>
+                    <div class="tl-year">1911</div>
+                    <div class="tl-content">
+                        <h4>Indianapolis 500 ครั้งแรก</h4>
+                        <p>Ray Harroun ขับ Marmon Wasp คว้าชัย ด้วยความเร็วเฉลี่ย 120 km/h บน Oval 4.0 ไมล์
+                            เป็นรายการที่ยิ่งใหญ่ที่สุดในโลกมาถึงปัจจุบัน</p>
+                    </div>
+                </div>
+                <div class="tl-item">
+                    <div class="tl-line">
+                        <div class="tl-dot"></div>
+                        <div class="tl-track"></div>
+                    </div>
+                    <div class="tl-year">1948</div>
+                    <div class="tl-content">
+                        <h4>Bill France Sr. ก่อตั้ง NASCAR</h4>
+                        <p>William Henry Getty France (Big Bill) ก่อตั้ง National Association for Stock Car Auto Racing
+                            ที่ Daytona Beach ฟลอริดา สร้าง Structure การแข่งที่ยั่งยืน</p>
+                    </div>
+                </div>
+                <div class="tl-item">
+                    <div class="tl-line">
+                        <div class="tl-dot"></div>
+                        <div class="tl-track"></div>
+                    </div>
+                    <div class="tl-year">1979</div>
+                    <div class="tl-content">
+                        <h4>Daytona 500 ถ่ายทอดสดครั้งแรก</h4>
+                        <p>CBS ถ่ายทอดสด Daytona 500 ทั้งรายการเป็นครั้งแรก ขณะที่พายุหิมะทำให้คน 80 ล้านคนติดบ้าน และดู
+                            NASCAR — เป็นจุดพลิกผันสู่ความดัง</p>
+                    </div>
+                </div>
+                <div class="tl-item">
+                    <div class="tl-line">
+                        <div class="tl-dot"></div>
+                        <div class="tl-track"></div>
+                    </div>
+                    <div class="tl-year">2001</div>
+                    <div class="tl-content">
+                        <h4>Dale Earnhardt Sr. เสียชีวิต</h4>
+                        <p>ตำนาน NASCAR เสียชีวิตใน Turn 4 ของ Daytona 500 จากการชนก้องสนาม
+                            นำไปสู่การปฏิรูปความปลอดภัยครั้งใหญ่ใน NASCAR และ Motorsport โลก</p>
+                    </div>
+                </div>
+                <div class="tl-item">
+                    <div class="tl-line">
+                        <div class="tl-dot"></div>
+                        <div class="tl-track"></div>
+                    </div>
+                    <div class="tl-year">2022</div>
+                    <div class="tl-content">
+                        <h4>NASCAR Next Gen — รถใหม่ทั้งหมด</h4>
+                        <p>NASCAR เปิดตัว Next Gen Car พร้อมดีไซน์ใหม่ Independent Rear Suspension และตัว Chassis Carbon
+                            Fiber นำทีม Toyota, Chevy, Ford มาแข่งกันใกล้ชิดขึ้น</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ④ ORIGIN -->
+    <section class="content-section section-alt" id="origin">
+        <div class="container">
+            <div class="section-label"><span>จุดกำเนิด</span></div>
+            <h2 class="section-title fade-in">จุดกำเนิด<em>NASCAR & IndyCar</em></h2>
+            <div class="split fade-in" style="margin-top:48px">
+                <div class="split-img-wrap"><img class="split-img" src="images/formula.png" alt="NASCAR Origin" /></div>
+                <div class="split-text">
+                    <p>NASCAR ถือกำเนิดจาก <strong style="color:#d4af37">Daytona Beach Road Course</strong>
+                        ที่ใช้ถนนบนชายหาดและถนน A1A คู่ขนาน ผู้ก่อตั้ง Bill France Sr. เห็นว่าการแข่งไม่มีกฎที่ชัดเจน
+                        และตัดสินใจสร้าง Organization</p>
+                    <p>ชื่อ <strong style="color:#d4af37">"Stock Car"</strong>
+                        มาจากแนวคิดว่ารถที่แข่งควรใกล้เคียงรถที่ขายในโชว์รูม ("Stock" = มาตรฐาน) แม้ปัจจุบันรถ NASCAR
+                        จะเป็น Race Car ล้วน แต่ยังคงทรงภายนอกของ Camry, Camaro, Mustang</p>
+                    <p>Indianapolis 500 เป็น Crown Jewel ของ IndyCar มาตั้งแต่ 1911 ด้วย <strong
+                            style="color:#d4af37">Carl G. Fisher</strong> ผู้พัฒนา Indianapolis Motor Speedway
+                        เพื่อทดสอบรถยนต์และส่งเสริมอุตสาหกรรมรถยนต์ Indiana</p>
+                </div>
+            </div>
+            <div class="quote-block fade-in">
+                <p class="quote-text">"Gentlemen, start your engines!" — คำพูดที่ตราตรึงในหัวใจชาวอเมริกันมากว่า 100 ปี
+                    ไม่มีคำไหนในโลกมอเตอร์สปอร์ตที่ทรงพลังเท่านี้อีกแล้ว"</p>
+                <span class="quote-attr">— ประเพณีแห่ง Indianapolis 500</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ⑤ TEAMS & RULES -->
+    <section class="content-section section" id="teams">
+        <div class="container">
+            <div class="section-label"><span>ทีม &amp; กฎ</span></div>
+            <h2 class="section-title fade-in">ทีมเด่น &amp;<em>กฎการแข่งขัน</em></h2>
+            <div class="teams-grid fade-in">
+                <div class="team-card">
+                    <div class="team-icon">🔴</div>
+                    <div class="team-name">Hendrick Motorsports</div>
+                    <div class="team-origin">🇺🇸 NASCAR</div>
+                    <div class="team-desc">ทีม NASCAR ที่แข็งแกร่งที่สุดตลอดกาล 14 แชมป์ Driver Jeff Gordon, Jimmie
+                        Johnson, Kyle Larson เป็นนักแข่ง สีแดง 48/5/24 เป็นสัญลักษณ์</div>
+                </div>
+                <div class="team-card">
+                    <div class="team-icon">⚫</div>
+                    <div class="team-name">Team Penske</div>
+                    <div class="team-origin">🇺🇸 NASCAR+IndyCar</div>
+                    <div class="team-desc">Roger Penske สร้าง Empire ที่ครอบทั้ง NASCAR และ IndyCar ชนะ Indy 500 มากกว่า
+                        20 ครั้ง Ryan Blaney แชมป์ NASCAR 2023</div>
+                </div>
+                <div class="team-card">
+                    <div class="team-icon">🔵</div>
+                    <div class="team-name">Chip Ganassi Racing</div>
+                    <div class="team-origin">🇺🇸 NASCAR+IndyCar</div>
+                    <div class="team-desc">ครอง IndyCar กับ Scott Dixon แชมป์ 6 สมัย และแข่ง NASCAR ด้วย Kyle Larson
+                        นำก่อนย้ายไป Hendrick</div>
+                </div>
+                <div class="team-card">
+                    <div class="team-icon">🟠</div>
+                    <div class="team-name">Joe Gibbs Racing</div>
+                    <div class="team-origin">🇺🇸 NASCAR</div>
+                    <div class="team-desc">อดีต NFL Coach Joe Gibbs สร้างทีม Toyota ที่แข็งกว่าใน NASCAR Martin, Kyle
+                        Busch, Denny Hamlin เป็น Stars ของทีม</div>
+                </div>
+                <div class="team-card">
+                    <div class="team-icon">🟡</div>
+                    <div class="team-name">Andretti Global</div>
+                    <div class="team-origin">🇺🇸 IndyCar</div>
+                    <div class="team-desc">ตระกูล Andretti ใน IndyCar กำลังพยายามเข้า F1 ด้วย Colton Herta เป็น Talent
+                        หลัก Michael Andretti เป็น Owner ผู้ทะเยอทะยาน</div>
+                </div>
+                <div class="team-card">
+                    <div class="team-icon">🔴</div>
+                    <div class="team-name">Tony Stewart / SHR</div>
+                    <div class="team-origin">🇺🇸 NASCAR</div>
+                    <div class="team-desc">Stewart-Haas Racing ทีมที่ Tony Stewart นักแข่งแชมป์ 3 สมัยสร้างขึ้นเอง
+                        เชี่ยวชาญทั้ง Oval และ Road Course</div>
+                </div>
+            </div>
+            <div class="rules-grid fade-in" style="margin-top:48px">
+                <div class="rule-item">
+                    <div class="rule-num">01</div>
+                    <div>
+                        <div class="rule-title">NASCAR Playoff Format</div>
+                        <div class="rule-desc">16 ทีมเข้า Playoff 10 รายการสุดท้าย ตัดออกทีละ 4 ทีมทุก 3 รายการ จนเหลือ
+                            Final 4 ที่ Phoenix ตัดสินแชมป์ชิงแชมป์ 1 คน</div>
+                    </div>
+                </div>
+                <div class="rule-item">
+                    <div class="rule-num">02</div>
+                    <div>
+                        <div class="rule-title">Superspeedway Restrictor Plate</div>
+                        <div class="rule-desc">ใน Daytona และ Talladega ต้องใส่ Restrictor Plate จำกัดกำลังเครื่องยนต์
+                            ทำให้รถทุกคันวิ่งเท่ากัน เกิด Pack Racing อันอันตราย</div>
+                    </div>
+                </div>
+                <div class="rule-item">
+                    <div class="rule-num">03</div>
+                    <div>
+                        <div class="rule-title">IndyCar Push-to-Pass</div>
+                        <div class="rule-desc">นักแข่งมีปุ่ม Push-to-Pass เพิ่ม Boost ชั่วคราว สูงสุด 200 วินาทีต่อ Race
+                            ใช้แซงหรือป้องกัน เป็นกลยุทธ์สำคัญ</div>
+                    </div>
+                </div>
+                <div class="rule-item">
+                    <div class="rule-num">04</div>
+                    <div>
+                        <div class="rule-title">Caution & Lucky Dog</div>
+                        <div class="rule-desc">NASCAR ใช้ Caution Flag หยุดนาฬิกา นักแข่งอันดับ 1 Lap Down ได้กลับมา 1
+                            ใน Lap (Lucky Dog Rule) ป้องกันไม่ให้รถห่างกันมากเกิน</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ⑥ SPECS -->
+    <section class="content-section section-alt" id="specs">
+        <div class="container">
+            <div class="section-label"><span>สเปครถ</span></div>
+            <h2 class="section-title fade-in">Car <em>Specifications</em></h2>
+            <div class="split fade-in" style="margin-top:48px">
+                <div class="split-img-wrap"><img class="split-img" src="images/hero.png" alt="NASCAR Next Gen" /></div>
+                <div class="split-text">
+                    <p>NASCAR Next Gen (2022) ใช้ <strong style="color:#d4af37">5.86L V8 N/A</strong> ที่ให้กำลัง 670
+                        แรงม้า เสียงอันเป็นเอกลักษณ์ที่ไม่มี Motorsport ไหนเทียบได้</p>
+                    <p>IndyCar Dallara IR18 ใช้ <strong style="color:#d4af37">2.2L V6 Twin Turbo</strong> ให้กำลัง 550+
+                        แรงม้า บน Oval ความเร็วสูงสุดถึง <strong style="color:#d4af37">370+ km/h</strong> ที่
+                        Indianapolis</p>
+                    <p>รถทั้งสองใช้ Aero Package ที่ปรับตาม Track Type — Oval ลด Downforce สูงสุด เพื่อความเร็ว Road
+                        Course เพิ่ม Wing เพื่อควบคุม</p>
+                </div>
+            </div>
+            <div class="specs-wrapper fade-in">
+                <table class="specs-table">
+                    <thead>
+                        <tr>
+                            <th>รายละเอียด</th>
+                            <th>NASCAR Next Gen (2024)</th>
+                            <th>IndyCar IR18 (2024)</th>
+                            <th>NHRA Top Fuel</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>เครื่องยนต์</td>
+                            <td>5.86L V8 N/A</td>
+                            <td>2.2L V6 Twin Turbo</td>
+                            <td>500ci Supercharged V8 (Nitromethane)</td>
+                        </tr>
+                        <tr>
+                            <td>กำลังสูงสุด</td>
+                            <td>670 แรงม้า</td>
+                            <td>550–700 แรงม้า</td>
+                            <td>11,000+ แรงม้า</td>
+                        </tr>
+                        <tr>
+                            <td>น้ำหนักขั้นต่ำ</td>
+                            <td>1,542 กิโลกรัม</td>
+                            <td>718 กิโลกรัม</td>
+                            <td>~1,135 กิโลกรัม</td>
+                        </tr>
+                        <tr>
+                            <td>ความเร็วสูงสุด</td>
+                            <td>~320 km/h (Oval)</td>
+                            <td>375+ km/h (Indy Oval)</td>
+                            <td>540+ km/h (0.25 ไมล์)</td>
+                        </tr>
+                        <tr>
+                            <td>เร่ง 0–100 km/h</td>
+                            <td>~3.4 วินาที</td>
+                            <td>~2.5 วินาที</td>
+                            <td>~0.8 วินาที</td>
+                        </tr>
+                        <tr>
+                            <td>เครื่องยนต์ Supplier</td>
+                            <td>Chevrolet / Toyota / Ford</td>
+                            <td>Chevrolet / Honda</td>
+                            <td>Crower / Hadegorn / Brad / Alan Johnson</td>
+                        </tr>
+                        <tr>
+                            <td>ยาง</td>
+                            <td>Goodyear Eagle (Built for track)</td>
+                            <td>Firestone Firehawk</td>
+                            <td>M&H Racemaster</td>
+                        </tr>
+                        <tr>
+                            <td>เกียร์</td>
+                            <td>4-speed Sequential</td>
+                            <td>6-speed Sequential Paddle</td>
+                            <td>No gearbox (Clutch only)</td>
+                        </tr>
+                        <tr>
+                            <td>เชื้อเพลิง</td>
+                            <td>Sunoco Green E15</td>
+                            <td>Sunoco 260 GT</td>
+                            <td>Nitromethane 90%</td>
+                        </tr>
+                        <tr>
+                            <td>ราคาโดยประมาณ</td>
+                            <td>~$600,000 / ใบ Chassis</td>
+                            <td>~$3.5 ล้าน USD</td>
+                            <td>~$500,000 (Top Fuel dragster)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">MOTOR<span>SPORT</span></div>
+        <p>ส่วนหนึ่งของ Limborot — สารานุกรมมอเตอร์สปอร์ตภาษาไทย</p>
+        <ul class="footer-links">
+            <li><a href="index.html">หน้าหลัก</a></li>
+            <li><a href="formula.html">Formula</a></li>
+            <li><a href="gt-endurance.html">GT & Endurance</a></li>
+            <li><a href="rally.html">Rally</a></li>
+            <li><a href="touring.html">Touring Car</a></li>
+        </ul>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>

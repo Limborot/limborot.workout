@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Rally | Motorsport Limborot</title>
+    <meta name="description" content="Rally Racing — WRC Dakar ERC ประวัติ ทีม กฎ สเปครถ" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <nav class="navbar" id="navbar">
+        <a class="nav-logo" href="index.html">MOTOR<span>SPORT</span></a>
+        <ul class="nav-links">
+            <li><a href="formula.html">Formula</a></li>
+            <li><a href="gt-endurance.html">GT & Endurance</a></li>
+            <li><a href="rally.html" class="active">Rally</a></li>
+            <li><a href="touring.html">Touring Car</a></li>
+            <li><a href="american.html">American</a></li>
+        </ul>
+        <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileClose">✕</button>
+        <a href="formula.html">Formula</a>
+        <a href="gt-endurance.html">GT & Endurance</a>
+        <a href="rally.html">Rally</a>
+        <a href="touring.html">Touring Car</a>
+        <a href="american.html">American</a>
+    </div>
+
+    <!-- PAGE HERO -->
+    <div class="page-hero">
+        <div class="page-hero-bg" style="background-image:url('images/rally.png')"></div>
+        <div class="page-hero-overlay"></div>
+        <div class="page-hero-content">
+            <a class="back-link" href="index.html">← กลับหน้าหลัก</a>
+            <div class="page-eyebrow">ประเภทที่ 03</div>
+            <h1>RALLY<em>RACING</em></h1>
+            <p>ฝุ่น หิมะ โคลน น้ำ — รถยนต์และนักแข่งฝ่าทุกสภาพอากาศบนถนนสาธารณะที่ปิดชั่วคราว พร้อม Co-Driver นำทาง</p>
+        </div>
+    </div>
+
+    <!-- SECTION NAV -->
+    <div class="section-nav">
+        <div class="section-nav-inner">
+            <button class="snav-btn active" data-target="overview">ภาพรวม</button>
+            <button class="snav-btn" data-target="series">รายการแข่งขัน</button>
+            <button class="snav-btn" data-target="history">ประวัติประเภท</button>
+            <button class="snav-btn" data-target="origin">จุดกำเนิด</button>
+            <button class="snav-btn" data-target="teams">ทีม &amp; กฎ</button>
+            <button class="snav-btn" data-target="specs">สเปครถ</button>
+        </div>
+    </div>
+
+    <!-- ① OVERVIEW -->
+    <section class="content-section section" id="overview">
+        <div class="container">
+            <div class="section-label"><span>ภาพรวม</span></div>
+            <h2 class="section-title fade-in">Rally Racing<em>คืออะไร?</em></h2>
+            <div class="split fade-in">
+                <div class="split-img-wrap"><img class="split-img" src="images/rally.png" alt="WRC Rally" /></div>
+                <div class="split-text">
+                    <p><strong style="color:#d4af37">Rally Racing</strong> คือการแข่งขันบน
+                        <strong>ถนนสาธารณะที่ปิดชั่วคราว</strong> หรือทางธรรมชาติ แตกต่างจาก Circuit Racing
+                        เพราะใช้เส้นทางที่ไม่ซ้ำกัน แต่ละ Special Stage คือถนนใหม่</p>
+                    <p>สิ่งที่ทำให้ Rally พิเศษคือ <strong style="color:#d4af37">Co-Driver (นักนำทาง)</strong>
+                        ที่นั่งข้างนักแข่ง อ่าน Pace Note แบบ Real-Time เพื่อแจ้งโค้งและสภาพถนนล่วงหน้า
+                        ต้องประสานกันอย่างสมบูรณ์แบบ</p>
+                    <p>สภาพพื้นผิวหลากหลาย ตั้งแต่ <strong style="color:#d4af37">Asphalt, Gravel (กรวด), Snow/Ice และ
+                            Mud</strong> แต่ละสภาพต้องการทักษะและ Setup รถที่แตกต่างกันสิ้นเชิง</p>
+                </div>
+            </div>
+            <img class="img-full fade-in" src="images/rally.png" alt="WRC Full Stage" />
+        </div>
+    </section>
+
+    <!-- ② SERIES -->
+    <section class="content-section section-alt" id="series">
+        <div class="container">
+            <div class="section-label"><span>รายการแข่งขัน</span></div>
+            <h2 class="section-title fade-in">รายการ<em>หลัก</em></h2>
+            <div class="series-grid">
+                <div class="series-card fade-in">
+                    <img class="series-card-img" src="images/rally.png" alt="WRC" />
+                    <div class="series-card-body">
+                        <div class="series-card-name">FIA World Rally Championship (WRC)</div>
+                        <span class="series-card-since">ก่อตั้ง ค.ศ. 1973</span>
+                        <p>ชิงแชมป์โลก Rally สูงสุด จัด 13 รายการทั่วโลก ตั้งแต่ Monte Carlo ในฤดูหนาว ถึง Rally Kenya
+                            บน Gravel กลางทวีปแอฟริกา</p>
+                    </div>
+                </div>
+                <div class="series-card fade-in">
+                    <img class="series-card-img" src="images/hero.png" alt="Dakar" />
+                    <div class="series-card-body">
+                        <div class="series-card-name">Dakar Rally</div>
+                        <span class="series-card-since">ก่อตั้ง ค.ศ. 1978</span>
+                        <p>การแข่งขันแห่งความอดทนที่โหดที่สุดในโลก ข้ามทะเลทราย Saudi Arabia 2 สัปดาห์ หลายพันกม. มีคลาส
+                            Car, Truck, Bike, Quad และ SxS</p>
+                    </div>
+                </div>
+                <div class="series-card fade-in">
+                    <img class="series-card-img" src="images/formula.png" alt="ERC" />
+                    <div class="series-card-body">
+                        <div class="series-card-name">FIA European Rally Championship (ERC)</div>
+                        <span class="series-card-since">ก่อตั้ง ค.ศ. 1953</span>
+                        <p>ชิงแชมป์ Rally ระดับยุโรป เป็นบันไดสู่ WRC มีหลายรายการในยุโรปและหมู่เกาะรอบข้าง เช่น Canary
+                            Islands, Rally Poland, Rally Liepāja</p>
+                    </div>
+                </div>
+                <div class="series-card fade-in">
+                    <img class="series-card-img" src="images/gt.png" alt="APRC" />
+                    <div class="series-card-body">
+                        <div class="series-card-name">Asia Pacific Rally Championship (APRC)</div>
+                        <span class="series-card-since">ก่อตั้ง ค.ศ. 1989</span>
+                        <p>ชิงแชมป์ Rally ของเอเชีย-แปซิฟิก จัดในออสเตรเลีย ญี่ปุ่น อินเดีย และประเทศอื่นในภูมิภาค
+                            เป็นเส้นทางสู่ WRC สำหรับนักแข่งเอเชีย</p>
+                    </div>
+                </div>
+                <div class="series-card fade-in">
+                    <img class="series-card-img" src="images/rally.png" alt="National Rally" />
+                    <div class="series-card-body">
+                        <div class="series-card-name">National Rally Championships</div>
+                        <span class="series-card-since">ทั่วโลก</span>
+                        <p>แต่ละประเทศมีชิงแชมป์ Rally ของตัวเอง เช่น WRC2, WRC3 และ National Rally Series
+                            ที่อนุญาตให้รถจดทะเบียนประจำชาติเข้าร่วม</p>
+                    </div>
+                </div>
+                <div class="series-card fade-in">
+                    <img class="series-card-img" src="images/formula.png" alt="Pikes Peak" />
+                    <div class="series-card-body">
+                        <div class="series-card-name">Pikes Peak International Hill Climb</div>
+                        <span class="series-card-since">ก่อตั้ง ค.ศ. 1916</span>
+                        <p>"Race to the Clouds" บนภูเขา Pikes Peak สูง 4,300 เมตร ไม่มี Guardrails —
+                            สุดขีดความกล้าและทักษะ Volkswagen ID.R ทำสถิติ 7:57 น.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ③ HISTORY -->
+    <section class="content-section section" id="history">
+        <div class="container">
+            <div class="section-label"><span>ประวัติประเภทการแข่ง</span></div>
+            <h2 class="section-title fade-in">ประวัติ<em>Rally Racing</em></h2>
+            <div class="split rev fade-in" style="margin-top:48px">
+                <div class="split-text">
+                    <p>Rally เริ่มจาก <strong style="color:#d4af37">Monte-Carlo Rally ปี 1911</strong>
+                        ที่นักแข่งต้องขับจากหลายจุดทั่วยุโรปมายัง Monaco ด้วยรถยนต์ยุคแรก
+                        ซึ่งเป็นการทดสอบความทนทานอย่างแท้จริง</p>
+                    <p>ยุค 1980s คือ <strong style="color:#d4af37">Group B Era</strong> ยุคทองที่โหดมากที่สุด รถ 4WD
+                        Turbo กำลัง 500+ แรงม้า บนถนนที่แฟนวิ่งอยู่ข้างทาง Audi Quattro, Peugeot 205 T16 และ Lancia
+                        Delta S4 เป็นสัญลักษณ์ยุคนี้</p>
+                    <p>Group B ถูกยกเลิกในปี 1986 หลังอุบัติเหตุหลายครั้ง รวมถึงการเสียชีวิตของ Henri Toivonen ใน
+                        Corsica Rally เปลี่ยนมาใช้ Group A และต่อมา World Rally Car</p>
+                </div>
+                <div class="split-img-wrap"><img class="split-img" src="images/rally.png" alt="Rally History" /></div>
+            </div>
+            <div class="timeline fade-in" style="margin-top:60px">
+                <div class="tl-item">
+                    <div class="tl-line">
+                        <div class="tl-dot"></div>
+                        <div class="tl-track"></div>
+                    </div>
+                    <div class="tl-year">1911</div>
+                    <div class="tl-content">
+                        <h4>Monte-Carlo Rally ครั้งแรก</h4>
+                        <p>การแข่ง Rally สมัยใหม่ครั้งแรก นักแข่งขับจากหลายเมืองทั่วยุโรปสู่ Monaco
+                            เพื่อทดสอบรถยนต์ในสภาพจริง</p>
+                    </div>
+                </div>
+                <div class="tl-item">
+                    <div class="tl-line">
+                        <div class="tl-dot"></div>
+                        <div class="tl-track"></div>
+                    </div>
+                    <div class="tl-year">1973</div>
+                    <div class="tl-content">
+                        <h4>WRC ก่อตั้งอย่างเป็นทางการ</h4>
+                        <p>FIA สร้าง World Rally Championship ฤดูกาลแรกมี 13 รายการ Alpine-Renault A110 และ Peugeot 504
+                            เป็นรถแชมป์ยุคแรก</p>
+                    </div>
+                </div>
+                <div class="tl-item">
+                    <div class="tl-line">
+                        <div class="tl-dot"></div>
+                        <div class="tl-track"></div>
+                    </div>
+                    <div class="tl-year">1980</div>
+                    <div class="tl-content">
+                        <h4>Audi Quattro ปฏิวัติ 4WD Rally</h4>
+                        <p>Audi นำ 4WD มาสู่ WRC ด้วย Quattro ทำลายความได้เปรียบของ 2WD ทันที เปลี่ยนแกน Rally ตลอดกาล
+                            Hannu Mikkola คว้าแชมป์</p>
+                    </div>
+                </div>
+                <div class="tl-item">
+                    <div class="tl-line">
+                        <div class="tl-dot"></div>
+                        <div class="tl-track"></div>
+                    </div>
+                    <div class="tl-year">1986</div>
+                    <div class="tl-content">
+                        <h4>ยุติ Group B — ปลอดภัยก่อน</h4>
+                        <p>หลังอุบัติเหตุ Henri Toivonen และ Sergio Cresto เสียชีวิตใน Corsica, FIA ยกเลิก Group B ทันที
+                            เปลี่ยนเป็น Group A ที่ปลอดภัยกว่า</p>
+                    </div>
+                </div>
+                <div class="tl-item">
+                    <div class="tl-line">
+                        <div class="tl-dot"></div>
+                        <div class="tl-track"></div>
+                    </div>
+                    <div class="tl-year">2022</div>
+                    <div class="tl-content">
+                        <h4>Rally1 Hybrid — ยุคใหม่ WRC</h4>
+                        <p>WRC ปรับใช้กฎ Rally1 ด้วยรถ Hybrid 500 แรงม้า Toyota GR Yaris Rally1, Hyundai i20 N, Ford
+                            Puma Rally1 เริ่มฤดูกาลใหม่ Kalle Rovanperä คว้าแชมป์</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ④ ORIGIN -->
+    <section class="content-section section-alt" id="origin">
+        <div class="container">
+            <div class="section-label"><span>จุดกำเนิด</span></div>
+            <h2 class="section-title fade-in">จุดกำเนิด<em>WRC</em></h2>
+            <div class="split fade-in" style="margin-top:48px">
+                <div class="split-img-wrap"><img class="split-img" src="images/rally.png" alt="WRC Origins" /></div>
+                <div class="split-text">
+                    <p>ก่อน WRC จะเกิดขึ้น Rally เป็นเพียงรายการประจำชาติและยุโรป FIA
+                        เห็นโอกาสสร้างชิงแชมป์โลกที่แท้จริงในปี <strong style="color:#d4af37">1972</strong>
+                        และเริ่มฤดูกาลแรกในปี 1973</p>
+                    <p>รายการแรกใน WRC คือ <strong style="color:#d4af37">Monte Carlo Rally 1973</strong> ที่ Jean-Claude
+                        Andruet ขับ Alpine-Renault A110 คว้าชัย ตามมาด้วย Waldegård และ Mikkola ในรายการอื่น</p>
+                    <p><strong style="color:#d4af37">Sébastien Loeb</strong> คือ Legend ผู้ยิ่งใหญ่ที่สุด ครองแชมป์ WRC
+                        9 สมัยติดต่อกัน (2004–2012) กับ Citroën เป็นสถิติที่ยังยืนอยู่จนถึงปัจจุบัน</p>
+                </div>
+            </div>
+            <div class="quote-block fade-in">
+                <p class="quote-text">"Rally คือการแข่งขันที่ใกล้ชิดธรรมชาติที่สุด คุณไม่ได้แข่งกับคู่แข่ง —
+                    คุณแข่งกับถนน สภาพอากาศ และตัวเอง"</p>
+                <span class="quote-attr">— Tommi Mäkinen, แชมป์ WRC 4 สมัย</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ⑤ TEAMS & RULES -->
+    <section class="content-section section" id="teams">
+        <div class="container">
+            <div class="section-label"><span>ทีม &amp; กฎ</span></div>
+            <h2 class="section-title fade-in">ทีมเด่น &amp;<em>กฎการแข่งขัน</em></h2>
+            <div class="teams-grid fade-in">
+                <div class="team-card">
+                    <div class="team-icon">⬜</div>
+                    <div class="team-name">Toyota Gazoo Racing WRT</div>
+                    <div class="team-origin">🇯🇵 / 🇫🇮</div>
+                    <div class="team-desc">ครองยุค Rally1 ด้วย GR Yaris Sébastien Ogier, Elfyn Evans, Kalle Rovanperä
+                        เป็นไลน์อัประดับโลก</div>
+                </div>
+                <div class="team-card">
+                    <div class="team-icon">🔵</div>
+                    <div class="team-name">Hyundai Shell Mobis WRT</div>
+                    <div class="team-origin">🇰🇷</div>
+                    <div class="team-desc">i20 N Rally1 คู่แข่งหลักของ Toyota ด้วย Thierry Neuville แชมป์โลก 2024
+                        หลังรอคอยมานาน</div>
+                </div>
+                <div class="team-card">
+                    <div class="team-icon">🔵</div>
+                    <div class="team-name">M-Sport Ford WRT</div>
+                    <div class="team-origin">🇬🇧</div>
+                    <div class="team-desc">Ford Puma Rally1 ทีมอิสระที่แข็งแกร่งที่สุด Sébastien Loeb เคยร่วมทีมนี้ด้วย
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-icon">🔴</div>
+                    <div class="team-name">Toyota (Historic) — Sébastien Loeb</div>
+                    <div class="team-origin">🇫🇷</div>
+                    <div class="team-desc">Loeb Legend 9 แชมป์ WRC กับ Citroën สร้างสถิติที่ยากจะทำลาย กลับมาแข่ง WRC
+                        เป็นครั้งคราวแม้อายุ 50 ปี</div>
+                </div>
+            </div>
+            <div class="rules-grid fade-in" style="margin-top:48px">
+                <div class="rule-item">
+                    <div class="rule-num">01</div>
+                    <div>
+                        <div class="rule-title">Special Stage Format</div>
+                        <div class="rule-desc">แต่ละ Rally แบ่งเป็น Special Stage หลายด่าน รถออกสตาร์ตทีละคัน จับเวลาแยก
+                            รวมเวลาทุก Stage คือผู้ชนะ</div>
+                    </div>
+                </div>
+                <div class="rule-item">
+                    <div class="rule-num">02</div>
+                    <div>
+                        <div class="rule-title">Pace Note System</div>
+                        <div class="rule-desc">Co-Driver อ่าน Pace Note ที่เขียนล่วงหน้าจากการ Recce ก่อนแข่ง บอกโค้ง
+                            ความชัน และสิ่งกีดขวาง Real-Time</div>
+                    </div>
+                </div>
+                <div class="rule-item">
+                    <div class="rule-num">03</div>
+                    <div>
+                        <div class="rule-title">Hybrid System — Rally1</div>
+                        <div class="rule-desc">Rally1 ต้องใช้ Hybrid System 100 kW จาก Compact Dynamics
+                            ซึ่งส่งกำลังเพิ่มที่ล้อหน้า ห้ามใช้ Hybrid บางโซนของ Stage</div>
+                    </div>
+                </div>
+                <div class="rule-item">
+                    <div class="rule-num">04</div>
+                    <div>
+                        <div class="rule-title">Service Park</div>
+                        <div class="rule-desc">ทีมซ่อมรถได้เฉพาะใน Service Park ที่กำหนด นอก Service ซ่อมได้จำกัด
+                            ถ้ารถเสียกลางทางต้องแก้เองในเวลากำหนด</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ⑥ SPECS -->
+    <section class="content-section section-alt" id="specs">
+        <div class="container">
+            <div class="section-label"><span>สเปครถ</span></div>
+            <h2 class="section-title fade-in">Car <em>Specifications</em></h2>
+            <div class="split fade-in" style="margin-top:48px">
+                <div class="split-img-wrap"><img class="split-img" src="images/rally.png" alt="Rally1 Car" /></div>
+                <div class="split-text">
+                    <p>รถ WRC Rally1 2024 เป็นรถที่แข็งแกร่งที่สุดในโลก ต้องทนสภาพถนนที่หยาบ หิมะ โคลน และกรวด โดยไม่พัง
+                    </p>
+                    <p>ระบบ <strong style="color:#d4af37">4WD ถาวร</strong> พร้อม Differential แบบ Active ทำให้รถกระจาย
+                        Torque ได้อย่างชาญฉลาดในทุกสภาพพื้นผิว</p>
+                    <p>น้ำหนักเพียง <strong style="color:#d4af37">1,260 กิโลกรัม</strong> กับกำลัง 500 แรงม้า ทำให้
+                        Power-to-Weight Ratio สูงมาก เร่งได้ 0–100 ใน 3.9 วินาทีแม้บนกรวด</p>
+                </div>
+            </div>
+            <div class="specs-wrapper fade-in">
+                <table class="specs-table">
+                    <thead>
+                        <tr>
+                            <th>รายละเอียด</th>
+                            <th>Rally1 (2024)</th>
+                            <th>WRC2 / Rally2</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>เครื่องยนต์</td>
+                            <td>1.6L 4-cyl Turbo + Hybrid 100 kW</td>
+                            <td>1.6L 4-cyl Turbo (N/A Hybrid)</td>
+                        </tr>
+                        <tr>
+                            <td>กำลังสูงสุด</td>
+                            <td>~500 แรงม้า (combined)</td>
+                            <td>~320 แรงม้า</td>
+                        </tr>
+                        <tr>
+                            <td>น้ำหนักขั้นต่ำ</td>
+                            <td>1,260 กิโลกรัม</td>
+                            <td>1,230 กิโลกรัม</td>
+                        </tr>
+                        <tr>
+                            <td>ระบบขับเคลื่อน</td>
+                            <td>4WD ถาวร (Permanent AWD)</td>
+                            <td>4WD</td>
+                        </tr>
+                        <tr>
+                            <td>เกียร์</td>
+                            <td>5-speed Sequential Paddle Shift</td>
+                            <td>5-speed Sequential</td>
+                        </tr>
+                        <tr>
+                            <td>ความเร็วสูงสุด</td>
+                            <td>~200 km/h (Gravel) / ~230 km/h (Asphalt)</td>
+                            <td>~190 km/h</td>
+                        </tr>
+                        <tr>
+                            <td>เร่ง 0–100 km/h</td>
+                            <td>~3.9 วินาที</td>
+                            <td>~4.2 วินาที</td>
+                        </tr>
+                        <tr>
+                            <td>ระบบกันสะเทือน</td>
+                            <td>MacPherson Strut พร้อม Active Differential</td>
+                            <td>MacPherson Strut</td>
+                        </tr>
+                        <tr>
+                            <td>ยาง</td>
+                            <td>Pirelli (Gravel/Snow/Tarmac แยกสูตร)</td>
+                            <td>Pirelli</td>
+                        </tr>
+                        <tr>
+                            <td>ราคาโดยประมาณ</td>
+                            <td>~$1.2 ล้าน USD</td>
+                            <td>~$450,000 USD</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">MOTOR<span>SPORT</span></div>
+        <p>ส่วนหนึ่งของ Limborot — สารานุกรมมอเตอร์สปอร์ตภาษาไทย</p>
+        <ul class="footer-links">
+            <li><a href="index.html">หน้าหลัก</a></li>
+            <li><a href="formula.html">Formula</a></li>
+            <li><a href="gt-endurance.html">GT & Endurance</a></li>
+            <li><a href="touring.html">Touring Car</a></li>
+            <li><a href="american.html">American</a></li>
+        </ul>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>

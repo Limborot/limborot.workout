@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Motorsport | Limborot</title>
+    <meta name="description" content="สารานุกรมโลกมอเตอร์สปอร์ต — ประเภทการแข่งขัน ประวัติ ทีม กฎ และสเปครถ" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <a class="nav-logo" href="index.html">MOTOR<span>SPORT</span></a>
+        <ul class="nav-links">
+            <li><a href="formula.html">Formula</a></li>
+            <li><a href="gt-endurance.html">GT & Endurance</a></li>
+            <li><a href="rally.html">Rally</a></li>
+            <li><a href="touring.html">Touring Car</a></li>
+            <li><a href="american.html">American</a></li>
+        </ul>
+        <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileClose">✕</button>
+        <a href="formula.html">Formula</a>
+        <a href="gt-endurance.html">GT & Endurance</a>
+        <a href="rally.html">Rally</a>
+        <a href="touring.html">Touring Car</a>
+        <a href="american.html">American</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-bg" style="background-image:url('images/hero.png')"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-carbon"></div>
+        <div class="hero-content">
+            <div class="hero-eyebrow">World of Motorsport</div>
+            <h1>THE ART OF<em>SPEED</em></h1>
+            <p>สำรวจโลกแห่งมอเตอร์สปอร์ต — จากสนาม Formula 1 ระดับโลก สู่เส้นทางแรลลี่ในป่าลึก ทุกประเภทการแข่งขัน
+                ทุกเรื่องราว</p>
+            <div class="hero-ctas">
+                <a href="formula.html" class="btn-primary">เริ่มสำรวจ →</a>
+                <a href="#categories" class="btn-outline">ดูหมวดหมู่</a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <div class="hero-scroll-line"></div>
+            SCROLL
+        </div>
+    </section>
+
+    <!-- STATS BAR -->
+    <div class="stats-bar">
+        <div class="stats-bar-inner">
+            <div class="stat-item">
+                <span class="stat-number" data-count="5" data-suffix="+">5+</span>
+                <span class="stat-label">ประเภทการแข่ง</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-count="30" data-suffix="+">30+</span>
+                <span class="stat-label">รายการแข่งขัน</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-count="75" data-suffix="+ ปี">75+ ปี</span>
+                <span class="stat-label">ประวัติศาสตร์</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-count="500" data-suffix="+">500+</span>
+                <span class="stat-label">ทีมแข่งทั่วโลก</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- CATEGORIES -->
+    <section class="section" id="categories">
+        <div class="container">
+            <div class="section-label"><span>หมวดหมู่</span></div>
+            <h2 class="section-title fade-in">ประเภท<em>การแข่งขัน</em></h2>
+            <p class="section-desc fade-in">มอเตอร์สปอร์ตคือศาสตร์และศิลป์ที่ผสานเทคโนโลยีสูงสุด ความกล้าหาญ และกลยุทธ์
+                — เลือกสำรวจประเภทที่คุณสนใจ</p>
+
+            <div class="cat-grid">
+                <!-- Formula -->
+                <a class="cat-card cat-wide fade-in" href="formula.html">
+                    <img class="cat-card-img" src="images/formula.png" alt="Formula Racing" />
+                    <div class="cat-card-arrow">→</div>
+                    <div class="cat-card-body">
+                        <div class="cat-card-num">01</div>
+                        <div class="cat-card-title">Formula Racing</div>
+                        <div class="cat-card-sub">F1 · F2 · F3 · Formula E</div>
+                    </div>
+                </a>
+
+                <!-- GT & Endurance -->
+                <a class="cat-card fade-in" href="gt-endurance.html">
+                    <img class="cat-card-img" src="images/gt.png" alt="GT & Endurance" />
+                    <div class="cat-card-arrow">→</div>
+                    <div class="cat-card-body">
+                        <div class="cat-card-num">02</div>
+                        <div class="cat-card-title">GT & Endurance</div>
+                        <div class="cat-card-sub">WEC · Le Mans · GT World Challenge</div>
+                    </div>
+                </a>
+
+                <!-- Rally -->
+                <a class="cat-card fade-in" href="rally.html">
+                    <img class="cat-card-img" src="images/rally.png" alt="Rally" />
+                    <div class="cat-card-arrow">→</div>
+                    <div class="cat-card-body">
+                        <div class="cat-card-num">03</div>
+                        <div class="cat-card-title">Rally</div>
+                        <div class="cat-card-sub">WRC · Dakar · ERC</div>
+                    </div>
+                </a>
+
+                <!-- Touring Car -->
+                <a class="cat-card fade-in" href="touring.html"
+                    style="background:linear-gradient(135deg,#1a0a0a,#2a1010);">
+                    <div class="cat-card-img"
+                        style="width:100%;height:100%;background:linear-gradient(135deg,#1c0808 0%,#3d1010 50%,#1a0505 100%);">
+                    </div>
+                    <div class="cat-card-arrow">→</div>
+                    <div class="cat-card-body">
+                        <div class="cat-card-num">04</div>
+                        <div class="cat-card-title">Touring Car</div>
+                        <div class="cat-card-sub">WTCR · DTM · BTCC · TCR</div>
+                    </div>
+                </a>
+
+                <!-- American -->
+                <a class="cat-card fade-in" href="american.html"
+                    style="background:linear-gradient(135deg,#0a0a1a,#10102a);">
+                    <div class="cat-card-img"
+                        style="width:100%;height:100%;background:linear-gradient(135deg,#0a0a1c 0%,#10103d 50%,#05051a 100%);">
+                    </div>
+                    <div class="cat-card-arrow">→</div>
+                    <div class="cat-card-body">
+                        <div class="cat-card-num">05</div>
+                        <div class="cat-card-title">American Motorsport</div>
+                        <div class="cat-card-sub">NASCAR · IndyCar · IMSA</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo">MOTOR<span>SPORT</span></div>
+        <p>ส่วนหนึ่งของ Limborot — สารานุกรมมอเตอร์สปอร์ตภาษาไทย</p>
+        <ul class="footer-links">
+            <li><a href="formula.html">Formula</a></li>
+            <li><a href="gt-endurance.html">GT & Endurance</a></li>
+            <li><a href="rally.html">Rally</a></li>
+            <li><a href="touring.html">Touring Car</a></li>
+            <li><a href="american.html">American</a></li>
+        </ul>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
