@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nürburgring 24h Race | Motorsport | Limborot</title>
+    <meta name="description"
+        content="ประวัติ Nürburgring 24 Hours — การแข่งบน Green Hell สนามที่โหดที่สุดและอันตรายที่สุดในโลก" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700;900&display=swap"
+        rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #d4af37;
+            --bg: #080808;
+            --bg2: #0f0f0f;
+            --bg3: #151515;
+            --text: #e8e8e8;
+            --text-dim: #888;
+            --border: rgba(255, 255, 255, 0.08);
+            --green: #27ae60;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Prompt', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .topnav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(8, 8, 8, .92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+            height: 60px;
+        }
+
+        .topnav-left {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-dim);
+            font-size: .85rem;
+            transition: color .2s;
+        }
+
+        .back-btn:hover {
+            color: var(--gold);
+        }
+
+        .back-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: .8rem;
+            color: var(--text-dim);
+        }
+
+        .breadcrumb a:hover {
+            color: var(--gold);
+        }
+
+        .nav-logo {
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: .15em;
+            color: var(--text-dim);
+        }
+
+        .nav-logo em {
+            color: var(--gold);
+            font-style: normal;
+        }
+
+        .hero {
+            position: relative;
+            height: 88vh;
+            min-height: 580px;
+            display: flex;
+            align-items: flex-end;
+            padding-bottom: 80px;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            transform: scale(1.04);
+            transition: transform 8s ease;
+        }
+
+        .hero-bg.loaded {
+            transform: scale(1);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(4, 12, 4, .97) 0%, rgba(4, 12, 4, .55) 50%, rgba(4, 12, 4, .2) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 80px;
+            max-width: 900px;
+        }
+
+        .hero-eyebrow {
+            font-size: .75rem;
+            letter-spacing: .25em;
+            color: var(--green);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            width: 40px;
+            height: 2px;
+            background: var(--green);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.4rem, 5vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -.01em;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 em {
+            color: var(--green);
+            font-style: normal;
+            display: block;
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 32px;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+        }
+
+        .hero-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .label {
+            font-size: .68rem;
+            letter-spacing: .15em;
+            color: var(--text-dim);
+            text-transform: uppercase;
+        }
+
+        .value {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(39, 174, 96, .12);
+            border: 1px solid rgba(39, 174, 96, .35);
+            color: var(--green);
+            padding: 6px 16px;
+            border-radius: 4px;
+            font-size: .8rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .section {
+            padding: 96px 0;
+        }
+
+        .section-alt {
+            background: var(--bg2);
+            padding: 96px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 48px;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--gold);
+            font-size: .72rem;
+            letter-spacing: .25em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .section-label::before {
+            content: '';
+            width: 32px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 3.5vw, 3rem);
+            font-weight: 900;
+            letter-spacing: -.02em;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+
+        .section-title em {
+            color: var(--gold);
+            font-style: normal;
+        }
+
+        .section-desc {
+            color: var(--text-dim);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            max-width: 680px;
+            margin-bottom: 48px;
+        }
+
+        .facts-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+            margin-top: 48px;
+            background: var(--border);
+        }
+
+        .fact-item {
+            background: var(--bg3);
+            padding: 28px 24px;
+            text-align: center;
+        }
+
+        .fact-num {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--green);
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .fact-label {
+            font-size: .78rem;
+            color: var(--text-dim);
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+        .split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+            margin-top: 48px;
+        }
+
+        .split-img {
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .split-img img {
+            width: 100%;
+            height: 340px;
+            object-fit: cover;
+            filter: brightness(.85);
+        }
+
+        .split-text h3 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .split-text h3 em {
+            color: var(--green);
+            font-style: normal;
+        }
+
+        .split-text p {
+            color: var(--text-dim);
+            line-height: 1.85;
+            font-size: .97rem;
+            margin-bottom: 16px;
+        }
+
+        .danger-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 48px;
+        }
+
+        .danger-card {
+            background: var(--bg3);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 24px;
+            border-top: 3px solid rgba(39, 174, 96, .4);
+        }
+
+        .danger-icon {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+        }
+
+        .danger-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .danger-text {
+            color: var(--text-dim);
+            font-size: .88rem;
+            line-height: 1.7;
+        }
+
+        .circuit-stats {
+            background: var(--bg3);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 28px;
+            margin-top: 48px;
+        }
+
+        .circuit-stats h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--green);
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: .9rem;
+        }
+
+        .stat-row:last-child {
+            border-bottom: none;
+        }
+
+        .stat-key {
+            color: var(--text-dim);
+        }
+
+        .stat-val {
+            font-weight: 600;
+        }
+
+        .champs-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 40px;
+            font-size: .9rem;
+        }
+
+        .champs-table th {
+            background: rgba(39, 174, 96, .08);
+            color: var(--green);
+            padding: 12px 16px;
+            text-align: left;
+            font-size: .75rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(39, 174, 96, .2);
+        }
+
+        .champs-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-dim);
+        }
+
+        .champs-table tr:hover td {
+            background: rgba(255, 255, 255, .03);
+        }
+
+        .champ-year {
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .champ-driver {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .footer-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(212, 175, 55, .08);
+            border: 1px solid rgba(212, 175, 55, .25);
+            color: var(--gold);
+            padding: 12px 28px;
+            border-radius: 6px;
+            font-size: .9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            transition: background .2s;
+        }
+
+        .footer-back:hover {
+            background: rgba(212, 175, 55, .18);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity .6s ease, transform .6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media(max-width:900px) {
+            .hero-content {
+                padding: 0 32px;
+            }
+
+            .split {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .facts-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .danger-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="topnav">
+        <div class="topnav-left">
+            <a href="../gt-endurance.html" class="back-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <polyline points="15 18 9 12 15 6" />
+                </svg>กลับ</a>
+            <div class="breadcrumb"><a href="../index.html">Motorsport</a><span>›</span><a
+                    href="../gt-endurance.html">GT &amp; Endurance</a><span>›</span><span
+                    style="color:var(--text)">Nürburgring 24h</span></div>
+        </div>
+        <div class="nav-logo">MOTOR<em>SPORT</em></div>
+    </nav>
+
+    <section class="hero" style="padding-top:60px">
+        <div class="hero-bg" id="heroBg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-eyebrow">🌿 Green Hell · Germany · Since 1970</div>
+            <h1>Nürburgring<em>24h Race</em></h1>
+            <div class="hero-meta">
+                <div class="hero-meta-item"><span class="label">ก่อตั้ง</span><span class="value">ค.ศ. 1970</span></div>
+                <div class="hero-meta-item"><span class="label">สนาม</span><span class="value">Nordschleife</span></div>
+                <div class="hero-meta-item"><span class="label">ความยาวสนาม</span><span class="value">25.378 km</span>
+                </div>
+                <div class="hero-meta-item"><span class="label">จำนวนโค้ง</span><span class="value">154 โค้ง</span>
+                </div>
+            </div>
+            <span class="hero-badge">🌿 The Green Hell — โหดที่สุดในโลก</span>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="facts-grid fade-in">
+            <div class="fact-item">
+                <div class="fact-num">25.4</div>
+                <div class="fact-label">กม. ต่อรอบ (Nordschleife)</div>
+            </div>
+            <div class="fact-item">
+                <div class="fact-num">154</div>
+                <div class="fact-label">โค้งทั้งหมด</div>
+            </div>
+            <div class="fact-item">
+                <div class="fact-num">600+</div>
+                <div class="fact-label">รถแข่งต่อปี</div>
+            </div>
+            <div class="fact-item">
+                <div class="fact-num">300m</div>
+                <div class="fact-label">ความสูงสูงสุด-ต่ำสุด</div>
+            </div>
+        </div>
+    </div>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-label">The Green Hell</div>
+            <h2 class="section-title fade-in">สนามที่ <em>โหดที่สุดในโลก</em></h2>
+            <p class="section-desc fade-in">Nürburgring Nordschleife หรือที่เรียกกันว่า "Green Hell" คือสนามที่ท้าทาย
+                ซับซ้อน และอันตรายที่สุดในโลกมอเตอร์สปอร์ต Sir Jackie Stewart ตั้งชื่อนี้จากประสบการณ์ขับใน Formula 1
+                ยุค 1960-70s</p>
+            <div class="split fade-in">
+                <div class="split-text">
+                    <h3>"The <em>Green Hell</em>"</h3>
+                    <p>สนามสร้างขึ้นปี 1927 วิ่งผ่านป่าสนเยอรมัน ด้วยความยาว <strong>20.8 km</strong> (Nordschleife
+                        ดั้งเดิม) และ 25.378 km (รวม Grand Prix circuit สำหรับ VLN/N24) — รถ GT3 ต้องใช้เวลาเฉลี่ย
+                        <strong>8–9 นาทีต่อรอบ</strong></p>
+                    <p>ความสูงของสนามเปลี่ยนแปลง <strong>300 เมตร</strong> ตลอดเส้นทาง จากจุดต่ำสุดที่หุบเขา Brünnchen
+                        จนถึงสูงสุดที่ Hohe Acht — ทำให้สภาพอากาศ ระดับ Grip และการตั้งรถต้องคำนวณอย่างซับซ้อน</p>
+                    <p>ในทุกๆ ปี มีรถกว่า <strong>600-700 คัน</strong> เข้าร่วม จาก GT3 มืออาชีพสายตรง ไปจนถึงรถ Cup Car
+                        ของ Gentleman Driver — ทำให้ N24 เป็น circus ที่ไม่เหมือนใคร</p>
+                </div>
+                <div class="split-img"><img src="../images/n24_race.jpg" alt="Nürburgring 24h Race" loading="lazy" />
+                </div>
+            </div>
+
+            <div class="danger-grid fade-in" style="margin-top:64px">
+                <div class="danger-card">
+                    <div class="danger-icon">🌫️</div>
+                    <div class="danger-title">สภาพอากาศที่ไม่แน่นอน</div>
+                    <div class="danger-text">ฝนอาจตกเฉพาะส่วนใดส่วนหนึ่งของสนาม ขณะที่อีกส่วนแดดออก
+                        นักขับต้องตัดสินใจยางทันทีในแต่ละ sector</div>
+                </div>
+                <div class="danger-card">
+                    <div class="danger-icon">🚗</div>
+                    <div class="danger-title">รถหลากหลายบนสนามเดียว</div>
+                    <div class="danger-text">รถ 600+ คันในคลาสต่างกัน ตั้งแต่ GT1 ที่ 290 km/h จนถึง Cup Car 180 km/h
+                        ต้องแซงและหลีกทาง — ความท้าทายที่ไม่มีที่ใดในโลก</div>
+                </div>
+                <div class="danger-card">
+                    <div class="danger-icon">🌙</div>
+                    <div class="danger-title">การแข่งผ่านคืน</div>
+                    <div class="danger-text">สนามไม่มีไฟส่องทางราว 80% — นักขับต้องจำสนามแม่นยำ
+                        ขับในความมืดผ่านป่าและโค้งอันตราย ใช้เฉพาะไฟหน้ารถ</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-alt">
+        <div class="container">
+            <div class="section-label">ข้อมูลสนาม</div>
+            <h2 class="section-title fade-in">Nordschleife <em>Circuit Stats</em></h2>
+            <div class="split fade-in" style="margin-top:0">
+                <div class="circuit-stats" style="margin-top:0">
+                    <h4>ข้อมูลสนาม Nordschleife</h4>
+                    <div class="stat-row"><span class="stat-key">ความยาว (N24 Full)</span><span class="stat-val">25.378
+                            km</span></div>
+                    <div class="stat-row"><span class="stat-key">ความยาว (Nordschleife เดิม)</span><span
+                            class="stat-val">20.832 km</span></div>
+                    <div class="stat-row"><span class="stat-key">จำนวนโค้ง</span><span class="stat-val">154 โค้ง</span>
+                    </div>
+                    <div class="stat-row"><span class="stat-key">ความสูงสูงสุด</span><span class="stat-val">617 m (Hohe
+                            Acht)</span></div>
+                    <div class="stat-row"><span class="stat-key">ความสูงต่ำสุด</span><span class="stat-val">320 m
+                            (Brünnchen)</span></div>
+                    <div class="stat-row"><span class="stat-key">Lap Record (GT3)</span><span class="stat-val">~8:00
+                            นาที</span></div>
+                </div>
+                <div class="circuit-stats" style="margin-top:0">
+                    <h4>ข้อมูลการแข่งขัน N24</h4>
+                    <div class="stat-row"><span class="stat-key">จำนวนรถต่อปี</span><span class="stat-val">600-750
+                            คัน</span></div>
+                    <div class="stat-row"><span class="stat-key">ทีมที่เข้าร่วม</span><span class="stat-val">200+
+                            ทีม</span></div>
+                    <div class="stat-row"><span class="stat-key">รายการในตระกูล</span><span class="stat-val">ADAC Zurich
+                            24h Race</span></div>
+                    <div class="stat-row"><span class="stat-key">ประเทศผู้เข้าร่วม</span><span class="stat-val">30+
+                            ประเทศ</span></div>
+                    <div class="stat-row"><span class="stat-key">ผู้ชม</span><span class="stat-val">200,000+ คน</span>
+                    </div>
+                    <div class="stat-row"><span class="stat-key">ก่อตั้ง</span><span class="stat-val">ค.ศ. 1970</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-label">ผู้ชนะล่าสุด</div>
+            <h2 class="section-title fade-in">Recent <em>Winners</em></h2>
+            <table class="champs-table fade-in">
+                <thead>
+                    <tr>
+                        <th>ปี</th>
+                        <th>นักขับ</th>
+                        <th>รถ</th>
+                        <th>ทีม</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="champ-year">2024</td>
+                        <td class="champ-driver">Team Manthey Racing</td>
+                        <td>Porsche 911 GT3 R</td>
+                        <td>Manthey EMA</td>
+                    </tr>
+                    <tr>
+                        <td class="champ-year">2023</td>
+                        <td class="champ-driver">Laurin Heinrich / Klaus Bachler / Sven Müller / Ayhancan Güven</td>
+                        <td>Porsche 911 GT3 R</td>
+                        <td>Manthey EMA</td>
+                    </tr>
+                    <tr>
+                        <td class="champ-year">2022</td>
+                        <td class="champ-driver">Olaf Manthey / Timo Bernhard</td>
+                        <td>Porsche 911 GT3 R</td>
+                        <td>Manthey Racing</td>
+                    </tr>
+                    <tr>
+                        <td class="champ-year">2021</td>
+                        <td class="champ-driver">Basseng / Foisy / Konrad / Mohr</td>
+                        <td>Mercedes-AMG GT3</td>
+                        <td>HRT</td>
+                    </tr>
+                    <tr>
+                        <td class="champ-year">2020</td>
+                        <td class="champ-driver">แข่งขันไม่จัด (COVID-19)</td>
+                        <td>—</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td class="champ-year">2019</td>
+                        <td class="champ-driver">Manthey / Bamber / Vanthoor</td>
+                        <td>Porsche 911 GT3 R</td>
+                        <td>Manthey Racing</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <footer class="section-alt" style="border-top:1px solid var(--border)">
+        <div class="container" style="text-align:center">
+            <a href="../gt-endurance.html" class="footer-back"><svg width="16" height="16" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="15 18 9 12 15 6" />
+                </svg>กลับหน้า GT &amp; Endurance</a>
+            <p style="color:var(--text-dim);font-size:.85rem">ข้อมูลอ้างอิง: <a href="https://www.24h-rennen.de"
+                    target="_blank" rel="noopener" style="color:var(--gold)">24h-rennen.de</a></p>
+        </div>
+    </footer>
+    <script>
+        const obs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }), { threshold: .12 });
+        document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+        const bg = document.getElementById('heroBg');
+        bg.style.backgroundImage = "url('../images/n24_race.jpg')";
+        setTimeout(() => bg.classList.add('loaded'), 100);
+        window.addEventListener('scroll', () => { bg.style.transform = `scale(1.04) translateY(${window.scrollY * .2}px)`; }, { passive: true });
+    </script>
+</body>
+
+</html>
