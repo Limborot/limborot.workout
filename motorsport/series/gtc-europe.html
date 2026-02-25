@@ -7,6 +7,7 @@
     <title>GT World Challenge Europe | Motorsport | Limborot</title>
     <meta name="description"
         content="ประวัติ GT World Challenge Europe — ชิงแชมป์ GT3 สูงสุดในยุโรป คลาส GT3 Pro, Pro-Am, Am และ GT4" />
+    <link rel="stylesheet" href="../style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700;900&display=swap"
@@ -797,29 +798,31 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
 
     <!-- ───────── TOP NAV ───────── -->
-    <nav class="topnav">
-        <div class="topnav-left">
-            <a href="../gt-endurance.html" class="back-btn">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="15 18 9 12 15 6" />
-                </svg>
-                กลับ
-            </a>
-            <div class="breadcrumb">
-                <a href="../index.html">Motorsport</a>
-                <span>›</span>
-                <a href="../gt-endurance.html">GT &amp; Endurance</a>
-                <span>›</span>
-                <span style="color: var(--text)">GT World Challenge Europe</span>
-            </div>
-        </div>
-        <div class="nav-logo">MOTOR<em>SPORT</em></div>
+    <nav class="navbar" id="navbar">
+        <a class="nav-logo" href="../index.html">MOTOR<span>SPORT</span></a>
+        <ul class="nav-links">
+            <li><a href="../formula.html">Formula</a></li>
+            <li><a href="../gt-endurance.html" class="active">GT &amp; Endurance</a></li>
+            <li><a href="../rally.html">Rally</a></li>
+            <li><a href="../touring.html">Touring Car</a></li>
+            <li><a href="../american.html">American</a></li>
+        </ul>
+        <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
     </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileClose">✕</button>
+        <a href="../formula.html">Formula</a>
+        <a href="../gt-endurance.html">GT &amp; Endurance</a>
+        <a href="../rally.html">Rally</a>
+        <a href="../touring.html">Touring Car</a>
+        <a href="../american.html">American</a>
+    </div>
 
     <!-- ───────── HERO ───────── -->
     <section class="hero" style="padding-top:60px">

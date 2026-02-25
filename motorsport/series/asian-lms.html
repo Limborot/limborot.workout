@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="th">
 
 <head>
@@ -514,18 +514,25 @@
 </head>
 
 <body>
-    <nav class="topnav">
-        <div class="topnav-left">
-            <a href="../gt-endurance.html" class="back-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    stroke-width="2">
-                    <polyline points="15 18 9 12 15 6" />
-                </svg>กลับ</a>
-            <div class="breadcrumb"><a href="../index.html">Motorsport</a><span>›</span><a
-                    href="../gt-endurance.html">GT &amp; Endurance</a><span>›</span><span
-                    style="color:var(--text)">Asian Le Mans</span></div>
-        </div>
-        <div class="nav-logo">MOTOR<em>SPORT</em></div>
+        <nav class="navbar" id="navbar">
+        <a class="nav-logo" href="../index.html">MOTOR<span>SPORT</span></a>
+        <ul class="nav-links">
+            <li><a href="../formula.html">Formula</a></li>
+            <li><a href="../gt-endurance.html" class="active">GT &amp; Endurance</a></li>
+            <li><a href="../rally.html">Rally</a></li>
+            <li><a href="../touring.html">Touring Car</a></li>
+            <li><a href="../american.html">American</a></li>
+        </ul>
+        <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
     </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileClose">✕</button>
+        <a href="../formula.html">Formula</a>
+        <a href="../gt-endurance.html">GT &amp; Endurance</a>
+        <a href="../rally.html">Rally</a>
+        <a href="../touring.html">Touring Car</a>
+        <a href="../american.html">American</a>
+    </div>
 
     <section class="hero" style="padding-top:60px">
         <div class="hero-bg" id="heroBg"></div>
@@ -697,6 +704,7 @@
         setTimeout(() => bg.classList.add('loaded'), 100);
         window.addEventListener('scroll', () => { bg.style.transform = `scale(1.04) translateY(${window.scrollY * .2}px)`; }, { passive: true });
     </script>
+    <script src="../script.js"></script>
 </body>
 
 </html>
