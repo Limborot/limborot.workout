@@ -1,0 +1,14 @@
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "motorsport.limborot.com"
+        }
+      ],
+      "destination": "/motorsport/$1"
+    }
+  ]
+}
