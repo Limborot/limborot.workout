@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Super Formula | Motorsport | Limborot</title>
+    <meta name="description"
+        content="Super Formula — Single-Seater ระดับสูงสุดในเอเชีย Dallara SF23 Honda/Toyota 550+ แรงม้า แข่งในญี่ปุ่น" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700;900&display=swap"
+        rel="stylesheet" />
+    <style>
+        :root {
+            --gold: #d4af37;
+            --red: #e53935;
+            --bg: #080808;
+            --bg2: #0f0f0f;
+            --bg3: #151515;
+            --text: #e8e8e8;
+            --text-dim: #888;
+            --border: rgba(255, 255, 255, 0.08);
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Prompt', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .hero {
+            position: relative;
+            height: 85vh;
+            min-height: 560px;
+            display: flex;
+            align-items: flex-end;
+            padding-bottom: 80px;
+            overflow: hidden;
+            padding-top: 70px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center 35%;
+            transform: scale(1.04);
+            transition: transform 8s ease;
+        }
+
+        .hero-bg.loaded {
+            transform: scale(1);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(8, 8, 8, .97) 0%, rgba(8, 8, 8, .55) 50%, rgba(8, 8, 8, .08) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 80px;
+            max-width: 900px;
+        }
+
+        .hero-eyebrow {
+            font-size: .72rem;
+            letter-spacing: .28em;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            width: 40px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.6rem, 5vw, 4.8rem);
+            font-weight: 900;
+            line-height: 1.0;
+            letter-spacing: -.02em;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 em {
+            color: var(--gold);
+            font-style: normal;
+            display: block;
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 28px;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+        }
+
+        .hero-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lbl {
+            font-size: .67rem;
+            letter-spacing: .15em;
+            color: var(--text-dim);
+            text-transform: uppercase;
+        }
+
+        .val {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 175, 55, .12);
+            border: 1px solid rgba(212, 175, 55, .3);
+            color: var(--gold);
+            padding: 6px 16px;
+            border-radius: 4px;
+            font-size: .8rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .sec {
+            padding: 88px 0;
+        }
+
+        .sec-alt {
+            background: var(--bg2);
+            padding: 88px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 48px;
+        }
+
+        .sec-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--gold);
+            font-size: .72rem;
+            letter-spacing: .25em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .sec-label::before {
+            content: '';
+            width: 32px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .sec-title {
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-weight: 900;
+            letter-spacing: -.02em;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+
+        .sec-title em {
+            color: var(--gold);
+            font-style: normal;
+        }
+
+        .facts {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+            margin-top: 48px;
+            background: var(--border);
+        }
+
+        .fact {
+            background: var(--bg3);
+            padding: 24px 18px;
+            text-align: center;
+        }
+
+        .fact-n {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .fact-l {
+            font-size: .72rem;
+            color: var(--text-dim);
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+
+        .split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 56px;
+            align-items: center;
+            margin-top: 48px;
+        }
+
+        .split-img img {
+            width: 100%;
+            height: 340px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .split-text h3 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .split-text h3 em {
+            color: var(--gold);
+            font-style: normal;
+        }
+
+        .split-text p {
+            color: var(--text-dim);
+            line-height: 1.85;
+            font-size: .96rem;
+            margin-bottom: 14px;
+        }
+
+        .circuits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .circuit-card {
+            background: var(--bg3);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .circuit-flag {
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .circuit-name {
+            font-weight: 700;
+        }
+
+        .circuit-sub {
+            font-size: .8rem;
+            color: var(--text-dim);
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .spec-row {
+            background: var(--bg3);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .spec-k {
+            color: var(--text-dim);
+            font-size: .9rem;
+        }
+
+        .spec-v {
+            font-weight: 700;
+            font-size: .95rem;
+        }
+
+        .champs-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 40px;
+            font-size: .88rem;
+        }
+
+        .champs-table th {
+            background: rgba(212, 175, 55, .08);
+            color: var(--gold);
+            padding: 12px 16px;
+            text-align: left;
+            font-size: .72rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(212, 175, 55, .2);
+        }
+
+        .champs-table td {
+            padding: 11px 16px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-dim);
+        }
+
+        .champs-table tr:hover td {
+            background: rgba(255, 255, 255, .025);
+        }
+
+        .cy {
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .cd {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .footer-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(212, 175, 55, .08);
+            border: 1px solid rgba(212, 175, 55, .25);
+            color: var(--gold);
+            padding: 12px 28px;
+            border-radius: 6px;
+            font-size: .9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            transition: background .2s;
+        }
+
+        .footer-back:hover {
+            background: rgba(212, 175, 55, .18);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity .6s ease, transform .6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media(max-width:900px) {
+            .hero-content {
+                padding: 0 28px;
+            }
+
+            .facts {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .split {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+
+            .specs-grid,
+            .circuits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar" id="navbar">
+        <a class="nav-logo" href="../index.html">MOTOR<span>SPORT</span></a>
+        <ul class="nav-links">
+            <li><a href="../formula.html" class="active">Formula</a></li>
+            <li><a href="../gt-endurance.html">GT &amp; Endurance</a></li>
+            <li><a href="../rally.html">Rally</a></li>
+            <li><a href="../touring.html">Touring Car</a></li>
+            <li><a href="../american.html">American</a></li>
+        </ul>
+        <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileClose">✕</button>
+        <a href="../formula.html">Formula</a>
+        <a href="../gt-endurance.html">GT &amp; Endurance</a>
+        <a href="../rally.html">Rally</a>
+        <a href="../touring.html">Touring Car</a>
+        <a href="../american.html">American</a>
+    </div>
+
+    <section class="hero">
+        <div class="hero-bg" id="heroBg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-eyebrow">🇯🇵 Japan · Super Formula · Asian Pinnacle</div>
+            <h1>Super Formula<em>Championship · Japan</em></h1>
+            <div class="hero-meta">
+                <div class="hero-meta-item"><span class="lbl">ก่อตั้ง</span><span class="val">ค.ศ. 1973</span></div>
+                <div class="hero-meta-item"><span class="lbl">รถ</span><span class="val">Dallara SF23</span></div>
+                <div class="hero-meta-item"><span class="lbl">เครื่องยนต์</span><span class="val">Honda / Toyota 2.0L
+                        Turbo</span></div>
+                <div class="hero-meta-item"><span class="lbl">กำลัง</span><span class="val">550+ แรงม้า</span></div>
+            </div>
+            <span class="hero-badge">🏆 Single-Seater ระดับสูงสุดในเอเชีย</span>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="facts fade-in">
+            <div class="fact">
+                <div class="fact-n">50+</div>
+                <div class="fact-l">ปีประวัติศาสตร์</div>
+            </div>
+            <div class="fact">
+                <div class="fact-n">20</div>
+                <div class="fact-l">รถบนกริด</div>
+            </div>
+            <div class="fact">
+                <div class="fact-n">550+</div>
+                <div class="fact-l">แรงม้า</div>
+            </div>
+            <div class="fact">
+                <div class="fact-n">7</div>
+                <div class="fact-l">สนามแข่งต่อซีซัน</div>
+            </div>
+        </div>
+    </div>
+
+    <section class="sec">
+        <div class="container">
+            <div class="sec-label">ภาพรวม</div>
+            <h2 class="sec-title fade-in">ยอดสุดแห่ง <em>เอเชีย</em></h2>
+            <div class="split fade-in">
+                <div class="split-img"><img src="../images/sf_race.jpg" alt="Super Formula 2024 Motegi"
+                        loading="lazy" /></div>
+                <div class="split-text">
+                    <h3>Super Formula — <em>Asia's Finest</em></h3>
+                    <p>Super Formula เป็นการแข่งรถ Single-Seater ที่เร็วที่สุดในเอเชีย ใช้รถ <strong>Dallara
+                            SF23</strong> เครื่องยนต์ Honda/Toyota 2.0L Turbocharged ให้กำลัง 550+ แรงม้า ที่น้ำหนักรถ
+                        680 กก. ทำให้เร็วใกล้เคียง F2</p>
+                    <p>หลายคนเรียก Super Formula ว่า <strong>"F1 ของเอเชีย"</strong> เพราะได้ดึงดูดอดีตนักแข่ง F1 อย่าง
+                        <strong>Heikki Kovalainen, Loïc Duval, Vitantonio Liuzzi</strong> มาแข่งด้วย</p>
+                    <p>Toyota และ Honda เป็นผู้จัดหาเครื่องยนต์เพียงสองราย — ทำให้ Super Formula
+                        เป็นสนามพิสูจน์เทคโนโลยีของทั้งสองยักษ์ใหญ่ญี่ปุ่น</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sec-alt">
+        <div class="container">
+            <div class="sec-label">สเปครถ</div>
+            <h2 class="sec-title fade-in">Dallara SF23 <em>Specifications</em></h2>
+            <div class="specs-grid fade-in">
+                <div class="spec-row"><span class="spec-k">รถ</span><span class="spec-v">Dallara SF23</span></div>
+                <div class="spec-row"><span class="spec-k">เครื่องยนต์</span><span class="spec-v">Honda M-TEC HR-417E /
+                        Toyota TRD 01F</span></div>
+                <div class="spec-row"><span class="spec-k">ความจุ</span><span class="spec-v">2.0L Inline-4 Turbo</span>
+                </div>
+                <div class="spec-row"><span class="spec-k">กำลัง</span><span class="spec-v">550+ แรงม้า</span></div>
+                <div class="spec-row"><span class="spec-k">น้ำหนัก</span><span class="spec-v">~680 กก.
+                        (รวมนักขับ)</span></div>
+                <div class="spec-row"><span class="spec-k">ความเร็วสูงสุด</span><span class="spec-v">~310 km/h</span>
+                </div>
+                <div class="spec-row"><span class="spec-k">แอโรไดนามิก</span><span class="spec-v">High Downforce +
+                        Overtake Button</span></div>
+                <div class="spec-row"><span class="spec-k">เกียร์</span><span class="spec-v">Xtrac 6 สปีด
+                        Sequential</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sec">
+        <div class="container">
+            <div class="sec-label">ปฏิทิน</div>
+            <h2 class="sec-title fade-in">Circuits <em>2024</em></h2>
+            <div class="circuits-grid fade-in">
+                <div class="circuit-card">
+                    <div class="circuit-flag">🏎️</div>
+                    <div>
+                        <div class="circuit-name">Suzuka International Racing Course</div>
+                        <div class="circuit-sub">5.807 km · สนามในตำนาน "S" Curve</div>
+                    </div>
+                </div>
+                <div class="circuit-card">
+                    <div class="circuit-flag">🏎️</div>
+                    <div>
+                        <div class="circuit-name">Okayama International Circuit</div>
+                        <div class="circuit-sub">3.703 km · เปิดฤดูกาล</div>
+                    </div>
+                </div>
+                <div class="circuit-card">
+                    <div class="circuit-flag">🏎️</div>
+                    <div>
+                        <div class="circuit-name">Fuji Speedway</div>
+                        <div class="circuit-sub">4.563 km · โค้งสูง + โค้ง 100R ดัง</div>
+                    </div>
+                </div>
+                <div class="circuit-card">
+                    <div class="circuit-flag">🏎️</div>
+                    <div>
+                        <div class="circuit-name">Twin Ring Motegi</div>
+                        <div class="circuit-sub">4.801 km · สนามของ Honda</div>
+                    </div>
+                </div>
+                <div class="circuit-card">
+                    <div class="circuit-flag">🏎️</div>
+                    <div>
+                        <div class="circuit-name">Autopolis</div>
+                        <div class="circuit-sub">4.674 km · ท่ามกลางภูเขา Oita</div>
+                    </div>
+                </div>
+                <div class="circuit-card">
+                    <div class="circuit-flag">🏎️</div>
+                    <div>
+                        <div class="circuit-name">Sugo Circuit</div>
+                        <div class="circuit-sub">3.704 km · วกวนท่ามกลางภูเขา</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sec-alt">
+        <div class="container">
+            <div class="sec-label">ประวัติแชมป์</div>
+            <h2 class="sec-title fade-in">Champions <em>History</em></h2>
+            <table class="champs-table fade-in">
+                <thead>
+                    <tr>
+                        <th>ปี</th>
+                        <th>นักขับ</th>
+                        <th>สัญชาติ</th>
+                        <th>เครื่องยนต์</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="cy">2024</td>
+                        <td class="cd">Ritomo Miyata</td>
+                        <td>🇯🇵</td>
+                        <td>Toyota</td>
+                    </tr>
+                    <tr>
+                        <td class="cy">2023</td>
+                        <td class="cd">Tomoki Nojiri</td>
+                        <td>🇯🇵</td>
+                        <td>Honda</td>
+                    </tr>
+                    <tr>
+                        <td class="cy">2022</td>
+                        <td class="cd">Tomoki Nojiri</td>
+                        <td>🇯🇵</td>
+                        <td>Honda</td>
+                    </tr>
+                    <tr>
+                        <td class="cy">2021</td>
+                        <td class="cd">Tomoki Nojiri</td>
+                        <td>🇯🇵</td>
+                        <td>Honda</td>
+                    </tr>
+                    <tr>
+                        <td class="cy">2020</td>
+                        <td class="cd">Naoki Yamamoto</td>
+                        <td>🇯🇵</td>
+                        <td>Honda</td>
+                    </tr>
+                    <tr>
+                        <td class="cy">2019</td>
+                        <td class="cd">Nick Cassidy</td>
+                        <td>🇳🇿</td>
+                        <td>Toyota</td>
+                    </tr>
+                    <tr>
+                        <td class="cy">2018</td>
+                        <td class="cd">Hiroaki Ishiura</td>
+                        <td>🇯🇵</td>
+                        <td>Toyota</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <footer class="sec" style="border-top:1px solid var(--border)">
+        <div class="container" style="text-align:center">
+            <a href="../formula.html" class="footer-back"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <polyline points="15 18 9 12 15 6" />
+                </svg>กลับหน้า Formula</a>
+            <p style="color:var(--text-dim);font-size:.82rem">ข้อมูลอ้างอิง: <a href="https://superformula.net"
+                    target="_blank" rel="noopener" style="color:var(--gold)">superformula.net</a></p>
+        </div>
+    </footer>
+    <script src="../script.js"></script>
+    <script>
+        const obs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }), { threshold: .1 });
+        document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+        const bg = document.getElementById('heroBg');
+        bg.style.backgroundImage = "url('../images/sf_race.jpg')";
+        setTimeout(() => bg.classList.add('loaded'), 100);
+        window.addEventListener('scroll', () => { bg.style.transform = `scale(1.04) translateY(${window.scrollY * .18}px)`; }, { passive: true });
+    </script>
+</body>
+
+</html>
