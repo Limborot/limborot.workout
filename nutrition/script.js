@@ -516,6 +516,71 @@ document.addEventListener('DOMContentLoaded', () => {
         displayResults(bmr, bmr * lbmActivityFactor, 'lbm', lbmActivityFactor, { lbm, fatMass: weight - lbm });
     });
 
+    // === Download Image ===
+    const btnDownloadImage = document.getElementById('btnDownloadImage');
+    if (btnDownloadImage) {
+        btnDownloadImage.addEventListener('click', async () => {
+            const resultsContent = document.getElementById('resultsContent');
+            if (!resultsContent || resultsContent.style.display === 'none') return;
+
+            // Change button text
+            const originalHTML = btnDownloadImage.innerHTML;
+            btnDownloadImage.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>กำลังสร้างรูป...</span>';
+            btnDownloadImage.disabled = true;
+            btnDownloadImage.style.opacity = '0.6';
+
+            try {
+                // Wait a tick for any animations to settle
+                await new Promise(r => setTimeout(r, 300));
+
+                const canvas = await html2canvas(resultsContent, {
+                    backgroundColor: '#0a0a0f',
+                    scale: 2,
+                    useCORS: true,
+                    logging: false,
+                    // Extra padding
+                    onclone: (clonedDoc) => {
+                        const clonedEl = clonedDoc.getElementById('resultsContent');
+                        if (clonedEl) {
+                            clonedEl.style.padding = '2rem';
+                            clonedEl.style.borderRadius = '0';
+                            // Hide download and reset buttons in the image
+                            clonedEl.querySelectorAll('.btn-download, .btn-reset').forEach(btn => {
+                                btn.style.display = 'none';
+                            });
+                            // Add branding watermark
+                            const watermark = clonedDoc.createElement('div');
+                            watermark.style.cssText = 'text-align:center;padding:1.5rem 0 0.5rem;font-size:13px;color:rgba(255,255,255,0.25);font-family:Inter,sans-serif;letter-spacing:0.5px;';
+                            watermark.textContent = 'nutrition.limborot — TDEE Calculator';
+                            clonedEl.appendChild(watermark);
+                        }
+                    }
+                });
+
+                // Download
+                const link = document.createElement('a');
+                const now = new Date();
+                const dateStr = now.getFullYear() + '' +
+                    String(now.getMonth() + 1).padStart(2, '0') +
+                    String(now.getDate()).padStart(2, '0') + '_' +
+                    String(now.getHours()).padStart(2, '0') +
+                    String(now.getMinutes()).padStart(2, '0');
+                link.download = `TDEE_Result_${dateStr}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+
+            } catch (err) {
+                console.error('Screenshot failed:', err);
+                alert('ไม่สามารถสร้างรูปได้ กรุณาลองอีกครั้ง');
+            } finally {
+                // Restore button
+                btnDownloadImage.innerHTML = originalHTML;
+                btnDownloadImage.disabled = false;
+                btnDownloadImage.style.opacity = '1';
+            }
+        });
+    }
+
     // === Reset ===
     const btnReset = document.getElementById('btnReset');
     if (btnReset) {
