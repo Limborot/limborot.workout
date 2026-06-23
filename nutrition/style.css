@@ -1734,3 +1734,133 @@ body {
     background: rgba(var(--accent-primary-rgb), 0.3);
     color: var(--text-primary);
 }
+
+/* === Page Header (Calculator Page) === */
+.page-header {
+    padding: 8rem 1.5rem 3rem;
+    text-align: center;
+    position: relative;
+}
+
+.page-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 500px;
+    background: radial-gradient(ellipse, rgba(var(--accent-primary-rgb), 0.06), transparent 70%);
+    pointer-events: none;
+}
+
+.page-header-content {
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.breadcrumb {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-subtle);
+    transition: all var(--transition-fast);
+}
+
+.breadcrumb:hover {
+    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--border-medium);
+}
+
+.page-header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(var(--accent-primary-rgb), 0.1);
+    border: 1px solid rgba(var(--accent-primary-rgb), 0.2);
+    color: var(--accent-primary);
+    padding: 0.4rem 1.25rem;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 1.5rem;
+}
+
+.page-header-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+}
+
+.page-header-desc {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    max-width: 550px;
+    margin: 0 auto;
+}
+
+/* === Formula Info Toggle === */
+.formula-info-toggle {
+    margin-bottom: 1.5rem;
+}
+
+.formula-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--border-radius-xs);
+    color: var(--text-muted);
+    font-family: var(--font-main);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.formula-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-secondary);
+}
+
+.formula-toggle-btn.active {
+    color: var(--accent-primary);
+    border-color: rgba(var(--accent-primary-rgb), 0.2);
+}
+
+.formula-toggle-btn .chevron {
+    margin-left: auto;
+    transition: transform var(--transition-normal);
+}
+
+.formula-toggle-btn.active .chevron {
+    transform: rotate(180deg);
+}
+
+.formula-info-content {
+    display: none;
+    padding: 1rem 0 0;
+    animation: fadeIn 0.3s ease;
+}
+
+.formula-info-content.show {
+    display: block;
+}

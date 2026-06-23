@@ -11,23 +11,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileMenu = document.getElementById('mobileMenu');
 
     // Scroll effect
-    window.addEventListener('scroll', () => {
-        navbar.classList.toggle('scrolled', window.scrollY > 50);
-    });
+    if (navbar) {
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+    }
 
     // Mobile menu toggle
-    navToggle.addEventListener('click', () => {
-        navToggle.classList.toggle('active');
-        mobileMenu.classList.toggle('show');
-    });
-
-    // Close mobile menu on link click
-    document.querySelectorAll('.mobile-link').forEach(link => {
-        link.addEventListener('click', () => {
-            navToggle.classList.remove('active');
-            mobileMenu.classList.remove('show');
+    if (navToggle && mobileMenu) {
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('show');
         });
-    });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navToggle.classList.remove('active');
+                mobileMenu.classList.remove('show');
+            });
+        });
+    }
 
     // === Scroll Animations (Intersection Observer) ===
     const observerOptions = {
@@ -48,17 +52,27 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
-    // === Calculator Tab Switching ===
+    // === Calculator Logic (only runs if calculator elements exist) ===
     const tabStandard = document.getElementById('tabStandard');
     const tabLBM = document.getElementById('tabLBM');
     const formStandard = document.getElementById('formStandard');
     const formLBM = document.getElementById('formLBM');
 
+    if (!tabStandard || !tabLBM) return; // Exit if not on calculator page
+
+    // === Calculator Tab Switching ===
     tabStandard.addEventListener('click', () => {
         tabStandard.classList.add('active');
         tabLBM.classList.remove('active');
         formStandard.classList.add('active');
         formLBM.classList.remove('active');
+        // Toggle formula info
+        const stdInfo = document.getElementById('formulaInfoStd');
+        const lbmInfo = document.getElementById('formulaInfoLBM');
+        if (stdInfo && lbmInfo) {
+            stdInfo.style.display = '';
+            lbmInfo.style.display = 'none';
+        }
     });
 
     tabLBM.addEventListener('click', () => {
@@ -66,24 +80,52 @@ document.addEventListener('DOMContentLoaded', () => {
         tabStandard.classList.remove('active');
         formLBM.classList.add('active');
         formStandard.classList.remove('active');
+        // Toggle formula info
+        const stdInfo = document.getElementById('formulaInfoStd');
+        const lbmInfo = document.getElementById('formulaInfoLBM');
+        if (stdInfo && lbmInfo) {
+            stdInfo.style.display = 'none';
+            lbmInfo.style.display = '';
+        }
     });
+
+    // === Formula Info Toggle ===
+    const formulaToggleBtn = document.getElementById('formulaToggleStd');
+    if (formulaToggleBtn) {
+        formulaToggleBtn.addEventListener('click', () => {
+            formulaToggleBtn.classList.toggle('active');
+            const stdInfo = document.getElementById('formulaInfoStd');
+            const lbmInfo = document.getElementById('formulaInfoLBM');
+            const isStdActive = tabStandard.classList.contains('active');
+
+            if (formulaToggleBtn.classList.contains('active')) {
+                if (isStdActive && stdInfo) stdInfo.classList.add('show');
+                if (!isStdActive && lbmInfo) lbmInfo.classList.add('show');
+            } else {
+                if (stdInfo) stdInfo.classList.remove('show');
+                if (lbmInfo) lbmInfo.classList.remove('show');
+            }
+        });
+    }
 
     // === Gender Toggle ===
     const genderMale = document.getElementById('genderMale');
     const genderFemale = document.getElementById('genderFemale');
     let selectedGender = 'male';
 
-    genderMale.addEventListener('click', () => {
-        genderMale.classList.add('active');
-        genderFemale.classList.remove('active');
-        selectedGender = 'male';
-    });
+    if (genderMale && genderFemale) {
+        genderMale.addEventListener('click', () => {
+            genderMale.classList.add('active');
+            genderFemale.classList.remove('active');
+            selectedGender = 'male';
+        });
 
-    genderFemale.addEventListener('click', () => {
-        genderFemale.classList.add('active');
-        genderMale.classList.remove('active');
-        selectedGender = 'female';
-    });
+        genderFemale.addEventListener('click', () => {
+            genderFemale.classList.add('active');
+            genderMale.classList.remove('active');
+            selectedGender = 'female';
+        });
+    }
 
     // === Activity Level Selection ===
     let stdActivityFactor = 1.55;
@@ -185,13 +227,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // LBM Info (only for Katch-McArdle)
-        const lbmInfo = document.getElementById('resultLBMInfo');
+        const lbmInfoEl = document.getElementById('resultLBMInfo');
         if (method === 'lbm' && extraData.lbm) {
-            lbmInfo.style.display = 'grid';
+            lbmInfoEl.style.display = 'grid';
             document.getElementById('resultLBMValue').textContent = extraData.lbm.toFixed(1) + ' kg';
             document.getElementById('resultFatMass').textContent = extraData.fatMass.toFixed(1) + ' kg';
         } else {
-            lbmInfo.style.display = 'none';
+            lbmInfoEl.style.display = 'none';
         }
 
         // TDEE
@@ -297,40 +339,48 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // === Reset Button ===
-    document.getElementById('btnReset').addEventListener('click', () => {
-        const resultsPlaceholder = document.getElementById('resultsPlaceholder');
-        const resultsContent = document.getElementById('resultsContent');
+    const btnReset = document.getElementById('btnReset');
+    if (btnReset) {
+        btnReset.addEventListener('click', () => {
+            const resultsPlaceholder = document.getElementById('resultsPlaceholder');
+            const resultsContent = document.getElementById('resultsContent');
 
-        resultsContent.style.display = 'none';
-        resultsPlaceholder.style.display = 'flex';
+            resultsContent.style.display = 'none';
+            resultsPlaceholder.style.display = 'flex';
 
-        // Clear all inputs
-        document.querySelectorAll('.form-input').forEach(input => {
-            input.value = '';
-            input.classList.remove('error');
+            // Clear all inputs
+            document.querySelectorAll('.form-input').forEach(input => {
+                input.value = '';
+                input.classList.remove('error');
+            });
+
+            // Reset gender
+            if (genderMale && genderFemale) {
+                genderMale.classList.add('active');
+                genderFemale.classList.remove('active');
+                selectedGender = 'male';
+            }
+
+            // Reset activity to Moderately Active
+            stdActivityOptions.forEach(o => {
+                o.classList.toggle('active', o.dataset.value === '1.55');
+            });
+            lbmActivityOptions.forEach(o => {
+                o.classList.toggle('active', o.dataset.value === '1.55');
+            });
+            stdActivityFactor = 1.55;
+            lbmActivityFactor = 1.55;
+
+            // Scroll to calculator
+            const calcSection = document.getElementById('calculator');
+            if (calcSection) {
+                calcSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
         });
-
-        // Reset gender
-        genderMale.classList.add('active');
-        genderFemale.classList.remove('active');
-        selectedGender = 'male';
-
-        // Reset activity to Moderately Active
-        stdActivityOptions.forEach(o => {
-            o.classList.toggle('active', o.dataset.value === '1.55');
-        });
-        lbmActivityOptions.forEach(o => {
-            o.classList.toggle('active', o.dataset.value === '1.55');
-        });
-        stdActivityFactor = 1.55;
-        lbmActivityFactor = 1.55;
-
-        // Scroll to calculator
-        document.getElementById('calculator').scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
-    });
+    }
 
     // === Smooth Nav Link Highlighting ===
     const sections = document.querySelectorAll('section[id]');
@@ -347,7 +397,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         navLinks.forEach(link => {
             link.style.color = '';
-            if (link.getAttribute('href') === '#' + current) {
+            const href = link.getAttribute('href');
+            if (href === '#' + current) {
                 link.style.color = 'var(--accent-primary)';
             }
         });
