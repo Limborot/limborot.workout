@@ -52,22 +52,45 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!tabStandard || !tabLBM) return;
 
     // --- State ---
-    let lastTDEE = 0;                 // ค่า TDEE (Maintain)
-    let selectedGoal = 'maintain';     // goal ที่เลือกสำหรับคำนวณ macro
+    let lastTDEE = 0;
+    let selectedGoal = 'maintain';
     let selectedGender = 'male';
 
-    // Goal kcal mapping
+    // --- Surplus / Deficit inputs ---
+    const bulkSurplusInput = document.getElementById('bulkSurplus');
+    const cutDeficitInput = document.getElementById('cutDeficit');
+
+    function getSurplus() {
+        return Math.max(0, parseInt(bulkSurplusInput.value) || 500);
+    }
+
+    function getDeficit() {
+        return Math.max(0, parseInt(cutDeficitInput.value) || 500);
+    }
+
+    // Goal kcal mapping (dynamic)
     function getGoalCalories() {
-        const tdee = lastTDEE;
         return {
-            bulk: tdee + 500,       // Bulk (ค่ากลาง)
-            maintain: tdee,
-            cut: tdee - 500         // Cut (ค่ากลาง)
+            bulk: lastTDEE + getSurplus(),
+            maintain: lastTDEE,
+            cut: Math.max(0, lastTDEE - getDeficit())
         };
     }
 
     function getSelectedGoalKcal() {
         return getGoalCalories()[selectedGoal] || lastTDEE;
+    }
+
+    // --- Update goal result values ---
+    function updateGoalResults() {
+        const goals = getGoalCalories();
+        const bulkEl = document.getElementById('goalBulkResult');
+        const maintainEl = document.getElementById('goalMaintain');
+        const cutEl = document.getElementById('goalCutResult');
+
+        if (bulkEl) bulkEl.textContent = goals.bulk.toLocaleString();
+        if (maintainEl) maintainEl.textContent = goals.maintain.toLocaleString();
+        if (cutEl) cutEl.textContent = Math.max(0, goals.cut).toLocaleString();
     }
 
     // === Tab Switching ===
@@ -177,30 +200,72 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =============================================
+    // === GOAL ADJUSTER (+/- buttons & input) ===
+    // =============================================
+
+    // +/- buttons
+    document.querySelectorAll('.goal-adj-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation(); // ไม่ให้ trigger goal card click
+            const targetId = btn.dataset.target;
+            const input = document.getElementById(targetId);
+            if (!input) return;
+
+            let val = parseInt(input.value) || 500;
+            const step = parseInt(input.step) || 50;
+
+            if (btn.classList.contains('goal-adj-minus')) {
+                val = Math.max(parseInt(input.min) || 100, val - step);
+            } else {
+                val = Math.min(parseInt(input.max) || 1500, val + step);
+            }
+
+            input.value = val;
+            updateGoalResults();
+            updateMacroUI();
+        });
+    });
+
+    // Surplus/Deficit input change
+    document.querySelectorAll('.goal-adj-input').forEach(input => {
+        input.addEventListener('click', (e) => e.stopPropagation());
+        input.addEventListener('input', () => {
+            updateGoalResults();
+            updateMacroUI();
+        });
+        input.addEventListener('change', () => {
+            // Clamp on blur
+            let val = parseInt(input.value) || 500;
+            val = Math.max(parseInt(input.min) || 100, Math.min(parseInt(input.max) || 1500, val));
+            input.value = val;
+            updateGoalResults();
+            updateMacroUI();
+        });
+    });
+
+    // =============================================
     // === GOAL SELECTION (Bulk / Maintain / Cut) ===
     // =============================================
 
     const goalLabels = {
-        bulk: 'Bulk (+500)',
+        bulk: 'Bulk',
         maintain: 'Maintain',
-        cut: 'Cut (-500)'
+        cut: 'Cut'
     };
 
     const goalCards = document.querySelectorAll('.goal-selectable');
 
     goalCards.forEach(card => {
-        card.addEventListener('click', () => {
-            // ย้าย active state
+        card.addEventListener('click', (e) => {
+            // ถ้ากดที่ adjuster อย่าเปลี่ยน goal
+            if (e.target.closest('.goal-adjuster')) return;
+
             goalCards.forEach(c => c.classList.remove('active'));
             card.classList.add('active');
-
-            // อัพเดท selected goal
             selectedGoal = card.dataset.goal;
 
-            // คำนวณ macro ใหม่ทันที
             updateMacroUI();
 
-            // Smooth scroll ไป macro section
             const macroSection = document.querySelector('.result-macros');
             if (macroSection) {
                 setTimeout(() => {
@@ -232,8 +297,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateMacroUI() {
         const m = getMacroValues();
         const total = m.protein + m.carbs + m.fat;
-
-        // ค่าแคลอรี่ตาม goal ที่เลือก
         const goalKcal = getSelectedGoalKcal();
 
         // Sync sliders ↔ inputs
@@ -265,11 +328,10 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('macroBarCarbs').style.width = m.carbs + '%';
         document.getElementById('macroBarFat').style.width = m.fat + '%';
 
-        // Calculate grams & kcal จาก goalKcal
+        // Calculate grams & kcal
         const proteinKcal = Math.round(goalKcal * m.protein / 100);
         const carbsKcal = Math.round(goalKcal * m.carbs / 100);
         const fatKcal = Math.round(goalKcal * m.fat / 100);
-
         const proteinGrams = Math.round(proteinKcal / 4);
         const carbsGrams = Math.round(carbsKcal / 4);
         const fatGrams = Math.round(fatKcal / 9);
@@ -278,7 +340,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('macroProteinGrams').textContent = proteinGrams + 'g';
         document.getElementById('macroCarbsGrams').textContent = carbsGrams + 'g';
         document.getElementById('macroFatGrams').textContent = fatGrams + 'g';
-
         document.getElementById('macroProteinKcal').textContent = proteinKcal + ' kcal';
         document.getElementById('macroCarbsKcal').textContent = carbsKcal + ' kcal';
         document.getElementById('macroFatKcal').textContent = fatKcal + ' kcal';
@@ -289,36 +350,34 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('summaryFat').textContent = fatGrams + 'g';
         document.getElementById('macroDonutTotal').textContent = Math.round(goalKcal).toLocaleString();
 
-        // Update goal label
+        // Update goal label (แสดง goal ที่เลือก + kcal surplus/deficit)
         const goalNameEl = document.getElementById('macroGoalName');
         const goalKcalEl = document.getElementById('macroGoalKcal');
-        if (goalNameEl) goalNameEl.textContent = goalLabels[selectedGoal];
+        let labelText = goalLabels[selectedGoal];
+        if (selectedGoal === 'bulk') labelText += ' (+' + getSurplus() + ')';
+        if (selectedGoal === 'cut') labelText += ' (-' + getDeficit() + ')';
+        if (goalNameEl) goalNameEl.textContent = labelText;
         if (goalKcalEl) goalKcalEl.textContent = Math.round(goalKcal).toLocaleString() + ' kcal';
 
         // Update donut chart
-        const proteinDash = m.protein;
-        const carbsDash = m.carbs;
-        const fatDash = m.fat;
-
         const donutProtein = document.getElementById('donutProtein');
         const donutCarbs = document.getElementById('donutCarbs');
         const donutFat = document.getElementById('donutFat');
 
-        donutProtein.setAttribute('stroke-dasharray', `${proteinDash} ${100 - proteinDash}`);
+        donutProtein.setAttribute('stroke-dasharray', `${m.protein} ${100 - m.protein}`);
         donutProtein.setAttribute('stroke-dashoffset', '0');
-
-        donutCarbs.setAttribute('stroke-dasharray', `${carbsDash} ${100 - carbsDash}`);
-        donutCarbs.setAttribute('stroke-dashoffset', `-${proteinDash}`);
-
-        donutFat.setAttribute('stroke-dasharray', `${fatDash} ${100 - fatDash}`);
-        donutFat.setAttribute('stroke-dashoffset', `-${proteinDash + carbsDash}`);
+        donutCarbs.setAttribute('stroke-dasharray', `${m.carbs} ${100 - m.carbs}`);
+        donutCarbs.setAttribute('stroke-dashoffset', `-${m.protein}`);
+        donutFat.setAttribute('stroke-dasharray', `${m.fat} ${100 - m.fat}`);
+        donutFat.setAttribute('stroke-dashoffset', `-${m.protein + m.carbs}`);
 
         // Highlight matching preset
         document.querySelectorAll('.macro-preset').forEach(p => {
-            const pp = parseInt(p.dataset.protein);
-            const pc = parseInt(p.dataset.carbs);
-            const pf = parseInt(p.dataset.fat);
-            p.classList.toggle('active', pp === m.protein && pc === m.carbs && pf === m.fat);
+            p.classList.toggle('active',
+                parseInt(p.dataset.protein) === m.protein &&
+                parseInt(p.dataset.carbs) === m.carbs &&
+                parseInt(p.dataset.fat) === m.fat
+            );
         });
     }
 
@@ -328,12 +387,10 @@ document.addEventListener('DOMContentLoaded', () => {
         macroCarbsRange.addEventListener('input', () => { macroCarbsPercent.value = macroCarbsRange.value; updateMacroUI(); });
         macroFatRange.addEventListener('input', () => { macroFatPercent.value = macroFatRange.value; updateMacroUI(); });
 
-        // --- Number input events ---
         macroProteinPercent.addEventListener('input', () => { macroProteinRange.value = macroProteinPercent.value; updateMacroUI(); });
         macroCarbsPercent.addEventListener('input', () => { macroCarbsRange.value = macroCarbsPercent.value; updateMacroUI(); });
         macroFatPercent.addEventListener('input', () => { macroFatRange.value = macroFatPercent.value; updateMacroUI(); });
 
-        // --- Preset buttons ---
         document.querySelectorAll('.macro-preset').forEach(preset => {
             preset.addEventListener('click', () => {
                 macroProteinPercent.value = preset.dataset.protein;
@@ -358,7 +415,6 @@ document.addEventListener('DOMContentLoaded', () => {
         resultsPlaceholder.style.display = 'none';
         resultsContent.style.display = 'block';
 
-        // Store TDEE
         lastTDEE = Math.round(tdee);
 
         // Reset goal to maintain
@@ -407,12 +463,8 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('resultActivityUsed').textContent =
             'Activity Factor: ' + activityLabels[activityFactor];
 
-        // Goals
-        animateNumber(document.getElementById('goalBulkMin'), lastTDEE + 300, 900);
-        animateNumber(document.getElementById('goalBulkMax'), lastTDEE + 500, 900);
-        animateNumber(document.getElementById('goalMaintain'), lastTDEE, 900);
-        animateNumber(document.getElementById('goalCutMin'), lastTDEE - 300, 900);
-        animateNumber(document.getElementById('goalCutMax'), lastTDEE - 500, 900);
+        // Update goal results
+        updateGoalResults();
 
         // Update macros
         updateMacroUI();
@@ -477,6 +529,10 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             stdActivityFactor = 1.55;
             lbmActivityFactor = 1.55;
+
+            // Reset surplus/deficit
+            if (bulkSurplusInput) bulkSurplusInput.value = 500;
+            if (cutDeficitInput) cutDeficitInput.value = 500;
 
             // Reset macros
             if (macroProteinPercent) {
