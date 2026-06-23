@@ -652,39 +652,74 @@ document.addEventListener('DOMContentLoaded', () => {
         let y = 0;
 
         // ── HEADER ──
-        y += 40;
-        // Logo diamond
+        y += 44;
+
+        // Logo diamond icon
         ctx.save();
-        ctx.font = 'bold 18px sans-serif';
+        ctx.font = 'bold 16px sans-serif';
         ctx.fillStyle = ACCENT;
         ctx.textAlign = 'center';
         ctx.fillText('◈', W/2, y);
         ctx.restore();
-        y += 6;
-        text('nutrition', W/2 - 42, y + 14, 'bold 18px Inter,sans-serif', ACCENT, 'left');
-        text('.limborot', W/2 - 12, y + 14, '600 18px Inter,sans-serif', TEXT1, 'left');
-        y += 20;
+        y += 26;
+
+        // Logo text — measure each part, then center combined
+        ctx.save();
+        ctx.font = 'bold 20px Inter, Arial, sans-serif';
+        const nutritionW = ctx.measureText('nutrition').width;
+        ctx.restore();
+
+        ctx.save();
+        ctx.font = '600 20px Inter, Arial, sans-serif';
+        const limborotW = ctx.measureText('.limborot').width;
+        ctx.restore();
+
+        const totalLogoW = nutritionW + limborotW;
+        const logoStartX = W/2 - totalLogoW/2;
+
+        ctx.save();
+        ctx.font = 'bold 20px Inter, Arial, sans-serif';
+        ctx.fillStyle = ACCENT;
+        ctx.textAlign = 'left';
+        ctx.fillText('nutrition', logoStartX, y);
+        ctx.restore();
+
+        ctx.save();
+        ctx.font = '600 20px Inter, Arial, sans-serif';
+        ctx.fillStyle = TEXT1;
+        ctx.textAlign = 'left';
+        ctx.fillText('.limborot', logoStartX + nutritionW, y);
+        ctx.restore();
+        y += 22;
 
         // Date
         const now = new Date();
         const months = ['มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'];
         const dateStr = `${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear() + 543}`;
-        text(dateStr, W/2, y + 16, '400 13px Inter,sans-serif', TEXT3, 'center');
-        y += 28;
+        text(dateStr, W/2, y + 14, '400 13px Inter, Arial, sans-serif', TEXT3, 'center');
+        y += 32;
 
-        // Method badge
-        const badgeW = Math.min(ctx.measureText(method).width + 40, 320);
-        const badgeX = W/2 - badgeW/2;
+        // Method badge — set font FIRST then measure
         ctx.save();
-        roundRect(badgeX, y, badgeW, 28, 14);
+        ctx.font = '600 12px Inter, Arial, sans-serif';
+        const methodTextW = ctx.measureText(method).width;
+        ctx.restore();
+
+        const badgePadX = 28;
+        const badgeH = 30;
+        const badgeW = methodTextW + badgePadX * 2;
+        const badgeX = W/2 - badgeW/2;
+
+        ctx.save();
+        roundRect(badgeX, y, badgeW, badgeH, 15);
         ctx.fillStyle = 'rgba(0,229,160,0.08)';
         ctx.fill();
-        ctx.strokeStyle = 'rgba(0,229,160,0.25)';
+        ctx.strokeStyle = 'rgba(0,229,160,0.3)';
         ctx.lineWidth = 1;
         ctx.stroke();
         ctx.restore();
-        text(method, W/2, y + 19, '600 12px Inter,sans-serif', ACCENT, 'center');
-        y += 44;
+        text(method, W/2, y + 20, '600 12px Inter, Arial, sans-serif', ACCENT, 'center');
+        y += badgeH + 20;
 
         const PAD = 24;
         const CW = W - PAD * 2;
