@@ -382,15 +382,26 @@
                                     <span class="goal-icon">📈</span>
                                     <div>
                                         <div class="goal-name">เพิ่มน้ำหนัก / Bulk</div>
-                                        <div class="goal-desc">Surplus จาก TDEE</div>
+                                        <div class="goal-desc">เพิ่มกล้ามเนื้อ (แนะนำ Surplus +300-500 kcal)</div>
+                                    </div>
+                                </div>
+                                <div class="goal-range-info">
+                                    <div class="goal-range-item">
+                                        <span class="goal-range-value" id="goalBulkMin">0</span>
+                                        <span class="goal-range-label">Lean Bulk (+300)</span>
+                                    </div>
+                                    <span class="goal-range-divider">—</span>
+                                    <div class="goal-range-item">
+                                        <span class="goal-range-value" id="goalBulkMax">0</span>
+                                        <span class="goal-range-label">Bulk (+500)</span>
                                     </div>
                                 </div>
                                 <div class="goal-adjuster">
-                                    <span class="goal-adjuster-label">+ Surplus</span>
+                                    <span class="goal-adjuster-label">+ ปรับ Surplus เอง</span>
                                     <div class="goal-adjuster-control">
                                         <button class="goal-adj-btn goal-adj-minus" data-target="bulkSurplus" type="button">−</button>
                                         <div class="goal-adj-input-wrap">
-                                            <input type="number" class="goal-adj-input" id="bulkSurplus" value="500" min="100" max="1500" step="50">
+                                            <input type="number" class="goal-adj-input" id="bulkSurplus" value="500" min="50" max="2000" step="50">
                                             <span class="goal-adj-unit">kcal</span>
                                         </div>
                                         <button class="goal-adj-btn goal-adj-plus" data-target="bulkSurplus" type="button">+</button>
@@ -429,15 +440,26 @@
                                     <span class="goal-icon">📉</span>
                                     <div>
                                         <div class="goal-name">ลดน้ำหนัก / Cut</div>
-                                        <div class="goal-desc">Deficit จาก TDEE</div>
+                                        <div class="goal-desc">ลดไขมัน (แนะนำ Deficit -300-500 kcal)</div>
+                                    </div>
+                                </div>
+                                <div class="goal-range-info">
+                                    <div class="goal-range-item">
+                                        <span class="goal-range-value" id="goalCutMin">0</span>
+                                        <span class="goal-range-label">Mild Cut (-300)</span>
+                                    </div>
+                                    <span class="goal-range-divider">—</span>
+                                    <div class="goal-range-item">
+                                        <span class="goal-range-value" id="goalCutMax">0</span>
+                                        <span class="goal-range-label">Cut (-500)</span>
                                     </div>
                                 </div>
                                 <div class="goal-adjuster">
-                                    <span class="goal-adjuster-label">− Deficit</span>
+                                    <span class="goal-adjuster-label">− ปรับ Deficit เอง</span>
                                     <div class="goal-adjuster-control">
                                         <button class="goal-adj-btn goal-adj-minus" data-target="cutDeficit" type="button">−</button>
                                         <div class="goal-adj-input-wrap">
-                                            <input type="number" class="goal-adj-input" id="cutDeficit" value="500" min="100" max="1500" step="50">
+                                            <input type="number" class="goal-adj-input" id="cutDeficit" value="500" min="50" max="2000" step="50">
                                             <span class="goal-adj-unit">kcal</span>
                                         </div>
                                         <button class="goal-adj-btn goal-adj-plus" data-target="cutDeficit" type="button">+</button>
@@ -449,6 +471,7 @@
                                 </div>
                             </div>
                         </div>
+
 
 
                         <!-- Macros Section -->

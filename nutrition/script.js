@@ -91,7 +91,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if (bulkEl) bulkEl.textContent = goals.bulk.toLocaleString();
         if (maintainEl) maintainEl.textContent = goals.maintain.toLocaleString();
         if (cutEl) cutEl.textContent = Math.max(0, goals.cut).toLocaleString();
+
+        // Range values (fixed 300-500)
+        const bulkMinEl = document.getElementById('goalBulkMin');
+        const bulkMaxEl = document.getElementById('goalBulkMax');
+        const cutMinEl = document.getElementById('goalCutMin');
+        const cutMaxEl = document.getElementById('goalCutMax');
+
+        if (bulkMinEl) bulkMinEl.textContent = (lastTDEE + 300).toLocaleString();
+        if (bulkMaxEl) bulkMaxEl.textContent = (lastTDEE + 500).toLocaleString();
+        if (cutMinEl) cutMinEl.textContent = Math.max(0, lastTDEE - 300).toLocaleString();
+        if (cutMaxEl) cutMaxEl.textContent = Math.max(0, lastTDEE - 500).toLocaleString();
     }
+
 
     // === Tab Switching ===
     tabStandard.addEventListener('click', () => {
