@@ -1864,3 +1864,368 @@ body {
 .formula-info-content.show {
     display: block;
 }
+
+/* === Interactive Macro Adjuster === */
+.result-macros-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+}
+
+.macro-total-badge {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 0.3rem 0.75rem;
+    border-radius: 100px;
+    background: rgba(var(--accent-primary-rgb), 0.1);
+    color: var(--accent-primary);
+    border: 1px solid rgba(var(--accent-primary-rgb), 0.2);
+    transition: all var(--transition-fast);
+}
+
+.macro-total-badge.warning {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--color-cut);
+    border-color: rgba(239, 68, 68, 0.3);
+}
+
+.macro-total-badge.valid {
+    background: rgba(var(--accent-primary-rgb), 0.1);
+    color: var(--accent-primary);
+    border-color: rgba(var(--accent-primary-rgb), 0.2);
+}
+
+/* Total Bar */
+.macro-total-bar {
+    display: flex;
+    height: 6px;
+    border-radius: 3px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.04);
+    margin-bottom: 0.5rem;
+}
+
+.macro-total-fill {
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+.macro-total-protein { background: var(--color-protein); }
+.macro-total-carbs { background: var(--color-carbs); }
+.macro-total-fat { background: var(--color-fat); }
+
+.macro-total-warn {
+    font-size: 0.78rem;
+    color: var(--color-cut);
+    margin-bottom: 0.75rem;
+    padding: 0.4rem 0.75rem;
+    background: rgba(239, 68, 68, 0.06);
+    border-radius: var(--border-radius-xs);
+    border: 1px solid rgba(239, 68, 68, 0.15);
+}
+
+/* Presets */
+.macro-presets {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+}
+
+.macro-preset {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+    padding: 0.6rem 0.4rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--border-radius-xs);
+    cursor: pointer;
+    font-family: var(--font-main);
+    color: var(--text-secondary);
+    transition: all var(--transition-fast);
+}
+
+.macro-preset:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--border-medium);
+}
+
+.macro-preset.active {
+    background: rgba(var(--accent-primary-rgb), 0.06);
+    border-color: rgba(var(--accent-primary-rgb), 0.3);
+    color: var(--text-primary);
+}
+
+.preset-name {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.preset-ratio {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+}
+
+.macro-preset.active .preset-ratio {
+    color: var(--accent-primary);
+}
+
+/* Macro Sliders */
+.macro-sliders {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.macro-slider-row {
+    background: rgba(255, 255, 255, 0.015);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--border-radius-sm);
+    padding: 0.85rem 1rem;
+    transition: border-color var(--transition-fast);
+}
+
+.macro-slider-row:hover {
+    border-color: var(--border-medium);
+}
+
+.macro-slider-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.6rem;
+}
+
+.macro-slider-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.macro-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.macro-dot-protein { background: var(--color-protein); }
+.macro-dot-carbs { background: var(--color-carbs); }
+.macro-dot-fat { background: var(--color-fat); }
+
+.macro-slider-values {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.macro-input-wrap {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--border-radius-xs);
+    padding: 0.2rem 0.1rem 0.2rem 0.4rem;
+    transition: border-color var(--transition-fast);
+}
+
+.macro-input-wrap:focus-within {
+    border-color: rgba(var(--accent-primary-rgb), 0.4);
+    box-shadow: 0 0 0 2px rgba(var(--accent-primary-rgb), 0.1);
+}
+
+.macro-percent-input {
+    width: 36px;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: right;
+    outline: none;
+    -moz-appearance: textfield;
+}
+
+.macro-percent-input::-webkit-inner-spin-button,
+.macro-percent-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.macro-input-suffix {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    padding-right: 0.3rem;
+}
+
+.macro-slider-grams {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    min-width: 42px;
+    text-align: right;
+}
+
+.macro-slider-row:nth-child(1) .macro-slider-grams { color: var(--color-protein); }
+.macro-slider-row:nth-child(2) .macro-slider-grams { color: var(--color-carbs); }
+.macro-slider-row:nth-child(3) .macro-slider-grams { color: var(--color-fat); }
+
+.macro-slider-kcal {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    min-width: 52px;
+    text-align: right;
+}
+
+/* Range Slider Styling */
+.macro-range {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.08);
+    cursor: pointer;
+}
+
+.macro-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.macro-range::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.5);
+}
+
+.macro-range::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+.macro-range-protein::-webkit-slider-thumb { background: var(--color-protein); }
+.macro-range-carbs::-webkit-slider-thumb { background: var(--color-carbs); }
+.macro-range-fat::-webkit-slider-thumb { background: var(--color-fat); }
+
+.macro-range-protein::-moz-range-thumb { background: var(--color-protein); }
+.macro-range-carbs::-moz-range-thumb { background: var(--color-carbs); }
+.macro-range-fat::-moz-range-thumb { background: var(--color-fat); }
+
+/* Macro Summary / Donut */
+.macro-summary {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--border-radius-sm);
+    padding: 1.25rem;
+}
+
+.macro-donut-wrap {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+}
+
+.macro-donut {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.macro-donut circle {
+    transition: stroke-dasharray 0.4s ease, stroke-dashoffset 0.4s ease;
+}
+
+.macro-donut-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    line-height: 1.2;
+}
+
+.macro-donut-total {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+.macro-donut-unit {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+}
+
+.macro-summary-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    flex: 1;
+}
+
+.macro-summary-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.macro-summary-name {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    flex: 1;
+}
+
+.macro-summary-val {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* Responsive for macro presets */
+@media (max-width: 480px) {
+    .macro-presets {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .macro-slider-values {
+        gap: 0.4rem;
+    }
+    
+    .macro-slider-kcal {
+        display: none;
+    }
+
+    .macro-summary {
+        flex-direction: column;
+    }
+}

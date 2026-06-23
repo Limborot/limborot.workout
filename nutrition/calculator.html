@@ -370,43 +370,135 @@
 
                         <!-- Macros Section -->
                         <div class="result-macros">
-                            <div class="result-macros-title">สัดส่วนมาโครแนะนำ (Maintain)</div>
-                            <div class="macros-grid">
-                                <div class="macro-card macro-protein">
-                                    <div class="macro-circle">
-                                        <svg viewBox="0 0 36 36" class="macro-ring">
-                                            <path class="macro-ring-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                                            <path class="macro-ring-fill macro-ring-protein" stroke-dasharray="30, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                                        </svg>
-                                        <span class="macro-percent">30%</span>
-                                    </div>
-                                    <div class="macro-name">โปรตีน</div>
-                                    <div class="macro-grams" id="macroProtein">0g</div>
+                            <div class="result-macros-header">
+                                <div class="result-macros-title">สัดส่วนมาโคร (Maintain)</div>
+                                <div class="macro-total-badge" id="macroTotalBadge">
+                                    <span class="macro-total-value" id="macroTotalPercent">100</span>%
                                 </div>
-                                <div class="macro-card macro-carbs">
-                                    <div class="macro-circle">
-                                        <svg viewBox="0 0 36 36" class="macro-ring">
-                                            <path class="macro-ring-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                                            <path class="macro-ring-fill macro-ring-carbs" stroke-dasharray="45, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                                        </svg>
-                                        <span class="macro-percent">45%</span>
+                            </div>
+                            <div class="macro-total-bar">
+                                <div class="macro-total-fill macro-total-protein" id="macroBarProtein" style="width:30%"></div>
+                                <div class="macro-total-fill macro-total-carbs" id="macroBarCarbs" style="width:45%"></div>
+                                <div class="macro-total-fill macro-total-fat" id="macroBarFat" style="width:25%"></div>
+                            </div>
+                            <div class="macro-total-warn" id="macroWarn" style="display:none;">
+                                ⚠️ สัดส่วนรวมต้องเท่ากับ 100%
+                            </div>
+
+                            <!-- Presets -->
+                            <div class="macro-presets">
+                                <button class="macro-preset active" data-protein="30" data-carbs="45" data-fat="25" id="presetBalanced">
+                                    <span class="preset-name">Balanced</span>
+                                    <span class="preset-ratio">30/45/25</span>
+                                </button>
+                                <button class="macro-preset" data-protein="40" data-carbs="35" data-fat="25" id="presetHighProtein">
+                                    <span class="preset-name">High Protein</span>
+                                    <span class="preset-ratio">40/35/25</span>
+                                </button>
+                                <button class="macro-preset" data-protein="30" data-carbs="20" data-fat="50" id="presetLowCarb">
+                                    <span class="preset-name">Low Carb</span>
+                                    <span class="preset-ratio">30/20/50</span>
+                                </button>
+                                <button class="macro-preset" data-protein="35" data-carbs="50" data-fat="15" id="presetLowFat">
+                                    <span class="preset-name">Low Fat</span>
+                                    <span class="preset-ratio">35/50/15</span>
+                                </button>
+                            </div>
+
+                            <!-- Macro Sliders -->
+                            <div class="macro-sliders">
+                                <!-- Protein -->
+                                <div class="macro-slider-row">
+                                    <div class="macro-slider-header">
+                                        <div class="macro-slider-label">
+                                            <span class="macro-dot macro-dot-protein"></span>
+                                            <span>โปรตีน</span>
+                                        </div>
+                                        <div class="macro-slider-values">
+                                            <div class="macro-input-wrap">
+                                                <input type="number" class="macro-percent-input macro-input-protein" id="macroProteinPercent" value="30" min="5" max="80">
+                                                <span class="macro-input-suffix">%</span>
+                                            </div>
+                                            <span class="macro-slider-grams" id="macroProteinGrams">0g</span>
+                                            <span class="macro-slider-kcal" id="macroProteinKcal">0 kcal</span>
+                                        </div>
                                     </div>
-                                    <div class="macro-name">คาร์โบไฮเดรต</div>
-                                    <div class="macro-grams" id="macroCarbs">0g</div>
+                                    <input type="range" class="macro-range macro-range-protein" id="macroProteinRange" min="5" max="80" value="30">
                                 </div>
-                                <div class="macro-card macro-fat">
-                                    <div class="macro-circle">
-                                        <svg viewBox="0 0 36 36" class="macro-ring">
-                                            <path class="macro-ring-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                                            <path class="macro-ring-fill macro-ring-fat" stroke-dasharray="25, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                                        </svg>
-                                        <span class="macro-percent">25%</span>
+
+                                <!-- Carbs -->
+                                <div class="macro-slider-row">
+                                    <div class="macro-slider-header">
+                                        <div class="macro-slider-label">
+                                            <span class="macro-dot macro-dot-carbs"></span>
+                                            <span>คาร์โบไฮเดรต</span>
+                                        </div>
+                                        <div class="macro-slider-values">
+                                            <div class="macro-input-wrap">
+                                                <input type="number" class="macro-percent-input macro-input-carbs" id="macroCarbsPercent" value="45" min="5" max="80">
+                                                <span class="macro-input-suffix">%</span>
+                                            </div>
+                                            <span class="macro-slider-grams" id="macroCarbsGrams">0g</span>
+                                            <span class="macro-slider-kcal" id="macroCarbsKcal">0 kcal</span>
+                                        </div>
                                     </div>
-                                    <div class="macro-name">ไขมัน</div>
-                                    <div class="macro-grams" id="macroFat">0g</div>
+                                    <input type="range" class="macro-range macro-range-carbs" id="macroCarbsRange" min="5" max="80" value="45">
+                                </div>
+
+                                <!-- Fat -->
+                                <div class="macro-slider-row">
+                                    <div class="macro-slider-header">
+                                        <div class="macro-slider-label">
+                                            <span class="macro-dot macro-dot-fat"></span>
+                                            <span>ไขมัน</span>
+                                        </div>
+                                        <div class="macro-slider-values">
+                                            <div class="macro-input-wrap">
+                                                <input type="number" class="macro-percent-input macro-input-fat" id="macroFatPercent" value="25" min="5" max="80">
+                                                <span class="macro-input-suffix">%</span>
+                                            </div>
+                                            <span class="macro-slider-grams" id="macroFatGrams">0g</span>
+                                            <span class="macro-slider-kcal" id="macroFatKcal">0 kcal</span>
+                                        </div>
+                                    </div>
+                                    <input type="range" class="macro-range macro-range-fat" id="macroFatRange" min="5" max="80" value="25">
+                                </div>
+                            </div>
+
+                            <!-- Macro Summary Donut -->
+                            <div class="macro-summary">
+                                <div class="macro-donut-wrap">
+                                    <svg viewBox="0 0 36 36" class="macro-donut" id="macroDonut">
+                                        <circle class="macro-donut-bg" cx="18" cy="18" r="15.9155" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="3"/>
+                                        <circle class="macro-donut-protein" id="donutProtein" cx="18" cy="18" r="15.9155" fill="none" stroke="var(--color-protein)" stroke-width="3" stroke-dasharray="30 70" stroke-dashoffset="0" stroke-linecap="round"/>
+                                        <circle class="macro-donut-carbs" id="donutCarbs" cx="18" cy="18" r="15.9155" fill="none" stroke="var(--color-carbs)" stroke-width="3" stroke-dasharray="45 55" stroke-dashoffset="-30" stroke-linecap="round"/>
+                                        <circle class="macro-donut-fat" id="donutFat" cx="18" cy="18" r="15.9155" fill="none" stroke="var(--color-fat)" stroke-width="3" stroke-dasharray="25 75" stroke-dashoffset="-75" stroke-linecap="round"/>
+                                    </svg>
+                                    <div class="macro-donut-center">
+                                        <span class="macro-donut-total" id="macroDonutTotal">0</span>
+                                        <span class="macro-donut-unit">kcal</span>
+                                    </div>
+                                </div>
+                                <div class="macro-summary-list">
+                                    <div class="macro-summary-item">
+                                        <span class="macro-dot macro-dot-protein"></span>
+                                        <span class="macro-summary-name">โปรตีน</span>
+                                        <span class="macro-summary-val" id="summaryProtein">0g</span>
+                                    </div>
+                                    <div class="macro-summary-item">
+                                        <span class="macro-dot macro-dot-carbs"></span>
+                                        <span class="macro-summary-name">คาร์โบไฮเดรต</span>
+                                        <span class="macro-summary-val" id="summaryCarbs">0g</span>
+                                    </div>
+                                    <div class="macro-summary-item">
+                                        <span class="macro-dot macro-dot-fat"></span>
+                                        <span class="macro-summary-name">ไขมัน</span>
+                                        <span class="macro-summary-val" id="summaryFat">0g</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
 
                         <!-- Reset Button -->
                         <button class="btn btn-reset" id="btnReset">
