@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TDEE Calculator | Nutrition by Limborot</title>
-    <meta name="description" content="คำนวณ TDEE แคลอรี่ที่ร่างกายต้องการต่อวัน ด้วย 2 วิธี: แบบน้ำหนักตัว (Mifflin-St Jeor) และ แบบ Lean Body Mass (Katch-McArdle)">
+    <meta name="description"
+        content="คำนวณ TDEE แคลอรี่ที่ร่างกายต้องการต่อวัน ด้วย 2 วิธี: แบบน้ำหนักตัว (Mifflin-St Jeor) และ แบบ Lean Body Mass (Katch-McArdle)">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <!-- Ambient Background Effects -->
     <div class="ambient-glow ambient-glow-1"></div>
@@ -55,13 +60,16 @@
                 <span class="hero-gradient-text">ที่ร่างกายต้องการ</span>
             </h1>
             <p class="hero-subtitle">
-                Total Daily Energy Expenditure — ค่าพลังงานที่ร่างกายเผาผลาญทั้งหมดในแต่ละวัน 
+                Total Daily Energy Expenditure — ค่าพลังงานที่ร่างกายเผาผลาญทั้งหมดในแต่ละวัน
                 คำนวณได้ 2 วิธี เพื่อผลลัพธ์ที่แม่นยำที่สุดสำหรับคุณ
             </p>
             <div class="hero-actions">
                 <a href="calculator.html" class="btn btn-primary">
                     <span>เริ่มคำนวณ</span>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
                 </a>
                 <a href="#knowledge" class="btn btn-ghost">
                     <span>เรียนรู้เพิ่มเติม</span>
@@ -93,7 +101,7 @@
                 <span class="section-tag">ทำความเข้าใจ</span>
                 <h2 class="section-title">TDEE คืออะไร?</h2>
                 <p class="section-desc">
-                    TDEE (Total Daily Energy Expenditure) คือ จำนวนแคลอรี่ทั้งหมดที่ร่างกายเผาผลาญใน 1 วัน 
+                    TDEE (Total Daily Energy Expenditure) คือ จำนวนแคลอรี่ทั้งหมดที่ร่างกายเผาผลาญใน 1 วัน
                     ซึ่งรวมทุกกิจกรรมตั้งแต่การหายใจ ย่อยอาหาร ไปจนถึงการออกกำลังกาย
                 </p>
             </div>
@@ -102,11 +110,16 @@
                 <!-- BMR Card -->
                 <div class="knowledge-card" data-aos="fade-up">
                     <div class="knowledge-card-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                        </svg>
                     </div>
                     <h3 class="knowledge-card-title">BMR คืออะไร?</h3>
                     <p class="knowledge-card-text">
-                        <strong>Basal Metabolic Rate (BMR)</strong> คือ พลังงานขั้นต่ำที่ร่างกายต้องการเพื่อรักษาการทำงานพื้นฐาน 
+                        <strong>Basal Metabolic Rate (BMR)</strong> คือ
+                        พลังงานขั้นต่ำที่ร่างกายต้องการเพื่อรักษาการทำงานพื้นฐาน
                         เช่น การหายใจ สูบฉีดเลือด ควบคุมอุณหภูมิ — แม้ในขณะที่ไม่ได้ทำกิจกรรมใดๆ เลย
                     </p>
                     <div class="knowledge-card-highlight">
@@ -117,11 +130,15 @@
                 <!-- TDEE Card -->
                 <div class="knowledge-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="knowledge-card-icon icon-secondary">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                        </svg>
                     </div>
                     <h3 class="knowledge-card-title">TDEE = BMR × Activity Factor</h3>
                     <p class="knowledge-card-text">
-                        TDEE คำนวณจาก BMR คูณด้วย <strong>Activity Factor</strong> ซึ่งเป็นตัวคูณที่แสดงระดับกิจกรรมในชีวิตประจำวัน 
+                        TDEE คำนวณจาก BMR คูณด้วย <strong>Activity Factor</strong>
+                        ซึ่งเป็นตัวคูณที่แสดงระดับกิจกรรมในชีวิตประจำวัน
                         ยิ่งเคลื่อนไหวมาก ตัวคูณยิ่งสูง แคลอรี่ที่ต้องการก็ยิ่งมากขึ้น
                     </p>
                     <div class="knowledge-card-highlight">
@@ -132,12 +149,18 @@
                 <!-- Why it matters -->
                 <div class="knowledge-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="knowledge-card-icon icon-tertiary">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 16v-4M12 8h.01" />
+                        </svg>
                     </div>
                     <h3 class="knowledge-card-title">ทำไมต้องรู้ TDEE?</h3>
                     <p class="knowledge-card-text">
-                        การรู้ TDEE ช่วยให้คุณวางแผนโภชนาการได้ตรงเป้าหมาย ไม่ว่าจะ <strong>ลดไขมัน</strong> (กินน้อยกว่า TDEE), 
-                        <strong>เพิ่มกล้ามเนื้อ</strong> (กินมากกว่า TDEE), หรือ <strong>รักษาน้ำหนัก</strong> (กินเท่า TDEE)
+                        การรู้ TDEE ช่วยให้คุณวางแผนโภชนาการได้ตรงเป้าหมาย ไม่ว่าจะ <strong>ลดไขมัน</strong>
+                        (กินน้อยกว่า TDEE),
+                        <strong>เพิ่มกล้ามเนื้อ</strong> (กินมากกว่า TDEE), หรือ <strong>รักษาน้ำหนัก</strong> (กินเท่า
+                        TDEE)
                     </p>
                     <div class="knowledge-card-highlight">
                         เป็นพื้นฐานสำคัญของการจัดการ <strong>โภชนาการ</strong> ทุกรูปแบบ
@@ -168,10 +191,10 @@
                     <h3 class="method-title">Mifflin-St Jeor</h3>
                     <p class="method-subtitle">คำนวณจากน้ำหนักตัว</p>
                     <p class="method-desc">
-                        สูตรที่ได้รับการยอมรับว่า <strong>แม่นยำที่สุด</strong> สำหรับคนทั่วไป 
+                        สูตรที่ได้รับการยอมรับว่า <strong>แม่นยำที่สุด</strong> สำหรับคนทั่วไป
                         พัฒนาในปี 1990 โดย Mifflin และ St Jeor ใช้ น้ำหนัก, ส่วนสูง, อายุ และเพศ ในการคำนวณ
                     </p>
-                    
+
                     <div class="formula-box">
                         <div class="formula-label">สูตรสำหรับผู้ชาย</div>
                         <div class="formula">
@@ -217,7 +240,7 @@
                     <h3 class="method-title">Katch-McArdle</h3>
                     <p class="method-subtitle">คำนวณจาก Lean Body Mass</p>
                     <p class="method-desc">
-                        สูตรที่ใช้ <strong>มวลกล้ามเนื้อ (Lean Body Mass)</strong> เป็นตัวคำนวณ 
+                        สูตรที่ใช้ <strong>มวลกล้ามเนื้อ (Lean Body Mass)</strong> เป็นตัวคำนวณ
                         ให้ผลแม่นยำกว่าสำหรับคนที่รู้ค่า Body Fat % ของตัวเอง ไม่แบ่งเพศเพราะใช้ LBM ตรงๆ
                     </p>
 
@@ -366,11 +389,11 @@
                     <span class="logo-text"><span class="logo-accent">nutrition</span>.limborot</span>
                 </div>
                 <p class="footer-note">
-                    ⚠️ ค่า TDEE เป็นการประมาณค่าเท่านั้น ผลลัพธ์อาจแตกต่างจากค่าจริงได้ตามปัจจัยของแต่ละบุคคล 
+                    ⚠️ ค่า TDEE เป็นการประมาณค่าเท่านั้น ผลลัพธ์อาจแตกต่างจากค่าจริงได้ตามปัจจัยของแต่ละบุคคล
                     ควรปรึกษาผู้เชี่ยวชาญด้านโภชนาการเพิ่มเติม
                 </p>
                 <div class="footer-bottom">
-                    <span>© 2025 Limborot. All rights reserved.</span>
+                    <span>© 2026 Limborot. All rights reserved.</span>
                     <a href="https://limborot.com" class="footer-link">limborot.com</a>
                 </div>
             </div>
@@ -379,4 +402,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
