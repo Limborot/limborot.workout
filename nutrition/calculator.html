@@ -368,9 +368,15 @@
 
                         <!-- Goals -->
                         <div class="result-goals">
-                            <div class="result-goals-title">เป้าหมายแคลอรี่ต่อวัน</div>
+                            <div class="result-goals-header">
+                                <div class="result-goals-title">เป้าหมายแคลอรี่ต่อวัน</div>
+                                <div class="goal-select-hint">👆 กดเลือกเพื่อคำนวณมาโคร</div>
+                            </div>
 
-                            <div class="goal-card goal-bulk">
+                            <div class="goal-card goal-bulk goal-selectable" data-goal="bulk" id="goalCardBulk">
+                                <div class="goal-selected-indicator">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                </div>
                                 <div class="goal-header">
                                     <span class="goal-icon">📈</span>
                                     <div>
@@ -391,7 +397,10 @@
                                 </div>
                             </div>
 
-                            <div class="goal-card goal-maintain">
+                            <div class="goal-card goal-maintain goal-selectable active" data-goal="maintain" id="goalCardMaintain">
+                                <div class="goal-selected-indicator">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                </div>
                                 <div class="goal-header">
                                     <span class="goal-icon">⚖️</span>
                                     <div>
@@ -407,7 +416,10 @@
                                 </div>
                             </div>
 
-                            <div class="goal-card goal-cut">
+                            <div class="goal-card goal-cut goal-selectable" data-goal="cut" id="goalCardCut">
+                                <div class="goal-selected-indicator">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                </div>
                                 <div class="goal-header">
                                     <span class="goal-icon">📉</span>
                                     <div>
@@ -429,10 +441,17 @@
                             </div>
                         </div>
 
+
                         <!-- Macros Section -->
                         <div class="result-macros">
                             <div class="result-macros-header">
-                                <div class="result-macros-title">สัดส่วนมาโคร (Maintain)</div>
+                                <div class="result-macros-title-wrap">
+                                    <div class="result-macros-title">สัดส่วนมาโคร</div>
+                                    <div class="macro-goal-label" id="macroGoalLabel">
+                                        <span class="macro-goal-name" id="macroGoalName">Maintain</span>
+                                        <span class="macro-goal-kcal" id="macroGoalKcal">0 kcal</span>
+                                    </div>
+                                </div>
                                 <div class="macro-total-badge" id="macroTotalBadge">
                                     <span class="macro-total-value" id="macroTotalPercent">100</span>%
                                 </div>

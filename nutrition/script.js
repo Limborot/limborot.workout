@@ -51,11 +51,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!tabStandard || !tabLBM) return;
 
-    // --- Store last TDEE for macro recalculation ---
-    let lastTDEE = 0;
+    // --- State ---
+    let lastTDEE = 0;                 // ค่า TDEE (Maintain)
+    let selectedGoal = 'maintain';     // goal ที่เลือกสำหรับคำนวณ macro
+    let selectedGender = 'male';
 
-    // --- Store last calculation data for image download ---
-    let lastCalcData = null;
+    // Goal kcal mapping
+    function getGoalCalories() {
+        const tdee = lastTDEE;
+        return {
+            bulk: tdee + 500,       // Bulk (ค่ากลาง)
+            maintain: tdee,
+            cut: tdee - 500         // Cut (ค่ากลาง)
+        };
+    }
+
+    function getSelectedGoalKcal() {
+        return getGoalCalories()[selectedGoal] || lastTDEE;
+    }
 
     // === Tab Switching ===
     tabStandard.addEventListener('click', () => {
@@ -99,7 +112,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // === Gender Toggle ===
     const genderMale = document.getElementById('genderMale');
     const genderFemale = document.getElementById('genderFemale');
-    let selectedGender = 'male';
 
     if (genderMale && genderFemale) {
         genderMale.addEventListener('click', () => {
@@ -165,13 +177,46 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =============================================
+    // === GOAL SELECTION (Bulk / Maintain / Cut) ===
+    // =============================================
+
+    const goalLabels = {
+        bulk: 'Bulk (+500)',
+        maintain: 'Maintain',
+        cut: 'Cut (-500)'
+    };
+
+    const goalCards = document.querySelectorAll('.goal-selectable');
+
+    goalCards.forEach(card => {
+        card.addEventListener('click', () => {
+            // ย้าย active state
+            goalCards.forEach(c => c.classList.remove('active'));
+            card.classList.add('active');
+
+            // อัพเดท selected goal
+            selectedGoal = card.dataset.goal;
+
+            // คำนวณ macro ใหม่ทันที
+            updateMacroUI();
+
+            // Smooth scroll ไป macro section
+            const macroSection = document.querySelector('.result-macros');
+            if (macroSection) {
+                setTimeout(() => {
+                    macroSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 100);
+            }
+        });
+    });
+
+    // =============================================
     // === INTERACTIVE MACRO ADJUSTER ===
     // =============================================
 
     const macroProteinRange = document.getElementById('macroProteinRange');
     const macroCarbsRange = document.getElementById('macroCarbsRange');
     const macroFatRange = document.getElementById('macroFatRange');
-
     const macroProteinPercent = document.getElementById('macroProteinPercent');
     const macroCarbsPercent = document.getElementById('macroCarbsPercent');
     const macroFatPercent = document.getElementById('macroFatPercent');
@@ -187,14 +232,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateMacroUI() {
         const m = getMacroValues();
         const total = m.protein + m.carbs + m.fat;
-        const tdee = lastTDEE;
 
-        // Sync range sliders with number inputs
+        // ค่าแคลอรี่ตาม goal ที่เลือก
+        const goalKcal = getSelectedGoalKcal();
+
+        // Sync sliders ↔ inputs
         macroProteinRange.value = m.protein;
         macroCarbsRange.value = m.carbs;
         macroFatRange.value = m.fat;
-
-        // Sync number inputs with range sliders
         macroProteinPercent.value = m.protein;
         macroCarbsPercent.value = m.carbs;
         macroFatPercent.value = m.fat;
@@ -220,10 +265,10 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('macroBarCarbs').style.width = m.carbs + '%';
         document.getElementById('macroBarFat').style.width = m.fat + '%';
 
-        // Calculate grams & kcal
-        const proteinKcal = Math.round(tdee * m.protein / 100);
-        const carbsKcal = Math.round(tdee * m.carbs / 100);
-        const fatKcal = Math.round(tdee * m.fat / 100);
+        // Calculate grams & kcal จาก goalKcal
+        const proteinKcal = Math.round(goalKcal * m.protein / 100);
+        const carbsKcal = Math.round(goalKcal * m.carbs / 100);
+        const fatKcal = Math.round(goalKcal * m.fat / 100);
 
         const proteinGrams = Math.round(proteinKcal / 4);
         const carbsGrams = Math.round(carbsKcal / 4);
@@ -242,10 +287,15 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('summaryProtein').textContent = proteinGrams + 'g';
         document.getElementById('summaryCarbs').textContent = carbsGrams + 'g';
         document.getElementById('summaryFat').textContent = fatGrams + 'g';
-        document.getElementById('macroDonutTotal').textContent = Math.round(tdee).toLocaleString();
+        document.getElementById('macroDonutTotal').textContent = Math.round(goalKcal).toLocaleString();
+
+        // Update goal label
+        const goalNameEl = document.getElementById('macroGoalName');
+        const goalKcalEl = document.getElementById('macroGoalKcal');
+        if (goalNameEl) goalNameEl.textContent = goalLabels[selectedGoal];
+        if (goalKcalEl) goalKcalEl.textContent = Math.round(goalKcal).toLocaleString() + ' kcal';
 
         // Update donut chart
-        const circumference = 100; // percentage-based
         const proteinDash = m.protein;
         const carbsDash = m.carbs;
         const fatDash = m.fat;
@@ -254,59 +304,34 @@ document.addEventListener('DOMContentLoaded', () => {
         const donutCarbs = document.getElementById('donutCarbs');
         const donutFat = document.getElementById('donutFat');
 
-        donutProtein.setAttribute('stroke-dasharray', `${proteinDash} ${circumference - proteinDash}`);
+        donutProtein.setAttribute('stroke-dasharray', `${proteinDash} ${100 - proteinDash}`);
         donutProtein.setAttribute('stroke-dashoffset', '0');
 
-        donutCarbs.setAttribute('stroke-dasharray', `${carbsDash} ${circumference - carbsDash}`);
+        donutCarbs.setAttribute('stroke-dasharray', `${carbsDash} ${100 - carbsDash}`);
         donutCarbs.setAttribute('stroke-dashoffset', `-${proteinDash}`);
 
-        donutFat.setAttribute('stroke-dasharray', `${fatDash} ${circumference - fatDash}`);
+        donutFat.setAttribute('stroke-dasharray', `${fatDash} ${100 - fatDash}`);
         donutFat.setAttribute('stroke-dashoffset', `-${proteinDash + carbsDash}`);
 
-        // Deactivate presets if custom
-        const presets = document.querySelectorAll('.macro-preset');
-        let matchedPreset = false;
-        presets.forEach(p => {
+        // Highlight matching preset
+        document.querySelectorAll('.macro-preset').forEach(p => {
             const pp = parseInt(p.dataset.protein);
             const pc = parseInt(p.dataset.carbs);
             const pf = parseInt(p.dataset.fat);
-            if (pp === m.protein && pc === m.carbs && pf === m.fat) {
-                p.classList.add('active');
-                matchedPreset = true;
-            } else {
-                p.classList.remove('active');
-            }
+            p.classList.toggle('active', pp === m.protein && pc === m.carbs && pf === m.fat);
         });
     }
 
     // --- Range slider events ---
     if (macroProteinRange) {
-        macroProteinRange.addEventListener('input', () => {
-            macroProteinPercent.value = macroProteinRange.value;
-            updateMacroUI();
-        });
-        macroCarbsRange.addEventListener('input', () => {
-            macroCarbsPercent.value = macroCarbsRange.value;
-            updateMacroUI();
-        });
-        macroFatRange.addEventListener('input', () => {
-            macroFatPercent.value = macroFatRange.value;
-            updateMacroUI();
-        });
+        macroProteinRange.addEventListener('input', () => { macroProteinPercent.value = macroProteinRange.value; updateMacroUI(); });
+        macroCarbsRange.addEventListener('input', () => { macroCarbsPercent.value = macroCarbsRange.value; updateMacroUI(); });
+        macroFatRange.addEventListener('input', () => { macroFatPercent.value = macroFatRange.value; updateMacroUI(); });
 
         // --- Number input events ---
-        macroProteinPercent.addEventListener('input', () => {
-            macroProteinRange.value = macroProteinPercent.value;
-            updateMacroUI();
-        });
-        macroCarbsPercent.addEventListener('input', () => {
-            macroCarbsRange.value = macroCarbsPercent.value;
-            updateMacroUI();
-        });
-        macroFatPercent.addEventListener('input', () => {
-            macroFatRange.value = macroFatPercent.value;
-            updateMacroUI();
-        });
+        macroProteinPercent.addEventListener('input', () => { macroProteinRange.value = macroProteinPercent.value; updateMacroUI(); });
+        macroCarbsPercent.addEventListener('input', () => { macroCarbsRange.value = macroCarbsPercent.value; updateMacroUI(); });
+        macroFatPercent.addEventListener('input', () => { macroFatRange.value = macroFatPercent.value; updateMacroUI(); });
 
         // --- Preset buttons ---
         document.querySelectorAll('.macro-preset').forEach(preset => {
@@ -333,17 +358,14 @@ document.addEventListener('DOMContentLoaded', () => {
         resultsPlaceholder.style.display = 'none';
         resultsContent.style.display = 'block';
 
-        // Store TDEE for macro calculation
+        // Store TDEE
         lastTDEE = Math.round(tdee);
 
-        // Store calculation data for image download
-        lastCalcData = {
-            bmr: Math.round(bmr),
-            tdee: lastTDEE,
-            method,
-            activityFactor,
-            ...extraData
-        };
+        // Reset goal to maintain
+        selectedGoal = 'maintain';
+        goalCards.forEach(c => c.classList.remove('active'));
+        const maintainCard = document.getElementById('goalCardMaintain');
+        if (maintainCard) maintainCard.classList.add('active');
 
         // Method Badge
         const methodBadge = document.getElementById('resultMethodBadge');
@@ -392,7 +414,7 @@ document.addEventListener('DOMContentLoaded', () => {
         animateNumber(document.getElementById('goalCutMin'), lastTDEE - 300, 900);
         animateNumber(document.getElementById('goalCutMax'), lastTDEE - 500, 900);
 
-        // Update macros with current slider values
+        // Update macros
         updateMacroUI();
 
         // Scroll to results on mobile
@@ -409,13 +431,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const ageInput = document.getElementById('stdAge');
         const weightInput = document.getElementById('stdWeight');
         const heightInput = document.getElementById('stdHeight');
-
         if (!validateInput(ageInput) || !validateInput(weightInput) || !validateInput(heightInput)) return;
-
         const age = parseFloat(ageInput.value);
         const weight = parseFloat(weightInput.value);
         const height = parseFloat(heightInput.value);
-
         let bmr = (10 * weight) + (6.25 * height) - (5 * age) + (selectedGender === 'male' ? 5 : -161);
         displayResults(bmr, bmr * stdActivityFactor, 'standard', stdActivityFactor, { gender: selectedGender });
     });
@@ -425,14 +444,11 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         const weightInput = document.getElementById('lbmWeight');
         const bodyFatInput = document.getElementById('lbmBodyFat');
-
         if (!validateInput(weightInput) || !validateInput(bodyFatInput)) return;
-
         const weight = parseFloat(weightInput.value);
         const bodyFat = parseFloat(bodyFatInput.value);
         const lbm = weight * (1 - bodyFat / 100);
         const bmr = 370 + (21.6 * lbm);
-
         displayResults(bmr, bmr * lbmActivityFactor, 'lbm', lbmActivityFactor, { lbm, fatMass: weight - lbm });
     });
 
@@ -443,6 +459,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('resultsContent').style.display = 'none';
             document.getElementById('resultsPlaceholder').style.display = 'flex';
             lastTDEE = 0;
+            selectedGoal = 'maintain';
 
             document.querySelectorAll('.calc-form .form-input').forEach(input => {
                 input.value = '';
@@ -465,8 +482,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (macroProteinPercent) {
                 macroProteinPercent.value = 30; macroCarbsPercent.value = 45; macroFatPercent.value = 25;
                 macroProteinRange.value = 30; macroCarbsRange.value = 45; macroFatRange.value = 25;
-                updateMacroUI();
             }
+
+            // Reset goal cards
+            goalCards.forEach(c => c.classList.remove('active'));
+            const maintainCard = document.getElementById('goalCardMaintain');
+            if (maintainCard) maintainCard.classList.add('active');
 
             const calcSection = document.getElementById('calculator');
             if (calcSection) calcSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -495,450 +516,5 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.key === 'Enter') { e.preventDefault(); input.closest('form')?.dispatchEvent(new Event('submit')); }
         });
     });
-
-    // =============================================
-    // === DOWNLOAD IMAGE FEATURE ===
-    // =============================================
-
-    function drawRoundedRect(ctx, x, y, w, h, r) {
-        ctx.beginPath();
-        ctx.moveTo(x + r, y);
-        ctx.lineTo(x + w - r, y);
-        ctx.quadraticCurveTo(x + w, y, x + w, y + r);
-        ctx.lineTo(x + w, y + h - r);
-        ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
-        ctx.lineTo(x + r, y + h);
-        ctx.quadraticCurveTo(x, y + h, x, y + h - r);
-        ctx.lineTo(x, y + r);
-        ctx.quadraticCurveTo(x, y, x + r, y);
-        ctx.closePath();
-    }
-
-    function drawCard(ctx, x, y, w, h, opts = {}) {
-        const { radius = 20, bg = 'rgba(255,255,255,0.04)', border = 'rgba(255,255,255,0.08)' } = opts;
-        drawRoundedRect(ctx, x, y, w, h, radius);
-        ctx.fillStyle = bg;
-        ctx.fill();
-        ctx.strokeStyle = border;
-        ctx.lineWidth = 1.5;
-        ctx.stroke();
-    }
-
-    function drawDonutArc(ctx, cx, cy, radius, lineWidth, startAngle, endAngle, color) {
-        ctx.beginPath();
-        ctx.arc(cx, cy, radius, startAngle, endAngle);
-        ctx.strokeStyle = color;
-        ctx.lineWidth = lineWidth;
-        ctx.lineCap = 'round';
-        ctx.stroke();
-    }
-
-    function generateResultImage() {
-        const W = 1080;
-        const H = 1920;
-        const canvas = document.createElement('canvas');
-        canvas.width = W;
-        canvas.height = H;
-        const ctx = canvas.getContext('2d');
-
-        // --- Background ---
-        const bgGrad = ctx.createLinearGradient(0, 0, W, H);
-        bgGrad.addColorStop(0, '#050508');
-        bgGrad.addColorStop(0.5, '#0a0a14');
-        bgGrad.addColorStop(1, '#050508');
-        ctx.fillStyle = bgGrad;
-        ctx.fillRect(0, 0, W, H);
-
-        // --- Decorative glows ---
-        const glow1 = ctx.createRadialGradient(200, 300, 0, 200, 300, 400);
-        glow1.addColorStop(0, 'rgba(16,185,129,0.12)');
-        glow1.addColorStop(1, 'transparent');
-        ctx.fillStyle = glow1;
-        ctx.fillRect(0, 0, W, 700);
-
-        const glow2 = ctx.createRadialGradient(880, 1500, 0, 880, 1500, 450);
-        glow2.addColorStop(0, 'rgba(6,182,212,0.08)');
-        glow2.addColorStop(1, 'transparent');
-        ctx.fillStyle = glow2;
-        ctx.fillRect(400, 1100, 680, 820);
-
-        // --- Outer card ---
-        const pad = 50;
-        drawCard(ctx, pad, pad, W - pad * 2, H - pad * 2, { radius: 32, bg: 'rgba(255,255,255,0.02)', border: 'rgba(255,255,255,0.06)' });
-
-        const cx = W / 2;
-        let y = 110;
-
-        // === HEADER ===
-        // Logo
-        ctx.font = '600 38px Inter, sans-serif';
-        ctx.fillStyle = '#10b981';
-        ctx.textAlign = 'center';
-        ctx.fillText('◈', cx - 160, y + 8);
-        ctx.font = '700 34px Inter, sans-serif';
-        const logoGrad = ctx.createLinearGradient(cx - 140, y, cx + 140, y);
-        logoGrad.addColorStop(0, '#10b981');
-        logoGrad.addColorStop(1, '#06b6d4');
-        ctx.fillStyle = logoGrad;
-        ctx.fillText('nutrition.limborot', cx + 10, y + 8);
-
-        // Date
-        y += 55;
-        ctx.font = '400 24px Inter, sans-serif';
-        ctx.fillStyle = '#525263';
-        const now = new Date();
-        const dateStr = now.toLocaleDateString('th-TH', { year: 'numeric', month: 'long', day: 'numeric' });
-        ctx.fillText(dateStr, cx, y);
-
-        // Divider
-        y += 40;
-        const divGrad = ctx.createLinearGradient(pad + 60, y, W - pad - 60, y);
-        divGrad.addColorStop(0, 'transparent');
-        divGrad.addColorStop(0.5, 'rgba(255,255,255,0.1)');
-        divGrad.addColorStop(1, 'transparent');
-        ctx.strokeStyle = divGrad;
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.moveTo(pad + 60, y);
-        ctx.lineTo(W - pad - 60, y);
-        ctx.stroke();
-
-        // === METHOD BADGE ===
-        y += 45;
-        const methodText = lastCalcData.method === 'standard' ? 'Mifflin-St Jeor (น้ำหนักตัว)' : 'Katch-McArdle (Lean Body Mass)';
-        const badgeColor = lastCalcData.method === 'standard' ? '#10b981' : '#06b6d4';
-        // Badge background
-        ctx.font = '600 22px Inter, sans-serif';
-        const badgeW = ctx.measureText(methodText).width + 48;
-        drawRoundedRect(ctx, cx - badgeW / 2, y - 18, badgeW, 42, 21);
-        ctx.fillStyle = badgeColor + '18';
-        ctx.fill();
-        ctx.strokeStyle = badgeColor + '40';
-        ctx.lineWidth = 1;
-        ctx.stroke();
-        ctx.fillStyle = badgeColor;
-        ctx.textAlign = 'center';
-        ctx.fillText(methodText, cx, y + 10);
-
-        // === USER INFO CARD ===
-        y += 60;
-        const infoCardH = lastCalcData.method === 'standard' ? 185 : 145;
-        drawCard(ctx, pad + 30, y, W - (pad + 30) * 2, infoCardH, { radius: 16, bg: 'rgba(255,255,255,0.03)', border: 'rgba(255,255,255,0.06)' });
-
-        ctx.font = '600 22px Inter, sans-serif';
-        ctx.fillStyle = '#9ca3af';
-        ctx.textAlign = 'left';
-        ctx.fillText('ข้อมูลที่ใช้คำนวณ', pad + 60, y + 38);
-
-        y += 60;
-        ctx.font = '500 24px Inter, sans-serif';
-        const infoLeft = pad + 60;
-        const infoRight = cx + 40;
-
-        if (lastCalcData.method === 'standard') {
-            // Gender + Age
-            ctx.fillStyle = '#525263';
-            ctx.fillText('เพศ:', infoLeft, y + 10);
-            ctx.fillStyle = '#f0f0f5';
-            ctx.fillText(lastCalcData.gender === 'male' ? 'ชาย' : 'หญิง', infoLeft + 70, y + 10);
-
-            ctx.fillStyle = '#525263';
-            ctx.fillText('อายุ:', infoRight, y + 10);
-            ctx.fillStyle = '#f0f0f5';
-            const age = document.getElementById('stdAge').value;
-            ctx.fillText(age + ' ปี', infoRight + 80, y + 10);
-
-            y += 42;
-            // Weight + Height
-            ctx.fillStyle = '#525263';
-            ctx.fillText('น้ำหนัก:', infoLeft, y + 10);
-            ctx.fillStyle = '#f0f0f5';
-            const weight = document.getElementById('stdWeight').value;
-            ctx.fillText(weight + ' kg', infoLeft + 110, y + 10);
-
-            ctx.fillStyle = '#525263';
-            ctx.fillText('ส่วนสูง:', infoRight, y + 10);
-            ctx.fillStyle = '#f0f0f5';
-            const height = document.getElementById('stdHeight').value;
-            ctx.fillText(height + ' cm', infoRight + 110, y + 10);
-
-            y += 42;
-        } else {
-            ctx.fillStyle = '#525263';
-            ctx.fillText('น้ำหนัก:', infoLeft, y + 10);
-            ctx.fillStyle = '#f0f0f5';
-            const weight = document.getElementById('lbmWeight').value;
-            ctx.fillText(weight + ' kg', infoLeft + 110, y + 10);
-
-            ctx.fillStyle = '#525263';
-            ctx.fillText('Body Fat:', infoRight, y + 10);
-            ctx.fillStyle = '#f0f0f5';
-            const bf = document.getElementById('lbmBodyFat').value;
-            ctx.fillText(bf + '%', infoRight + 130, y + 10);
-
-            y += 42;
-        }
-
-        // Activity factor
-        ctx.fillStyle = '#525263';
-        ctx.fillText('Activity:', infoLeft, y + 10);
-        ctx.fillStyle = '#f0f0f5';
-        ctx.fillText(activityLabels[lastCalcData.activityFactor] || ('×' + lastCalcData.activityFactor), infoLeft + 120, y + 10);
-
-        // === BMR RESULT CARD ===
-        y += 75;
-        drawCard(ctx, pad + 30, y, W - (pad + 30) * 2, 130, { radius: 16, bg: 'rgba(255,255,255,0.03)', border: 'rgba(255,255,255,0.06)' });
-
-        ctx.font = '500 22px Inter, sans-serif';
-        ctx.fillStyle = '#9ca3af';
-        ctx.textAlign = 'left';
-        ctx.fillText('BMR (อัตราเผาผลาญขั้นพื้นฐาน)', pad + 60, y + 40);
-
-        ctx.font = '800 48px JetBrains Mono, monospace';
-        ctx.fillStyle = '#f0f0f5';
-        ctx.textAlign = 'right';
-        ctx.fillText(lastCalcData.bmr.toLocaleString(), W - pad - 70, y + 90);
-        ctx.font = '400 22px Inter, sans-serif';
-        ctx.fillStyle = '#525263';
-        ctx.fillText(' kcal/วัน', W - pad - 70, y + 118);
-
-        // === TDEE MAIN RESULT ===
-        y += 160;
-        const tdeeCardH = 180;
-        // Gradient border card
-        drawRoundedRect(ctx, pad + 28, y - 2, W - (pad + 28) * 2, tdeeCardH + 4, 18);
-        const borderGrad = ctx.createLinearGradient(pad, y, W - pad, y + tdeeCardH);
-        borderGrad.addColorStop(0, '#10b981');
-        borderGrad.addColorStop(1, '#06b6d4');
-        ctx.strokeStyle = borderGrad;
-        ctx.lineWidth = 2;
-        ctx.stroke();
-        // Inner fill
-        drawRoundedRect(ctx, pad + 30, y, W - (pad + 30) * 2, tdeeCardH, 16);
-        ctx.fillStyle = 'rgba(16,185,129,0.06)';
-        ctx.fill();
-
-        ctx.font = '600 26px Inter, sans-serif';
-        const tdeeLabel = ctx.createLinearGradient(cx - 80, y, cx + 80, y);
-        tdeeLabel.addColorStop(0, '#10b981');
-        tdeeLabel.addColorStop(1, '#06b6d4');
-        ctx.fillStyle = tdeeLabel;
-        ctx.textAlign = 'center';
-        ctx.fillText('TDEE ของคุณ', cx, y + 45);
-
-        ctx.font = '900 72px JetBrains Mono, monospace';
-        const tdeeValGrad = ctx.createLinearGradient(cx - 120, y + 60, cx + 120, y + 130);
-        tdeeValGrad.addColorStop(0, '#10b981');
-        tdeeValGrad.addColorStop(1, '#06b6d4');
-        ctx.fillStyle = tdeeValGrad;
-        ctx.fillText(lastCalcData.tdee.toLocaleString(), cx, y + 120);
-
-        ctx.font = '400 24px Inter, sans-serif';
-        ctx.fillStyle = '#9ca3af';
-        ctx.fillText('แคลอรี่ / วัน', cx, y + 158);
-
-        // === GOALS SECTION ===
-        y += tdeeCardH + 40;
-        ctx.font = '600 24px Inter, sans-serif';
-        ctx.fillStyle = '#9ca3af';
-        ctx.textAlign = 'center';
-        ctx.fillText('เป้าหมายแคลอรี่ต่อวัน', cx, y);
-
-        y += 25;
-        const goalW = (W - pad * 2 - 60 - 30) / 3;
-        const goalH = 120;
-        const goals = [
-            { label: 'Bulk', emoji: '📈', color: '#f59e0b', values: [(lastCalcData.tdee + 300), (lastCalcData.tdee + 500)], sub: '+300 ~ +500' },
-            { label: 'Maintain', emoji: '⚖️', color: '#10b981', values: [lastCalcData.tdee], sub: 'TDEE' },
-            { label: 'Cut', emoji: '📉', color: '#ef4444', values: [(lastCalcData.tdee - 300), (lastCalcData.tdee - 500)], sub: '-300 ~ -500' }
-        ];
-
-        goals.forEach((g, i) => {
-            const gx = pad + 30 + i * (goalW + 15);
-            drawCard(ctx, gx, y, goalW, goalH, { radius: 14, bg: g.color + '0D', border: g.color + '30' });
-
-            ctx.font = '28px sans-serif';
-            ctx.textAlign = 'center';
-            ctx.fillText(g.emoji, gx + goalW / 2, y + 35);
-
-            ctx.font = '600 20px Inter, sans-serif';
-            ctx.fillStyle = g.color;
-            ctx.fillText(g.label, gx + goalW / 2, y + 60);
-
-            ctx.font = '700 28px JetBrains Mono, monospace';
-            ctx.fillStyle = '#f0f0f5';
-            if (g.values.length === 2) {
-                ctx.fillText(g.values[0] + ' - ' + g.values[1], gx + goalW / 2, y + 92);
-            } else {
-                ctx.fillText(g.values[0].toLocaleString(), gx + goalW / 2, y + 92);
-            }
-
-            ctx.font = '400 16px Inter, sans-serif';
-            ctx.fillStyle = '#525263';
-            ctx.fillText(g.sub, gx + goalW / 2, y + 114);
-        });
-
-        // === MACROS SECTION ===
-        y += goalH + 45;
-        const macros = getMacroValues();
-        const tdeeVal = lastCalcData.tdee;
-
-        const proteinKcal = Math.round(tdeeVal * macros.protein / 100);
-        const carbsKcal = Math.round(tdeeVal * macros.carbs / 100);
-        const fatKcal = Math.round(tdeeVal * macros.fat / 100);
-        const proteinG = Math.round(proteinKcal / 4);
-        const carbsG = Math.round(carbsKcal / 4);
-        const fatG = Math.round(fatKcal / 9);
-
-        const macroCardH = 340;
-        drawCard(ctx, pad + 30, y, W - (pad + 30) * 2, macroCardH, { radius: 16, bg: 'rgba(255,255,255,0.03)', border: 'rgba(255,255,255,0.06)' });
-
-        ctx.font = '600 24px Inter, sans-serif';
-        ctx.fillStyle = '#9ca3af';
-        ctx.textAlign = 'center';
-        ctx.fillText('สัดส่วนสารอาหาร (Macros)', cx, y + 38);
-
-        // Donut chart
-        const donutCx = pad + 200;
-        const donutCy = y + 185;
-        const donutR = 90;
-        const donutW = 22;
-
-        // Background circle
-        ctx.beginPath();
-        ctx.arc(donutCx, donutCy, donutR, 0, Math.PI * 2);
-        ctx.strokeStyle = 'rgba(255,255,255,0.06)';
-        ctx.lineWidth = donutW;
-        ctx.stroke();
-
-        // Draw arcs
-        const total = macros.protein + macros.carbs + macros.fat;
-        const startOffset = -Math.PI / 2;
-        const proteinAngle = (macros.protein / total) * Math.PI * 2;
-        const carbsAngle = (macros.carbs / total) * Math.PI * 2;
-        const fatAngle = (macros.fat / total) * Math.PI * 2;
-
-        drawDonutArc(ctx, donutCx, donutCy, donutR, donutW, startOffset, startOffset + proteinAngle, '#ef4444');
-        drawDonutArc(ctx, donutCx, donutCy, donutR, donutW, startOffset + proteinAngle, startOffset + proteinAngle + carbsAngle, '#f59e0b');
-        drawDonutArc(ctx, donutCx, donutCy, donutR, donutW, startOffset + proteinAngle + carbsAngle, startOffset + proteinAngle + carbsAngle + fatAngle, '#8b5cf6');
-
-        // Donut center text
-        ctx.font = '800 32px JetBrains Mono, monospace';
-        ctx.fillStyle = '#f0f0f5';
-        ctx.textAlign = 'center';
-        ctx.fillText(tdeeVal.toLocaleString(), donutCx, donutCy + 5);
-        ctx.font = '400 18px Inter, sans-serif';
-        ctx.fillStyle = '#525263';
-        ctx.fillText('kcal', donutCx, donutCy + 28);
-
-        // Macro breakdown list (right side)
-        const listX = pad + 370;
-        const macroList = [
-            { name: 'โปรตีน', color: '#ef4444', pct: macros.protein, grams: proteinG, kcal: proteinKcal },
-            { name: 'คาร์โบไฮเดรต', color: '#f59e0b', pct: macros.carbs, grams: carbsG, kcal: carbsKcal },
-            { name: 'ไขมัน', color: '#8b5cf6', pct: macros.fat, grams: fatG, kcal: fatKcal }
-        ];
-
-        let listY = y + 95;
-        macroList.forEach(m => {
-            // Color dot
-            ctx.beginPath();
-            ctx.arc(listX, listY + 6, 8, 0, Math.PI * 2);
-            ctx.fillStyle = m.color;
-            ctx.fill();
-
-            // Name
-            ctx.font = '500 24px Inter, sans-serif';
-            ctx.fillStyle = '#f0f0f5';
-            ctx.textAlign = 'left';
-            ctx.fillText(m.name, listX + 22, listY + 12);
-
-            // Percentage
-            ctx.font = '700 24px JetBrains Mono, monospace';
-            ctx.fillStyle = m.color;
-            ctx.textAlign = 'right';
-            ctx.fillText(m.pct + '%', W - pad - 80, listY + 12);
-
-            // Grams + kcal
-            listY += 34;
-            ctx.font = '400 20px Inter, sans-serif';
-            ctx.fillStyle = '#525263';
-            ctx.textAlign = 'left';
-            ctx.fillText(m.grams + 'g  ·  ' + m.kcal + ' kcal', listX + 22, listY + 6);
-
-            listY += 52;
-        });
-
-        // === LBM Info (if Katch-McArdle) ===
-        if (lastCalcData.method === 'lbm' && lastCalcData.lbm) {
-            y += macroCardH + 30;
-            drawCard(ctx, pad + 30, y, W - (pad + 30) * 2, 80, { radius: 14, bg: 'rgba(6,182,212,0.05)', border: 'rgba(6,182,212,0.15)' });
-
-            ctx.font = '500 22px Inter, sans-serif';
-            ctx.textAlign = 'left';
-            ctx.fillStyle = '#525263';
-            ctx.fillText('Lean Body Mass:', pad + 60, y + 35);
-            ctx.fillStyle = '#06b6d4';
-            ctx.font = '700 22px JetBrains Mono, monospace';
-            ctx.fillText(lastCalcData.lbm.toFixed(1) + ' kg', pad + 280, y + 35);
-
-            ctx.font = '500 22px Inter, sans-serif';
-            ctx.fillStyle = '#525263';
-            ctx.fillText('มวลไขมัน:', cx + 60, y + 35);
-            ctx.fillStyle = '#06b6d4';
-            ctx.font = '700 22px JetBrains Mono, monospace';
-            ctx.fillText(lastCalcData.fatMass.toFixed(1) + ' kg', cx + 220, y + 35);
-        }
-
-        // === FOOTER ===
-        const footerY = H - 130;
-        // Divider
-        const footDiv = ctx.createLinearGradient(pad + 60, footerY, W - pad - 60, footerY);
-        footDiv.addColorStop(0, 'transparent');
-        footDiv.addColorStop(0.5, 'rgba(255,255,255,0.08)');
-        footDiv.addColorStop(1, 'transparent');
-        ctx.strokeStyle = footDiv;
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.moveTo(pad + 60, footerY);
-        ctx.lineTo(W - pad - 60, footerY);
-        ctx.stroke();
-
-        ctx.font = '400 20px Inter, sans-serif';
-        ctx.fillStyle = '#525263';
-        ctx.textAlign = 'center';
-        ctx.fillText('⚠️  ค่า TDEE เป็นการประมาณค่าเท่านั้น ผลลัพธ์อาจแตกต่างตามปัจจัยของแต่ละบุคคล', cx, footerY + 40);
-
-        ctx.font = '500 20px Inter, sans-serif';
-        ctx.fillStyle = '#525263';
-        ctx.fillText('© 2026 Limborot  ·  nutrition.limborot.com', cx, footerY + 75);
-
-        return canvas;
-    }
-
-    // === Download Button Event ===
-    const btnDownload = document.getElementById('btnDownloadImage');
-    if (btnDownload) {
-        btnDownload.addEventListener('click', () => {
-            if (!lastCalcData || lastTDEE === 0) return;
-
-            btnDownload.classList.add('loading');
-
-            // Use requestAnimationFrame to allow loading state to render
-            requestAnimationFrame(() => {
-                try {
-                    const canvas = generateResultImage();
-                    const link = document.createElement('a');
-                    link.download = 'TDEE-Result-' + new Date().toISOString().slice(0, 10) + '.png';
-                    link.href = canvas.toDataURL('image/png');
-                    link.click();
-                } catch (err) {
-                    console.error('Image generation failed:', err);
-                } finally {
-                    setTimeout(() => btnDownload.classList.remove('loading'), 600);
-                }
-            });
-        });
-    }
 
 });
